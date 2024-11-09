@@ -1,8 +1,8 @@
-.nav-bar {
+.nav-bar{
     background-color: lightgray;
 }
 
-.nav-bar-div {
+.nav-bar-div{
     display: flex;
     align-items: center;
 }
@@ -25,21 +25,22 @@
 
 .nav-bar-button{
     margin: 2%;
-    width: max-content;
-    height: fit-content;
-    padding: 4%;
+    width: fit-content;
+    height: max-content;
+    padding: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: tomato;
+    background-color: darkred;
+    border: 1px solid darkgray;
 }
 
-.logo {
+.logo{
     cursor: pointer;
     border-radius: 10px;
 }
 
-.nav-bar-searchbar {
+.nav-bar-searchbar{
     cursor: pointer;
     border-radius: 15px;
     border: 2px solid darkred;
@@ -68,6 +69,7 @@
     letter-spacing: normal;
     word-wrap: normal;
     direction: ltr;
+    color: darkred;
 }
 
 .nav-bar-icons{
@@ -80,4 +82,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bolder;
+    color:lightgray;
+    margin: 1px;
+}
+
+.left-side-border{
+    border-left: 1px solid darkred;
 }
