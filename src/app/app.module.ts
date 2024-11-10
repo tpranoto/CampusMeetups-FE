@@ -14,6 +14,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'; // Required for matInput
 
 @NgModule({
   declarations: [
@@ -28,6 +33,11 @@ import { MatButtonModule } from '@angular/material/button';
     NgbModule,
     MatIconModule,
     MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [provideHttpClient(), CmproxyService, provideAnimationsAsync()],
   bootstrap: [AppComponent],
