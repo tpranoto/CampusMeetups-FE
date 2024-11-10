@@ -1,1 +1,45 @@
-<p>triplist works!</p>
+<div class="container-fluid triplist-container">
+    <div class="row triplist-full-content">
+        <div class="col-sm-1 triplist-ads-space">
+            
+        </div>
+        <div class="col-sm-10 triplist-content">
+            <div class="container-fluid test">
+                <h2 class="text-center" style="font-size: 2.5rem; font-weight: bold;">Trips to Join</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-3" *ngFor="let trip of trips" >
+                    <mat-card class="" appearance="outlined">
+                        <mat-card-header>
+                            <mat-card-title>{{ trip.name }}</mat-card-title>
+                            <mat-card-subtitle>{{ trip.location }}</mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                        <mat-card-content >
+                            <div class="triplist-card-description">
+                                {{ trip.description }}
+                            </div>
+                            <div>
+                                {{ trip.categoryId }}
+                                
+                                {{ trip.timestamp }}
+                                {{ trip.organizerId }}
+                            </div>
+                        </mat-card-content>
+                        <mat-card-actions>
+                            <button mat-button>LIKE</button>
+                            <button mat-button>SHARE</button>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+            <div>
+                This is for pagination
+            </div>
+        </div>
+    
+        <div class="col-sm-1 triplist-ads-space">
+        
+        </div>
+    </div>
+</div>

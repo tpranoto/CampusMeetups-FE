@@ -1,0 +1,25 @@
+.triplist-container{
+    display: flex;
+    flex-direction: column-reverse;
+    height: 93vh;
+    overflow: auto;
+}
+
+.triplist-full-content{
+    flex-grow: 1;
+}
+
+.triplist-ads-space{
+    background-color: slategrey;
+}
+
+.triplist-card-description{
+    height: 40px; 
+    line-height: 1.2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+}

@@ -14,6 +14,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MatButtonModule } from '@angular/material/button';
     NgbModule,
     MatIconModule,
     MatButtonModule,
+    MatCardModule,
   ],
   providers: [provideHttpClient(), CmproxyService, provideAnimationsAsync()],
   bootstrap: [AppComponent],

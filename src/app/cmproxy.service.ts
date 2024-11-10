@@ -9,6 +9,8 @@ export class CmproxyService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getListofTrips() {}
+  getListofTrips() {
+    return this.httpClient.get<any[]>(this.hostUrl + 'app/trip');
+  }
   getTripDetails() {}
 }

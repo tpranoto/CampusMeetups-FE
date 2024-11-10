@@ -1,5 +1,6 @@
 .nav-bar{
     background-color: lightgray;
+    height: 7vh;
 }
 
 .nav-bar-div{
@@ -24,7 +25,6 @@
 }
 
 .nav-bar-button{
-    margin: 2%;
     width: fit-content;
     height: max-content;
     padding: 5%;
@@ -85,6 +85,10 @@
     font-weight: bolder;
     color:lightgray;
     margin: 1px;
+}
+
+.nav-bar-button-content span{
+    padding-right: 5px;
 }
 
 .left-side-border{
