@@ -1,30 +1,68 @@
-.nav-bar{
+.navbar{
     background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     height: 7vh;
+    padding: 0 1% 0 1%;
 }
 
-.nav-bar-div{
+.navbar-left{
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    height: 100%;
 }
 
-.nav-bar-left{
-    justify-content: left;
-}
-
-.nav-bar-right{
-    justify-content: right;
-}
-
-.nav-bar-content{
-    padding: 2%;
-    margin: 1%;
+.navbar-right{
     display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.navbar-content{
+    display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
+    height: 100%;
 }
 
-.nav-bar-button{
+.logo{
+    height: 40%;
+    cursor: pointer;
+}
+
+.logo-img{
+    max-height: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.navbar-searchbar{
+    cursor: pointer;
+    border-radius: 15px;
+    border: 2px solid darkred;
+    background-color: white;
+    overflow: scroll;
+    padding: 1% 0 1% 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-searchbar-input{
+    flex-grow: 1;
+    background: transparent;
+    outline-width: 0;
+    border: none;
+}
+
+.navbar-searchbar-icon{
+    color: darkred;
+}
+
+.navbar-createtrip-button{
     width: fit-content;
     height: max-content;
     padding: 5%;
@@ -35,50 +73,7 @@
     border: 1px solid darkgray;
 }
 
-.logo{
-    cursor: pointer;
-    border-radius: 10px;
-}
-
-.nav-bar-searchbar{
-    cursor: pointer;
-    border-radius: 15px;
-    border: 2px solid darkred;
-    background-color: white;
-    overflow: scroll;
-}
-
-.nav-bar-search-input{
-    flex-grow: 1;
-    background: transparent;
-    outline-width: 0;
-    border: none;
-}
-
-.nav-bar-search-icon{
-    color: darkred;
-}
-
-.nav-bar-home-icon, .nav-bar-discover-icon, .nav-bar-account-icon, .nav-bar-notification-icon{
-    flex-grow: 1;
-    font-weight: normal;
-    font-size: 36px;  /* Preferred icon size */
-    display: contents;
-    line-height: 1;
-    text-transform: none;
-    letter-spacing: normal;
-    word-wrap: normal;
-    direction: ltr;
-    color: darkred;
-}
-
-.nav-bar-icons{
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.nav-bar-button-content{
+.navbar-createtrip-button-content{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -87,10 +82,29 @@
     margin: 1px;
 }
 
-.nav-bar-button-content span{
+.navbar-createtrip-button-content span{
     padding-right: 5px;
 }
 
-.left-side-border{
-    border-left: 1px solid darkred;
+.navbar-selection{
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.navbar-left-border{
+    border-left: 2px solid darkred;
+}
+
+.navbar-selection mat-icon{
+    flex-grow: 1;
+    font-weight: normal;
+    font-size: 36px;
+    display: contents;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    direction: ltr;
+    color: darkred;
 }

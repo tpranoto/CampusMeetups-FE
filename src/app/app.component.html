@@ -1,33 +1,35 @@
-<div class="container-fluid nav-bar">
-    <div class="row">
-        <div class="col-sm-2 nav-bar-div nav-bar-left">
-            <div class="logo nav-bar-content">
-                <img src="logo.png" alt="Campus Meetups" class="img-fluid" />
+<mat-toolbar class="navbar">
+    <div class="navbar-left">
+        <div class="navbar-content logo">
+            <img src="logo.png" alt="Campus Meetups" class="logo-img" />
+        </div>
+
+        <div class="navbar-content">
+            <div class="navbar-searchbar">
+                <input type="text" class="navbar-searchbar-input" placeholder="Search trips..." />
+                <mat-icon class="navbar-searchbar-icon" fontIcon="search"></mat-icon>
             </div>
         </div>
-        <div class="col-sm-3 nav-bar-div">
-            <div class="container-fluid nav-bar-searchbar nav-bar-content">
-                <input type="text" class="nav-bar-search-input" placeholder="Search trips..." />
-                <mat-icon class="nav-bar-search-icon" fontIcon="search"></mat-icon>
-            </div>
-        </div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-1 nav-bar-div">
-            <button mat-fab extended class="nav-bar-button">
-                <div class="nav-bar-button-content">
+    </div>
+
+    <div class="navbar-right">
+        <div class="navbar-content">
+            <button mat-fab extended class="navbar-createtrip-button">
+                <div class="navbar-createtrip-button-content">
                     <mat-icon fontIcon="add"></mat-icon>
                     <span>New trip</span>
                 </div>
             </button>
         </div>
-        <div class="col-sm-2 nav-bar-div ">
-            <div class="nav-bar-icons left-side-border">
-                <mat-icon class="nav-bar-home-icon" fontIcon="home"></mat-icon>
-                <mat-icon class="nav-bar-discover-icon" fontIcon="explore"></mat-icon>
-                <mat-icon class="nav-bar-notification-icon" fontIcon="notifications"></mat-icon>
-                <mat-icon class="nav-bar-account-icon" fontIcon="account_circle"></mat-icon>
+
+        <div class="navbar-content">
+            <div class="navbar-selection navbar-left-border">
+                <mat-icon fontIcon="home"></mat-icon>
+                <mat-icon fontIcon="explore"></mat-icon>
+                <mat-icon fontIcon="notifications"></mat-icon>
+                <mat-icon fontIcon="account_circle"></mat-icon>
             </div>
         </div>
     </div>
-</div>
+  </mat-toolbar>
 <router-outlet />
