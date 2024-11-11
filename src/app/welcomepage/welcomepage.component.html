@@ -1,1 +1,132 @@
-<p>welcomepage works!!!</p>
+<section id="people-platform" class="people-platform text-center py-5 bg-light">
+  <div class="container">
+    <h2 class="display-4 mb-4">The People Platform—Where Interests Become Friendships</h2>
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <p class="lead mb-4">Whatever your interest, from hiking and reading to networking and skill sharing, there are thousands of people who share it on CampusMeetups. Events are happening every day—sign up to join the fun.</p>
+        <a href="#join-meetup" class="btn btn-primary btn-lg">View all Trips</a>
+      </div>
+      <div class="col-md-6">
+        <!-- Image Section -->
+        <img src="https://www.seattleu.edu/media/seattle-university/web-redesign---admissions-amp-aid/Hero-CampusOverall.jpg" class="img-fluid" alt="Campus Scene">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Your Trips Section -->
+<section id="your-trips" class="your-trips text-center py-5 bg-white">
+  <div class="container">
+    <h2 class="display-4 mb-4">Your Trips</h2>
+    <p class="lead mb-5">
+      See all your planned meetups, past adventures, and upcoming trips in one place. Keep track of memories made and connections formed along the way!
+    </p>
+
+    <!-- Display "No trips planned" if yourTrips array is empty -->
+    <div *ngIf="yourTrips.length === 0" class="no-trips-message">
+      <p class="lead text-muted">No trips planned</p>
+    </div>
+
+    <!-- Scrollable section for all trips -->
+    <div class="trips-scrollable">
+      <div class="row" *ngIf="yourTrips.length > 0">
+        <div class="col-md-4 mb-4" *ngFor="let trip of yourTrips">
+          <mat-card class="shadow-sm">
+            <mat-card-header>
+              <mat-card-title>{{ trip.name }}</mat-card-title>
+              <mat-card-subtitle>{{ trip.location }}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="trip.imageUrl" [alt]="trip.name">
+            <mat-card-content>
+              <p>{{ trip.description }}</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button [routerLink]="['/trip-list', trip.tripId]">View Trip</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- This Week's Trips Section -->
+<section id="thisweek-trips" class="thisweek-trips text-center py-5 bg-white">
+  <div class="container">
+    <h2 class="display-4 mb-4">This Week's Trips</h2>
+    <p class="lead mb-5">Upcoming trips for this week.</p>
+
+    <!-- Display "No trips planned" if thisWeekTrips array is empty -->
+    <div *ngIf="thisWeekTrips.length === 0" class="no-trips-message">
+      <p class="lead text-muted">No trips planned</p>
+    </div>
+
+    <!-- Display trips if available -->
+    <div class="row" *ngIf="thisWeekTrips.length > 0">
+      <div class="col-md-4 mb-4" *ngFor="let trip of thisWeekTrips">
+        <mat-card class="shadow-sm">
+          <mat-card-header>
+            <mat-card-title>{{ trip.name }}</mat-card-title>
+            <mat-card-subtitle>{{ trip.location }}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image [src]="trip.image" [alt]="trip.name">
+          <mat-card-content>
+            <p>{{ trip.description }}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button [routerLink]="['/trip-list', trip.tripId]">View Trip</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="what-we-offer text-center py-5">
+  <div class="container">
+    <h2 class="display-4 mb-4">What We Offer</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title">Explore New Places</h5>
+            <p class="card-text">Join groups traveling to exciting destinations, whether you're looking for adventure or relaxation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title">Make New Connections</h5>
+            <p class="card-text">Meet students from various campuses, bond over shared interests, and make lifelong friendships.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title">Organize Your Own Trips</h5>
+            <p class="card-text">Take the lead, create your own meetups, and invite others to join you on your adventures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="bg-dark text-white text-center py-4 mt-5">
+  <p>© 2024 Campus Meetups | All Rights Reserved</p>
+  <a href="mailto:contact&#64;campusmeetups.com">Email Us</a>
+  <p><a href="#top" class="text-light">Back to Top</a></p>
+</footer>
