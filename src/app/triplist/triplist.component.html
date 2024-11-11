@@ -16,7 +16,7 @@
                             </div>
                             <div class="triplist-card-header-location">in&nbsp;<b>{{ trip.location }}</b></div>
                         </mat-card-header>
-                        <img mat-card-image class="triplist-card-image" src="def_trip.jpg">
+                        <img mat-card-image class="triplist-card-image" [src]="trip.image || 'def_trip.jpg'" (error)="onImageError($event)" alt="Trip Image">
                         <mat-card-content>
                             <div class="triplist-card-description">
                                 {{ trip.description }}

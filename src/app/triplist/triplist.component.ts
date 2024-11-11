@@ -32,6 +32,12 @@ export class TriplistComponent {
 
   ngOnInit() {}
 
+  // Set the fallback image URL when error using image url
+  onImageError(event: Event): void {
+    const imgElement = event.target as HTMLImageElement;
+    imgElement.src = 'def_trip.jpg';
+  }
+
   clickNextPage(): void {
     var url: string = this.nextPage || '';
     this.fetchTrips(this.page, this.perPage, this.categoryId, true, url);
