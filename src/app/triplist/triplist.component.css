@@ -13,7 +13,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 5px;
+    padding: 0 5% 0 5%;
+}
+
+.triplist-content-header-title{
+    font-size: x-large;
 }
 
 .triplist-ads-space{
@@ -21,6 +25,7 @@
 }
 
 .triplist-card{
+    margin: 2% 0 3% 0;
     border: 1px solid black;
 }
 
@@ -36,10 +41,14 @@
     flex-direction: column;
     align-items: center;
     justify-content: center ;
+    padding: 0 2% 0 2%;
 }
 
 .triplist-card-header-name{
-    width: 100%; 
+    width: 96%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bolder;
 }
 
 .triplist-card-header-location{
@@ -48,7 +57,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 96%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -70,10 +79,51 @@
     -webkit-box-orient: vertical;
 }
 
+.triplist-card-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.triplist-card-date{
+    font-size: small;
+    font-weight: bold;
+}
+
 .triplist-card-category{
-    width: 20%;
+    font-size: small;
+    font-weight: bold;
+    width: 30%;
+    height: 30%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: darkred;
+    color: white;
+    border: 1px solid black;
 }
 
 
 .triplist-pagination-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+}
+
+.triplist-pagination-button{
+    width: 15%;
+}
+
+.triplist-pagination-button-content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.triplist-pagination-page-num{
+    font-size: large;
+    padding: 2%;
 }

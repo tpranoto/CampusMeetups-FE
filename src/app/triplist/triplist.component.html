@@ -4,7 +4,7 @@
             
         </div>
         <div class="col-sm-10 triplist-content">
-            <div #scrollContainer class="container-fluid triplist-content-header">
+            <div #scrollTarget class="container-fluid triplist-content-header">
                 <h4 class="triplist-content-header-title">Trips to Join</h4>
             </div>
             <div class="row">
@@ -21,11 +21,10 @@
                             <div class="triplist-card-description">
                                 {{ trip.description }}
                             </div>
-                            <div>
-                                <span>{{ trip.timestamp | date:'medium' }}</span>
-                                <div>
-                                    <button class="triplist-card-category" mat-raised-button disabled>{{ trip.categoryData.name }}</button>
-                                    
+                            <div class="triplist-card-footer">
+                                <div class="triplist-card-date">{{ trip.timestamp | date:'MMM dd, yyyy, hh:mm aa' }}</div>
+                                <div class="triplist-card-category">
+                                    {{ trip.categoryData.name }}
                                 </div>
                             </div>
                         </mat-card-content>
@@ -33,14 +32,20 @@
                 </div>
             </div>
             <div class="container-fluid triplist-pagination-container">
-                <button mat-fab extended (click)="clickPrevPage()">
-                    <mat-icon>arrow_back_ios</mat-icon>
-                    Previous
+                <button mat-fab extended class="triplist-pagination-button" (click)="clickPrevPage()">
+                    <div class="triplist-pagination-button-content">
+                        <mat-icon>arrow_back_ios</mat-icon>
+                        Previous
+                    </div>
                 </button>
 
-                <button mat-fab extended (click)="clickNextPage()">
-                    Next
-                    <mat-icon>arrow_forward_ios</mat-icon>
+                <div class="triplist-pagination-page-num">Page: {{ this.page +1 }}</div>
+
+                <button mat-fab extended class="triplist-pagination-button" (click)="clickNextPage()">
+                    <div class="triplist-pagination-button-content">
+                        Next
+                        <mat-icon>arrow_forward_ios</mat-icon>
+                    </div>
                 </button>
             </div>
         </div>
