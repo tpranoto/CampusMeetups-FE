@@ -45,6 +45,8 @@
     border: 2px solid darkred;
     background-color: white;
     overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
     padding: 1% 0 1% 0;
     display: flex;
     align-items: center;
