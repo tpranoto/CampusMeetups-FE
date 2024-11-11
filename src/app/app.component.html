@@ -1,8 +1,9 @@
-<mat-toolbar class="navbar">
+<router-outlet>
+    <mat-toolbar class="navbar">
     <div class="navbar-left">
-        <div class="navbar-content logo">
+        <div class="navbar-content logo" [routerLink]="['/']">
             <img src="Llogo.png" alt="Campus Meetups" class="logo-img" />
-        </div>
+          </div>
 
         <div class="navbar-content">
             <div class="search-container">
@@ -36,4 +37,4 @@
         </div>
     </div>
   </mat-toolbar>
-<router-outlet />
+</router-outlet>

@@ -39,7 +39,6 @@
     object-fit: contain;
 }
 
-/* Style the search container */
 .search-container {
     display: flex;
     justify-content: center;
@@ -47,8 +46,7 @@
     margin-top: 0.7px;
     margin-left: 25px;
   }
-  
-  /* Style the search input */
+
   .search-input {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 8.4px;
@@ -74,8 +72,8 @@
 }
 
 .search-button mat-icon {
-    margin-right: 8px; /* Space between the icon and text */
-    font-size: 25px;  /* Adjust size of the icon */
+    margin-right: 8px; 
+    font-size: 25px; 
 }
   
   .search-button:hover {
@@ -91,33 +89,32 @@
 
 .navbar-left-border{
     border-left: 2px solid darkred;
-    margin-left: 100px;
+    margin-left: 30px;
 }
 
 .navbar-selection {
     display: flex;
-    justify-content: space-evenly; /* Space between icons */
+    justify-content: space-evenly;
     align-items: center;
   }
   
   .navbar-selection mat-icon {
     font-weight: normal;
-    font-size: 28px;
-    display: inline-block;  /* Change display to inline-block for proper layout */
+    font-size: 23px;
+    display: inline-block;  
     line-height: 1;
     text-transform: none;
     letter-spacing: normal;
     word-wrap: normal;
     direction: ltr;
     color: rgb(255, 255, 255);
-    margin: 0 10px;  /* Add space between icons */
+    margin: 0 15px;  
   }
   
 .navbar-selection mat-icon:last-child {
-    margin-right: 0; /* Remove the margin after the last icon */
+
 }
 
-/* Style the create button */
 .navbar-createtrip-button {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 12px 24px;
@@ -127,15 +124,13 @@
     border-radius: 15px;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
     height: 35px;
     width: 150px;
-    margin-right: 5px;
+    margin: 0 5px;
   }
   
-  /* Hover effect for create button */
   .navbar-createtrip-button:hover {
-    background-color: #e3dfdf;
+    background-color: #fbd8d8;
     transform: scale(1.05);
   }
 
