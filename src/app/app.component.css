@@ -1,9 +1,9 @@
 .navbar{
-    background-color: lightgray;
+    background-color: darkred;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 7vh;
+    height: 10vh;
     padding: 0 1% 0 1%;
 }
 
@@ -29,7 +29,7 @@
 }
 
 .logo{
-    height: 40%;
+    height: 140%;
     cursor: pointer;
 }
 
@@ -39,54 +39,49 @@
     object-fit: contain;
 }
 
-.navbar-searchbar{
-    cursor: pointer;
-    border-radius: 15px;
+/* Style the search container */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.7px;
+    margin-left: 25px;
+  }
+  
+  /* Style the search input */
+  .search-input {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 8.4px;
+    width: 180px;
     border: 2px solid darkred;
-    background-color: white;
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    padding: 1% 0 1% 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.navbar-searchbar-input{
-    flex-grow: 1;
-    background: transparent;
-    outline-width: 0;
-    border: none;
-}
-
-.navbar-searchbar-icon{
+    border-radius: 11px 0 0 11px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .search-button {
+    padding: 8px;
+    background-color: rgb(255, 255, 255);
     color: darkred;
-}
-
-.navbar-createtrip-button{
-    width: fit-content;
-    height: max-content;
-    padding: 5%;
+    border: 2px solid darkred;
+    border-radius: 0 11px 11px 0;
+    cursor: pointer;
+    height: 35px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: darkred;
-    border: 1px solid darkgray;
+    align-items: center;      
+    justify-content: center; 
+    text-align: center;
 }
 
-.navbar-createtrip-button-content{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bolder;
-    color:lightgray;
-    margin: 1px;
+.search-button mat-icon {
+    margin-right: 8px; /* Space between the icon and text */
+    font-size: 25px;  /* Adjust size of the icon */
 }
-
-.navbar-createtrip-button-content span{
-    padding-right: 5px;
-}
+  
+  .search-button:hover {
+    background-color: rgb(255, 228, 228);
+  }
+  
 
 .navbar-selection{
     flex-grow: 1;
@@ -96,17 +91,52 @@
 
 .navbar-left-border{
     border-left: 2px solid darkred;
+    margin-left: 100px;
 }
 
-.navbar-selection mat-icon{
-    flex-grow: 1;
+.navbar-selection {
+    display: flex;
+    justify-content: space-evenly; /* Space between icons */
+    align-items: center;
+  }
+  
+  .navbar-selection mat-icon {
     font-weight: normal;
-    font-size: 36px;
-    display: contents;
+    font-size: 28px;
+    display: inline-block;  /* Change display to inline-block for proper layout */
     line-height: 1;
     text-transform: none;
     letter-spacing: normal;
     word-wrap: normal;
     direction: ltr;
-    color: darkred;
+    color: rgb(255, 255, 255);
+    margin: 0 10px;  /* Add space between icons */
+  }
+  
+.navbar-selection mat-icon:last-child {
+    margin-right: 0; /* Remove the margin after the last icon */
 }
+
+/* Style the create button */
+.navbar-createtrip-button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 12px 24px;
+    background-color: #ffffff;
+    color: rgb(119, 14, 14);
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    height: 35px;
+    width: 150px;
+    margin-right: 5px;
+  }
+  
+  /* Hover effect for create button */
+  .navbar-createtrip-button:hover {
+    background-color: #e3dfdf;
+    transform: scale(1.05);
+  }
+
+  
