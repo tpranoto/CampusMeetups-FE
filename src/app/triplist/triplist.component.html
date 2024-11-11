@@ -9,14 +9,14 @@
             </div>
             <div class="row">
                 <div class="col-md-3" *ngFor="let trip of trips" >
-                    <mat-card class="" appearance="outlined">
+                    <mat-card class="triplist-card" appearance="outlined" (click)="navigateToTripDetails(trip.tripId)">
                         <mat-card-header class="triplist-card-header">
                             <div class="triplist-card-header-name">
                                 {{ trip.name }}
                             </div>
                             <div class="triplist-card-header-location">in&nbsp;<b>{{ trip.location }}</b></div>
                         </mat-card-header>
-                        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                        <img mat-card-image class="triplist-card-image" src="def_trip.jpg">
                         <mat-card-content>
                             <div class="triplist-card-description">
                                 {{ trip.description }}

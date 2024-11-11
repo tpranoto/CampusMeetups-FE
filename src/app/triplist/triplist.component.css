@@ -20,6 +20,15 @@
     background-color: slategrey;
 }
 
+.triplist-card{
+    border: 1px solid black;
+}
+
+.triplist-card:hover{
+    background-color: lightcoral;
+    cursor: pointer;
+}
+
 .triplist-card-header{
     display: flex;
     width: 100%;
@@ -42,6 +51,13 @@
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.triplist-card-image{
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: 1px solid black;
 }
 
 .triplist-card-description{

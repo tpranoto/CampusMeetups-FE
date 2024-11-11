@@ -68,4 +68,8 @@ export class TriplistComponent {
         });
     }
   }
+
+  navigateToTripDetails(tripId: string): void {
+    this.router.navigate(['/trip', tripId]);
+  }
 }
