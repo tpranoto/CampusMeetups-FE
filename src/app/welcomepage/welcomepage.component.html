@@ -1,10 +1,11 @@
-<section id="people-platform" class="people-platform text-center py-5 bg-light">
+<section id="campus-meetups" class="people-platform text-center py-5 bg-light">
   <div class="container">
-    <h2 class="display-4 mb-4">The People Platform—Where Interests Become Friendships</h2>
+    <h2 class="display-4 mb-4">Welcome, User.</h2>
     <div class="row align-items-center">
       <div class="col-md-6">
         <p class="lead mb-4">Whatever your interest, from hiking and reading to networking and skill sharing, there are thousands of people who share it on CampusMeetups. Events are happening every day—sign up to join the fun.</p>
-        <a href="#join-meetup" class="btn btn-primary btn-lg">View all Trips</a>
+        <a routerLink="/trip" class="btn btn-primary btn-lg">View all Trips</a>
+
       </div>
       <div class="col-md-6">
         <!-- Image Section -->
@@ -54,21 +55,20 @@
 
 
 
-
-<!-- This Week's Trips Section -->
-<section id="thisweek-trips" class="thisweek-trips text-center py-5 bg-white">
+<!-- This Week's Trips Section (Next 7 Days) -->
+<section id="next7days-trips" class="next7days-trips text-center py-5 bg-light">
   <div class="container">
-    <h2 class="display-4 mb-4">This Week's Trips</h2>
-    <p class="lead mb-5">Upcoming trips for this week.</p>
+    <h2 class="display-4 mb-4">Trips in the Next 7 Days</h2>
+    <p class="lead mb-5">Explore upcoming trips within the next week!</p>
 
-    <!-- Display "No trips planned" if thisWeekTrips array is empty -->
-    <div *ngIf="thisWeekTrips.length === 0" class="no-trips-message">
+    <!-- Display "No trips planned" if next7DaysTrips array is empty -->
+    <div *ngIf="next7DaysTrips.length === 0" class="no-trips-message">
       <p class="lead text-muted">No trips planned</p>
     </div>
 
-    <!-- Display trips if available -->
-    <div class="row" *ngIf="thisWeekTrips.length > 0">
-      <div class="col-md-4 mb-4" *ngFor="let trip of thisWeekTrips">
+    <!-- Display trips for the next 7 days -->
+    <div class="row" *ngIf="next7DaysTrips.length > 0">
+      <div class="col-md-4 mb-4" *ngFor="let trip of next7DaysTrips">
         <mat-card class="shadow-sm">
           <mat-card-header>
             <mat-card-title>{{ trip.name }}</mat-card-title>
@@ -79,7 +79,7 @@
             <p>{{ trip.description }}</p>
           </mat-card-content>
           <mat-card-actions>
-            <button mat-button [routerLink]="['/trip-list', trip.tripId]">View Trip</button>
+            <button mat-button [routerLink]="['/trip/:id', trip.id]">View Trip</button>
           </mat-card-actions>
         </mat-card>
       </div>
