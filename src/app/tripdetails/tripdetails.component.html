@@ -1,1 +1,29 @@
-<p>tripdetails works!</p>
+<div class="container trip-details-container">
+  <div class="trip-category">{{ trip.categoryData.name }}</div>
+
+  <!-- Image Section -->
+  <img [src]="trip.image" alt="Trip Image" class="trip-image" (error)="onImageError($event)" />
+
+  <!-- Trip Info Section -->
+  <div class="trip-info">
+    <h3>{{ trip.name }}</h3>
+    <p><strong>Description:</strong> {{ trip.description }}</p>
+    <p><strong>Location:</strong> {{ trip.location }}</p>
+    <p><strong>Date & Time:</strong> {{ trip.timestamp | date: 'MMM dd, yyyy, hh:mm aa' }}</p>
+    <p><strong>Status:</strong> {{ trip.status }}</p>
+    <p><strong>Organizer:</strong> {{ trip.organizerData.fname }} {{ trip.organizerData.lname }}</p>
+  </div>
+
+  <!-- Attendees Section -->
+  <div class="attendees-list-container">
+    <div class="attendees-list-header">Attendees</div>
+    <div class="attendees-list">
+      <div class="attendee-name" *ngFor="let attendee of trip.attendees">
+        {{ attendee.fname }} {{ attendee.lname }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Join Button -->
+  <button class="join-trip-button" (click)="joinTrip()">Join Trip</button>
+</div>

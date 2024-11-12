@@ -1,0 +1,72 @@
+.container.trip-details-container {
+  max-width: 900px;
+  margin-top: 20px;
+}
+
+.trip-category {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.trip-image {
+  width: 75%;
+  height: auto;
+  align-self: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.trip-info {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.trip-description {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+.attendees-list-container {
+  margin-top: 20px;
+}
+
+.attendees-list-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+}
+
+.attendees-list {
+  padding: 10px;
+  background-color: #f8f9fa;
+  max-height: 200px; /* Adjust height as necessary */
+  overflow-y: scroll; /* Make this list scrollable */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.attendee-name {
+  font-size: 1rem;
+  padding: 5px 0;
+}
+
+.join-trip-button {
+  font-size: 1.2rem;
+  padding: 8px 16px;
+  margin-top: 20px;
+  background-color: darkred;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  align-self:center;
+}
+
+  .join-trip-button:hover {
+    background-color: red;
+  }
