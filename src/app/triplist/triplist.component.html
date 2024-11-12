@@ -1,18 +1,20 @@
 <div class="container-fluid triplist-container">
+    <div class="container-fluid full-width-header">
+        <img src="Header-image.jpg" alt="Header Image" class="full-width-img" />
+        <div class="image-text">Adventure! Here I Come</div></div>
     <div class="row triplist-full-content">
         <div class="col-sm-1 triplist-ads-space">
-            
         </div>
         <div class="col-sm-10 triplist-content">
             <div #scrollTarget class="container-fluid triplist-content-header">          
-                <div class="navbar-content logo">
-                <img src="here1.png" alt="Header" class="logo-img" />
-                </div>
                 </div>
             <div class="row">
                 <div class="col-md-3" *ngFor="let trip of trips" >
                     <mat-card class="triplist-card" appearance="outlined" (click)="navigateToTripDetails(trip.tripId)">
                         <mat-card-header class="triplist-card-header">
+                        </mat-card-header>
+                        <img mat-card-image class="triplist-card-image" [src]="trip.image || 'def_trip.jpg'" (error)="onImageError($event)" alt="Trip Image">
+                        <mat-card-content>
                             <div class="triplist-card-header-name">
                                 {{ trip.name }}
                             </div>
@@ -20,9 +22,6 @@
                                 <mat-icon>location_on</mat-icon> 
                                 <b>{{ trip.location }}</b>
                             </div>
-                        </mat-card-header>
-                        <img mat-card-image class="triplist-card-image" [src]="trip.image || 'def_trip.jpg'" (error)="onImageError($event)" alt="Trip Image">
-                        <mat-card-content>
                             <div class="triplist-card-description">
                                Description: {{ trip.description }}
                             </div>

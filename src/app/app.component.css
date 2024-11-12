@@ -1,5 +1,5 @@
 .navbar{
-    background-color: darkred;
+    background-color: rgb(244, 238, 224);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -59,8 +59,8 @@
   
   .search-button {
     padding: 8px;
-    background-color: rgb(255, 255, 255);
-    color: darkred;
+    background-color: darkred;
+    color: rgb(255, 255, 255);
     border: 2px solid darkred;
     border-radius: 0 11px 11px 0;
     cursor: pointer;
@@ -77,15 +77,10 @@
 }
   
   .search-button:hover {
-    background-color: rgb(255, 228, 228);
+    background-color: rgb(100, 7, 7);
   }
   
 
-.navbar-selection{
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-evenly;
-}
 
 .navbar-left-border{
     border-left: 2px solid darkred;
@@ -98,19 +93,20 @@
     align-items: center;
   }
   
-  .navbar-selection mat-icon {
+  .navbar-item {
+    font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
-    font-size: 23px;
+    font-size: 14px;
     display: inline-block;  
     line-height: 1;
     text-transform: none;
     letter-spacing: normal;
     word-wrap: normal;
     direction: ltr;
-    color: rgb(255, 255, 255);
+    color: darkred;
     margin: 0 15px;  
   }
-  
+ 
 .navbar-selection mat-icon:last-child {
 
 }
@@ -118,8 +114,8 @@
 .navbar-createtrip-button {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 12px 24px;
-    background-color: #ffffff;
-    color: rgb(119, 14, 14);
+    background-color: darkred;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 15px;
     font-size: 14px;
@@ -133,5 +129,29 @@
     background-color: #fbd8d8;
     transform: scale(1.05);
   }
-
   
+  @media (max-width: 768px) {
+
+    .navbar-item {
+        width: 30%;
+        justify-content: right; 
+    }
+
+    .navbar-createtrip-button{
+      padding: 2px;
+      height: 35px;
+      width: 100px;
+      font-size: 12px;
+    }
+    .search-input{
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      padding: 8.4px;
+      width: 80px;
+      border: 2px solid darkred;
+      border-radius: 11px 0 0 11px;
+      height: 35px;
+      font-size: 10px;
+    }
+  }
+
+
