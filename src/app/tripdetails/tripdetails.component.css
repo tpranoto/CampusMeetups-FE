@@ -1,72 +1,136 @@
-.container.trip-details-container {
-  max-width: 900px;
-  margin-top: 20px;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+/* Container Styling */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Trip Details Section */
+.trip-details-container {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .trip-category {
-  font-size: 1.2rem;
+  font-size: 1.5rem; /* Slightly larger font for category */
+  color: #003366;
   font-weight: bold;
-  color: black;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
+}
+
+/* Image Styling (Smaller Size) */
+.trip-image {
+  width: 50%; /* Smaller image width */
+  max-width: 300px; /* Maximum size of image */
+  height: auto;
+  border-radius: 8px;
+  margin: 1rem auto;
   display: block;
 }
 
-.trip-image {
-  width: 75%;
-  height: auto;
-  align-self: center;
-  border-radius: 5px;
-  margin-bottom: 20px;
+img[alt="Trip Image"]:not([src]) {
+  background-color: #e0e0e0; /* Fallback background color */
 }
 
-.trip-info {
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  margin-bottom: 20px;
+/* Trip Info Section */
+.trip-card {
+  margin-top: 2rem;
 }
 
-.trip-description {
-  margin-top: 10px;
-  font-size: 1.1rem;
+.trip-title {
+  font-size: 2.5rem; /* Larger font size for the trip title */
+  font-weight: bold;
+  color: #003366;
+  margin-bottom: 1.5rem;
 }
 
+.trip-info p {
+  font-size: 1.2rem; /* Larger font for the content */
+  margin: 0.5rem 0;
+}
+
+.trip-info strong {
+  color: #003366;
+}
+
+/* Attendees Section (Smaller Scrollable List of Names with Interactive Scrollbar) */
 .attendees-list-container {
-  margin-top: 20px;
+  margin-top: 2rem;
 }
 
 .attendees-list-header {
-  font-size: 1.2rem;
+  font-size: 1.5rem; /* Larger header for Attendees section */
+  color: #003366;
   font-weight: bold;
-  color: black;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
-.attendees-list {
-  padding: 10px;
-  background-color: #f8f9fa;
-  max-height: 200px; /* Adjust height as necessary */
-  overflow-y: scroll; /* Make this list scrollable */
+.attendee-list {
+  max-height: 200px; /* Adjusted height for better scroll experience */
+  overflow-y: scroll; /* Enable scroll */
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  background-color: #f9f9f9;
   border-radius: 5px;
-  border: 1px solid #ddd;
+  position: relative;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #003366 #f9f9f9; /* For Firefox - Thumb and Track color */
 }
+
+  /* Custom Scrollbar for Webkit browsers (Chrome, Safari) */
+  .attendee-list::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+  }
+
+  .attendee-list::-webkit-scrollbar-track {
+    background-color: #f9f9f9; /* Background of the scrollbar */
+    border-radius: 5px;
+  }
+
+  .attendee-list::-webkit-scrollbar-thumb {
+    background-color: #003366; /* Thumb color */
+    border-radius: 5px;
+    border: 3px solid #f9f9f9; /* Space between thumb and track */
+  }
 
 .attendee-name {
-  font-size: 1rem;
-  padding: 5px 0;
+  font-size: 1rem; /* Larger font size for names */
+  color: #333;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
 }
 
+/* Join Button */
 .join-trip-button {
-  font-size: 1.2rem;
-  padding: 8px 16px;
-  margin-top: 20px;
-  background-color: darkred;
-  color: white;
+  background-color: #003366;
+  color: #ffffff;
   border: none;
+  padding: 1.2rem 2.5rem; /* Slightly larger padding for the button */
+  font-size: 1.2rem; /* Larger font for the button */
+  cursor: pointer;
   border-radius: 5px;
-  align-self:center;
+  margin-top: 2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
   .join-trip-button:hover {
-    background-color: red;
+    background-color: #005bb5;
   }
