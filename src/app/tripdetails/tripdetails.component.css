@@ -118,8 +118,8 @@ img[alt="Trip Image"]:not([src]) {
 
 /* Join Button */
 .join-trip-button {
-  background-color: #003366;
-  color: #ffffff;
+  background-color: Red #D22B2B;
+  color: Red #D22B2B;
   border: none;
   padding: 1.2rem 2.5rem; /* Slightly larger padding for the button */
   font-size: 1.2rem; /* Larger font for the button */
@@ -132,5 +132,5 @@ img[alt="Trip Image"]:not([src]) {
 }
 
   .join-trip-button:hover {
-    background-color: #005bb5;
+    background-color: #D22B2B;
   }
