@@ -1,25 +1,31 @@
 <div class="container trip-details-container">
-  <div class="trip-category">{{ trip.categoryData.name }}</div>
+  <!-- Image Section (30% width) -->
+  <div class="trip-image-container">
+    <img [src]="trip.image" alt="Trip Image" class="trip-image" (error)="onImageError($event)" />
+  </div>
 
-  <!-- Image Section with medium size -->
-  <img [src]="trip.image" alt="Trip Image" class="trip-image" (error)="onImageError($event)" />
-
-  <!-- Trip Info Section -->
-  <div class="trip-card">
+  <!-- Trip Details Section (60% width) -->
+  <div class="trip-info-container">
     <div class="trip-title">{{ trip.name }}</div>
-    <p><strong>Description:</strong> {{ trip.description }}</p>
     <p><strong>Location:</strong> {{ trip.location }}</p>
     <p><strong>Date & Time:</strong> {{ trip.timestamp | date: 'MMM dd, yyyy, hh:mm aa' }}</p>
     <p><strong>Status:</strong> {{ trip.status }}</p>
     <p><strong>Organizer:</strong> {{ trip.organizerData.fname }} {{ trip.organizerData.lname }}</p>
   </div>
 
-  <!-- Attendees Section (Scrollable List of Names) -->
-  <div class="attendees-list-container">
-    <div class="attendees-list-header">Attendees</div>
-    <div class="attendee-list">
-      <div class="attendee-name" *ngFor="let attendee of trip.attendees">
-        {{ attendee.fname }} {{ attendee.lname }}
+  <!-- Trip Description and Attendees List -->
+  <div class="trip-additional-info">
+    <div class="trip-description">
+      <h6>Description</h6>
+      <p>{{ trip.description }}</p>
+    </div>
+    <div class="attendees-list-container">
+      <h5>Attendees</h5>
+      <div class="attendee-list">
+        <div class="attendee-name" *ngFor="let attendee of trip.attendees">
+          <img src="https://www.w3schools.com/w3images/avatar2.png" alt="avatar" class="attendee-avatar">
+          <span>{{ attendee.fname }} {{ attendee.lname }}</span>
+        </div>
       </div>
     </div>
   </div>
