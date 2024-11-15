@@ -25,12 +25,17 @@ export class TriplistComponent {
   nextPage: string | null = null;
   prevPage: string | null = null;
   @ViewChild('scrollTarget') scrollTarget!: ElementRef;
+  isScrollable: boolean = false; // Track if content is scrollable
 
   constructor(private router: Router, private proxy$: CmproxyService) {
     this.fetchTrips(this.page, this.perPage, this.categoryId, true);
   }
 
   ngOnInit() {}
+  ngAfterViewInit(): void {
+    // Check if the content is scrollable after the view is initialized
+    this.checkIfScrollable();
+  }
 
   // Set the fallback image URL when error using image url
   onImageError(event: Event): void {
@@ -80,6 +85,11 @@ export class TriplistComponent {
     }
   }
 
+  checkIfScrollable(): void {
+    const contentElement = this.scrollTarget.nativeElement;
+    this.isScrollable = contentElement.scrollHeight > contentElement.clientHeight; // Check if scroll height is greater than the client height
+  }
+
   scrollToTop(): void {
     this.scrollTarget.nativeElement.scrollIntoView({
       behavior: 'smooth',
@@ -89,5 +99,14 @@ export class TriplistComponent {
 
   navigateToTripDetails(tripId: string): void {
     this.router.navigate(['/trip', tripId]);
+  }
+
+  // Scroll down the trip list
+  scrollDown(): void {
+    const contentElement = this.scrollTarget.nativeElement;
+    contentElement.scrollBy({
+      top: 200, // Adjust this value as needed
+      behavior: 'smooth',
+    });
   }
 }
