@@ -8,7 +8,7 @@ import { TripdetailsComponent } from './tripdetails/tripdetails.component';
 const routes: Routes = [
   { path: '', component: WelcomepageComponent },
   { path: 'trip', component: TriplistComponent },
-  { path: 'trip/:id', component: TripdetailsComponent },
+  { path: 'trip/:tripId', component: TripdetailsComponent },
 ];
 
 @NgModule({
