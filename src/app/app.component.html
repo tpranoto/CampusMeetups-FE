@@ -7,7 +7,7 @@
 
         <div class="navbar-content">
             <div class="search-container">
-                <input type="text" placeholder="Search Events" class="search-input">
+                <input type="text" placeholder="Search Trips" class="search-input">
                 <button class="search-button">
                     <mat-icon>search</mat-icon>
                 </button>
@@ -18,9 +18,9 @@
     <div class="navbar-right">
         <div class="navbar-content">
             <div class="navbar-content">
-                <button mat-fab extended class="navbar-createtrip-button">
+                <button mat-fab extended class="navbar-createtrip-button" [routerLink]="['/trip/create']">
                     <div class="navbar-createtrip-button-content">
-                        Start an Event
+                        Start a Trip
                     </div>
                 </button>
             </div>
@@ -30,9 +30,20 @@
 
         <div class="navbar-content">
             <div class="navbar-selection navbar-left-border">
-                <span class="navbar-item">Notifications</span>
-                <span class="navbar-item">Profile</span>
-                <span class="navbar-item">Menu</span>
+                <div class="navbar-item" [routerLink]="['/trip']">Explore</div>
+                <div class="navbar-item" [matMenuTriggerFor]="notificationMenu">Notifications</div>
+                <mat-menu #notificationMenu="matMenu">
+                    <div>
+                        hi
+                    </div>
+                </mat-menu>
+                <div class="navbar-item" [matMenuTriggerFor]="profileMenu">Profile</div>
+                <mat-menu #profileMenu="matMenu">
+                    <button mat-menu-item>View Profile</button>
+                    <button mat-menu-item>Settings</button>
+                    <button mat-menu-item>Help</button>
+                    <button mat-menu-item>Log out</button>
+                </mat-menu>
             </div>
         </div>
     </div>

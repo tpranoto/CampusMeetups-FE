@@ -19,6 +19,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { CreatetripComponent } from './createtrip/createtrip.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
     WelcomepageComponent,
     TriplistComponent,
     TripdetailsComponent,
+    CreatetripComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +41,7 @@ import { MatInputModule } from '@angular/material/input';
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatMenuModule,
   ],
   providers: [provideHttpClient(), CmproxyService, provideAnimationsAsync()],
   bootstrap: [AppComponent],
