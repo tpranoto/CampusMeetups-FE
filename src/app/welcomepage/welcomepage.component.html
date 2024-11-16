@@ -58,19 +58,19 @@
 
 
 <!-- This Week's Trips Section (Next 7 Days) -->
-<section id="next7days-trips" class="next7days-trips text-center py-5 bg-light">
+<section id="UpcomingActiveTrips" class="upcoming-active-trips text-center py-5 bg-light">
   <div class="container">
     <h2 class="display-4 mb-4">Trips in the Next 7 Days</h2>
     <p class="lead mb-5">Explore upcoming trips within the next week!</p>
 
     <!-- Display "No trips planned" if next7DaysTrips array is empty -->
-    <div *ngIf="next7DaysTrips.length === 0" class="no-trips-message">
+    <div *ngIf="UpcomingActiveTrips.length === 0" class="no-trips-message">
       <p class="lead text-muted">No trips planned</p>
     </div>
 
     <!-- Display trips for the next 7 days -->
-    <div class="row" *ngIf="next7DaysTrips.length > 0">
-      <div class="col-md-4 mb-4" *ngFor="let trip of next7DaysTrips">
+    <div class="row" *ngIf="UpcomingActiveTrips.length > 0">
+      <div class="col-md-4 mb-4" *ngFor="let trip of UpcomingActiveTrips">
         <mat-card class="shadow-sm">
           <mat-card-header>
             <mat-card-title>{{ trip.name }}</mat-card-title>

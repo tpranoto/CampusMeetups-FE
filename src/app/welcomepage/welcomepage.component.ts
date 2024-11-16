@@ -8,14 +8,14 @@ import { CmproxyService } from '../cmproxy.service';
 })
 export class WelcomepageComponent implements OnInit {
   yourTrips: any[] = []; // Array to hold trip data
-  next7DaysTrips: any[] = []; // Array to hold trips for the next 7 days
-  studentId: string = '8a4f944c993b11de0e989cdcb1a3a21f'; // Replace with actual student ID
+  UpcomingActiveTrips: any[] = []; // Array to hold trips for the next 7 days
+  studentId: string = '2b8f3c2a1d6e9c4f3b5a0e8c1d7b3a9e'; // Replace with actual student ID
 
   constructor(private proxyService: CmproxyService) { }
 
   ngOnInit(): void {
     this.fetchYourTrips();
-    this.fetchNext7DaysTrips();
+    this.fetchUpcomingActiveTrips();
   }
 
   // Fetch trips for the specific student
@@ -42,14 +42,20 @@ export class WelcomepageComponent implements OnInit {
     );
   }
 
-  // Fetch trips for the next 7 days (same structure can be applied here)
-  fetchNext7DaysTrips(): void {
+  fetchUpcomingActiveTrips(): void {
     console.log('Fetching trips for the next 7 days');
-    this.proxyService.getNext7DaysTrips().subscribe(
+
+    this.proxyService.retrieveUpcomingActiveTrips(
+    ).subscribe(
       (result: any) => {
         console.log('Next 7 Days Trips API Response:', result);
-        if (result && result.data) {
-          this.next7DaysTrips = result.data;
+        if (result && result.length > 0) {
+          this.UpcomingActiveTrips = result.map((trip: any) => ({
+            name: trip.trip.name,
+            location: trip.trip.location,
+            imageUrl: trip.trip.image,
+            date: new Date(trip.trip.date.$date).toLocaleDateString(), // Convert MongoDB date format to readable date
+          }));
         } else {
           console.log('No trips found for the next 7 days.');
         }
@@ -59,4 +65,5 @@ export class WelcomepageComponent implements OnInit {
       }
     );
   }
+
 }

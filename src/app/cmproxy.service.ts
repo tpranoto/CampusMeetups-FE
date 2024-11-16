@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class CmproxyService {
+  
   hostUrl: string = 'http://localhost:8080/'; // Your server URL
 
   constructor(private httpClient: HttpClient) { }
@@ -16,7 +17,7 @@ export class CmproxyService {
   }
 
   // Fetch trips for the next 7 days (no studentId required)
-  getNext7DaysTrips() {
-    return this.httpClient.get<any>(`${this.hostUrl}app/trips/next7days`);
+  retrieveUpcomingActiveTrips() {
+    return this.httpClient.get<any>(`${this.hostUrl}app/trip/upcoming?days=7&perPage=5&expand=true&sort=desc`);
   }
 }
