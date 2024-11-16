@@ -345,13 +345,63 @@
     scrollbar-width: none; 
 }
 
+.button-container {
+    display: flex;                   
+    align-items: center;                
+    justify-content: flex-start;       
+    margin-bottom: 20px;                
+}
+
+/* Filter Button */
 .filter-button {
-    margin: 10px;
-    background-color: #3f51b5;
-    color: white;
-  }
-  
-  .filter-button mat-icon {
-    margin-left: 8px;
-  }
-  
+    background-color: darkred;          
+    color: white;                    
+    border-radius: 30px;               
+    padding: 4px 8px;                
+    font-size: 12px;                   
+    font-weight: bold;                
+    border: none;                      
+    cursor: pointer;                   
+    transition: background-color 0.3s ease-in-out; 
+    margin-right: 10px;                 
+    margin-bottom: 20px;
+}
+
+.filter-button:hover {
+    background-color: rgb(238, 206, 206);         
+}
+
+.reset-filter-button {
+    background-color: rgb(255, 255, 255);      
+    color: darkred;                      
+    border-radius: 30px;               
+    padding: 4px 8px;                   
+    font-size: 12px;                   
+    font-weight: bold;                 
+    border: none;                       
+    cursor: pointer;                  
+    transition: background-color 0.3s ease-in-out; 
+}
+
+.reset-filter-button:hover {
+    background-color:rgb(238, 206, 206)        
+}
+
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;         
+        align-items: center;           
+
+    }
+    .filter-button,
+    .reset-filter-button {
+        font-size: 12px;               
+        width: 100%;                    
+        margin-left: 0;               
+        margin-bottom: 10px;            
+    }
+
+    .reset-filter-button {
+        margin-top: 10px;                
+    }
+}

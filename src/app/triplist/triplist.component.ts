@@ -19,6 +19,7 @@ import { CmproxyService } from '../cmproxy.service';
 export class TriplistComponent {
   response: any = {};
   trips: any = [];
+  categories: any = [];
   page: number = 0;
   perPage: number = 12;
   categoryId: string = '';
@@ -26,22 +27,42 @@ export class TriplistComponent {
   prevPage: string | null = null;
   @ViewChild('scrollTarget') scrollTarget!: ElementRef;
   isScrollable: boolean = false; // Track if content is scrollable
+  filteredTrips: any = []; 
+  selectedFilter: string = '';  
 
   constructor(private router: Router, private proxy$: CmproxyService) {
     this.fetchTrips(this.page, this.perPage, this.categoryId, true);
+    this.filteredTrips = null;
+  }
+  ngOnInit(): void {
+    this.fetchCategories();
   }
 
-  ngOnInit() {}
   ngAfterViewInit(): void {
-    // Check if the content is scrollable after the view is initialized
     this.checkIfScrollable();
   }
 
-  // Set the fallback image URL when error using image url
   onImageError(event: Event): void {
     const imgElement = event.target as HTMLImageElement;
     imgElement.src = 'def_trip.jpg';
   }
+
+  fetchCategories(): void { this.proxy$.getCategories().subscribe((result: any[]) => {
+    this.categories = result;
+    console.log('retrieved data from server.');
+    console.log(result);
+  });
+  }
+
+onSelect(category: any): void {
+  if (category) {
+    this.filteredTrips = this.trips.filter((trip: { categoryData: { name: string; }; }) => trip.categoryData.name === category.name);
+  } else {
+    this.filteredTrips = this.trips;
+  }
+  console.log('Filtered trips:', this.filteredTrips); // Log to check if filteredTrips is being updated
+}
+
 
   clickNextPage(): void {
     var url: string = this.nextPage || '';
@@ -70,6 +91,8 @@ export class TriplistComponent {
         this.nextPage = this.response.nextPage;
         this.prevPage = this.response.prevPage;
         console.log('retrieved data from server.');
+
+        this.filteredTrips = this.trips;
       });
     } else {
       this.proxy$
@@ -81,10 +104,23 @@ export class TriplistComponent {
           this.nextPage = this.response.nextPage;
           this.prevPage = this.response.prevPage;
           console.log('retrieved data from server.');
+
+          this.filteredTrips = this.trips;
         });
     }
   }
 
+  selectCategory(categoryId: string): void {
+    this.categoryId = categoryId;
+    this.page = 0; // Reset pagination when changing category
+    this.fetchTrips(this.page, this.perPage, this.categoryId, true);
+  }
+   // Method to reset the filter and show all trips
+   resetFilter(): void {
+    this.filteredTrips = this.trips;  // Reset the filtered trips to all trips
+    this.selectedFilter = '';  // Clear the selected filter (if any)
+    console.log('Filter reset to show all trips');
+  }
   checkIfScrollable(): void {
     const contentElement = this.scrollTarget.nativeElement;
     this.isScrollable = contentElement.scrollHeight > contentElement.clientHeight; // Check if scroll height is greater than the client height
@@ -105,7 +141,7 @@ export class TriplistComponent {
   scrollDown(): void {
     const contentElement = this.scrollTarget.nativeElement;
     contentElement.scrollBy({
-      top: 200, // Adjust this value as needed
+      top: 200, 
       behavior: 'smooth',
     });
   }

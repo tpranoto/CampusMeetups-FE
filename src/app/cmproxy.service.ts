@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -34,5 +35,16 @@ export class CmproxyService {
   getListOfTripsByUrl(url: string) {
     return this.httpClient.get<any[]>(url);
   }
+
   getTripDetails() {}
+  
+  // Fetch all categoriess
+  getCategories(): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.hostUrl + 'app/category');
+  }
+
+  getTripsByCategory(categoryId: string) {
+    return this.httpClient.get<any[]>(`app/trips?categoryId=${categoryId}`);
+  }
+
 }
