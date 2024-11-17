@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { CmproxyService } from '../cmproxy.service';
 
 // interface Trip {
@@ -22,20 +22,45 @@ export class TriplistComponent {
   categories: any = [];
   page: number = 0;
   perPage: number = 12;
+  categoryName: string = 'Select Category';
   categoryId: string = '';
   nextPage: string | null = null;
   prevPage: string | null = null;
   @ViewChild('scrollTarget') scrollTarget!: ElementRef;
   isScrollable: boolean = false; // Track if content is scrollable
-  filteredTrips: any = []; 
-  selectedFilter: string = '';  
+  searchName: string = '';
 
-  constructor(private router: Router, private proxy$: CmproxyService) {
-    this.fetchTrips(this.page, this.perPage, this.categoryId, true);
-    this.filteredTrips = null;
-  }
-  ngOnInit(): void {
+  constructor(
+    private router: Router,
+    private actRouter: ActivatedRoute,
+    private proxy$: CmproxyService
+  ) {
+    this.page = 0;
+    this.fetchTrips(
+      this.searchName,
+      this.page,
+      this.perPage,
+      this.categoryId,
+      true
+    );
     this.fetchCategories();
+  }
+
+  ngOnInit(): void {
+    this.page = 0;
+    this.actRouter.queryParams.subscribe((params) => {
+      this.searchName = params['name'] || '';
+      this.page = 0;
+      if (this.searchName != null) {
+        this.fetchTrips(
+          this.searchName,
+          this.page,
+          this.perPage,
+          this.categoryId,
+          true
+        );
+      }
+    });
   }
 
   ngAfterViewInit(): void {
@@ -43,40 +68,62 @@ export class TriplistComponent {
   }
 
   onImageError(event: Event): void {
+    // set up default image if some error happened on fetching image
     const imgElement = event.target as HTMLImageElement;
     imgElement.src = 'def_trip.jpg';
   }
 
-  fetchCategories(): void { this.proxy$.getCategories().subscribe((result: any[]) => {
-    this.categories = result;
-    console.log('retrieved data from server.');
-    console.log(result);
-  });
+  onCategorySelect(category: any): void {
+    // get filtered trips when a category is selected
+    this.categoryName = category.name;
+    this.categoryId = category.categoryId;
+    if (category.name != 'Select Category') {
+      this.fetchTrips(this.searchName, 0, this.perPage, this.categoryId, true);
+    } else {
+      this.categoryId = '';
+      this.fetchTrips(this.searchName, 0, this.perPage, this.categoryId, true);
+    }
   }
 
-onSelect(category: any): void {
-  if (category) {
-    this.filteredTrips = this.trips.filter((trip: { categoryData: { name: string; }; }) => trip.categoryData.name === category.name);
-  } else {
-    this.filteredTrips = this.trips;
+  onNameFilterClick(): void {
+    this.searchName = '';
+    this.router.navigate(['/trip']);
   }
-  console.log('Filtered trips:', this.filteredTrips); // Log to check if filteredTrips is being updated
-}
-
 
   clickNextPage(): void {
     var url: string = this.nextPage || '';
-    this.fetchTrips(this.page, this.perPage, this.categoryId, true, url);
+    this.fetchTrips(
+      this.searchName,
+      this.page,
+      this.perPage,
+      this.categoryId,
+      true,
+      url
+    );
     this.scrollToTop();
   }
 
   clickPrevPage(): void {
     var url: string = this.prevPage || '';
-    this.fetchTrips(this.page, this.perPage, this.categoryId, true, url);
+    this.fetchTrips(
+      this.searchName,
+      this.page,
+      this.perPage,
+      this.categoryId,
+      true,
+      url
+    );
     this.scrollToTop();
   }
 
+  fetchCategories(): void {
+    this.proxy$.getCategories().subscribe((result: any[]) => {
+      this.categories = [{ name: 'Select Category' }, ...result];
+    });
+  }
+
   fetchTrips(
+    searchedName: string,
     page: number,
     perPage: number,
     catId: string,
@@ -90,40 +137,24 @@ onSelect(category: any): void {
         this.trips = this.response.data;
         this.nextPage = this.response.nextPage;
         this.prevPage = this.response.prevPage;
-        console.log('retrieved data from server.');
-
-        this.filteredTrips = this.trips;
       });
     } else {
       this.proxy$
-        .getListofTrips(page, perPage, catId, expand)
+        .getListofTrips(searchedName, page, perPage, catId, expand)
         .subscribe((result: any[]) => {
           this.response = result;
           this.page = this.response.page;
           this.trips = this.response.data;
           this.nextPage = this.response.nextPage;
           this.prevPage = this.response.prevPage;
-          console.log('retrieved data from server.');
-
-          this.filteredTrips = this.trips;
         });
     }
   }
 
-  selectCategory(categoryId: string): void {
-    this.categoryId = categoryId;
-    this.page = 0; // Reset pagination when changing category
-    this.fetchTrips(this.page, this.perPage, this.categoryId, true);
-  }
-   // Method to reset the filter and show all trips
-   resetFilter(): void {
-    this.filteredTrips = this.trips;  // Reset the filtered trips to all trips
-    this.selectedFilter = '';  // Clear the selected filter (if any)
-    console.log('Filter reset to show all trips');
-  }
   checkIfScrollable(): void {
     const contentElement = this.scrollTarget.nativeElement;
-    this.isScrollable = contentElement.scrollHeight > contentElement.clientHeight; // Check if scroll height is greater than the client height
+    this.isScrollable =
+      contentElement.scrollHeight > contentElement.clientHeight; // Check if scroll height is greater than the client height
   }
 
   scrollToTop(): void {
@@ -141,7 +172,7 @@ onSelect(category: any): void {
   scrollDown(): void {
     const contentElement = this.scrollTarget.nativeElement;
     contentElement.scrollBy({
-      top: 200, 
+      top: 200,
       behavior: 'smooth',
     });
   }

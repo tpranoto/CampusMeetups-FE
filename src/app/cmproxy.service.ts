@@ -11,18 +11,23 @@ export class CmproxyService {
   constructor(private httpClient: HttpClient) {}
 
   getListofTrips(
+    searchedName: string,
     page: number,
     perPage: number,
     catId: string,
     expand: boolean
   ) {
-    const params = new HttpParams()
+    var params = new HttpParams()
       .set('page', page)
       .set('perPage', perPage)
       .set('expand', expand);
 
+    if (searchedName != '') {
+      params = params.set('name', searchedName);
+    }
+
     if (catId != '') {
-      params.set('categoryId', catId);
+      params = params.set('categoryId', catId);
     }
 
     const options = {
@@ -37,14 +42,8 @@ export class CmproxyService {
   }
 
   getTripDetails() {}
-  
-  // Fetch all categoriess
+
   getCategories(): Observable<any[]> {
     return this.httpClient.get<any[]>(this.hostUrl + 'app/category');
   }
-
-  getTripsByCategory(categoryId: string) {
-    return this.httpClient.get<any[]>(`app/trips?categoryId=${categoryId}`);
-  }
-
 }

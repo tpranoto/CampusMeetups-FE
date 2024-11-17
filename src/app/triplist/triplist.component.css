@@ -39,10 +39,10 @@
     background-color:rgb(255, 239, 223);
     border-radius: 5px;
 }
-    .triplist-card {
+
+.triplist-card {
     transition: background-color 0.3s ease, transform 0.3s ease; 
 }
-
 
 .triplist-card:hover {
     background-color: rgba(255, 233, 220, 0.5); 
@@ -51,6 +51,9 @@
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
 }
 
+.triplist-card-content{
+    width: 100%;
+}
 
 .triplist-card-header{
     display: flex;
@@ -66,9 +69,12 @@
     font-weight: bold;
     font-size: 20px;
     width: 100%;
+    height: 25px;
+    white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     margin-top: 10px;
     color:darkred;
 }
@@ -77,38 +83,60 @@
     font-family: 'Times New Roman', Times, serif;
     font-size: 14px;
     display: flex;
+    justify-content: center;
     align-items: center; 
-    width: 96%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: 100%;
+    height: 25px;
 }
 
 .triplist-card-header-location mat-icon {
+    flex: 1;
     margin-right: 4px; 
     color: darkred;
     font-size: 16px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.triplist-card-header-location b{
+    flex: 7;
+    overflow: scroll;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+
+.triplist-card-header-location b::-webkit-scrollbar {
+    width: 0px; 
+    height: 0px;
+}
+
+.triplist-card-image-container{
+    width: 100%;
+}
+
 .triplist-card-image{
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    margin: 0;
-    padding: 0;
-    display: block;
+    height: 180px;
+    object-fit: cover;      /* Stretches the image to fit the container */
 }
 
 .triplist-card-description{
+    width: 100%;
     font-family: 'Times New Roman', Times, serif;
     font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.triplist-card-description div{
     line-height: 1.2;
+    height: 35px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    margin-top: 15px;
-    margin-bottom: 15px;
-
 }
 
 .triplist-card-footer{
@@ -116,9 +144,13 @@
     flex-direction: row;
     align-items: center;
     justify-content:space-between;
+    padding-bottom: 10px;
 }
 
 .triplist-card-date{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family:'Times New Roman', Times, serif;
     font-size: 14px;
 }
@@ -168,10 +200,12 @@
     padding: 2%;
     font-weight: bold;
 }
+
 .triplist-pagination-button:hover {
     background-color: #ffffff; 
     transform: scale(1.05); 
 }
+
 .triplist-content-header {
     color: rgb(0, 0, 0); 
     padding: 20px 30px; 
@@ -265,7 +299,6 @@
     width: 100%;
     margin: 0;
     padding: 0;
-
 }
 
 .image-container {
@@ -296,7 +329,7 @@
     .image-text {
         font-size: 2vw; 
        bottom: 110px;
-}
+    }
 }
 
 .triplist-ads-space {
@@ -332,17 +365,13 @@
 .triplist-content {
     max-height: 600px;  
     overflow-y: scroll; 
-    position: relative;  
+    position: relative; 
+    scrollbar-width: none;
 }
 
 .triplist-content::-webkit-scrollbar {
     width: 0px; 
     height: 0px;
-}
-
-
-.triplist-content {
-    scrollbar-width: none; 
 }
 
 .button-container {
@@ -356,8 +385,8 @@
 .filter-button {
     background-color: darkred;          
     color: white;                    
-    border-radius: 30px;               
-    padding: 4px 8px;                
+    border-radius: 11px;
+    padding: 4px 15px;                
     font-size: 12px;                   
     font-weight: bold;                
     border: none;                      
@@ -365,6 +394,8 @@
     transition: background-color 0.3s ease-in-out; 
     margin-right: 10px;                 
     margin-bottom: 20px;
+    width: 10vw;
+    height: 5vh;
 }
 
 .filter-button:hover {
@@ -404,4 +435,11 @@
     .reset-filter-button {
         margin-top: 10px;                
     }
+}
+
+
+.category-menu-item{
+    width: 20vw;
+    height: 5vh;
+    padding: 0 20px;
 }

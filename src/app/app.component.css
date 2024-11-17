@@ -45,9 +45,9 @@
     align-items: center;
     margin-top: 0.7px;
     margin-left: 25px;
-  }
+}
 
-  .search-input {
+.search-input {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 8.4px;
     width: 180px;
@@ -55,13 +55,13 @@
     border-radius: 11px 0 0 11px;
     height: 35px;
     font-size: 14px;
-  }
+}
 
-  .search-input:focus{
+.search-input:focus{
     outline: none;
-  }
+}
   
-  .search-button {
+.search-button {
     padding: 8px;
     background-color: darkred;
     color: rgb(255, 255, 255);
@@ -80,9 +80,9 @@
     font-size: 25px; 
 }
   
-  .search-button:hover {
+.search-button:hover {
     background-color: rgb(100, 7, 7);
-  }
+}
   
 
 
@@ -97,9 +97,9 @@
     justify-content: space-evenly;
     align-items: center;
     height: 70%;
-  }
+}
   
-  .navbar-item {
+.navbar-item {
     font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
     font-size: 14px;
@@ -115,15 +115,11 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-  }
+}
 
-  .navbar-item:hover{
+.navbar-item:hover{
     background-color: rgb(244, 260, 224);
     cursor: pointer;
-  }
- 
-.navbar-selection mat-icon:last-child {
-
 }
 
 .navbar-createtrip-button {
@@ -138,15 +134,20 @@
     height: 35px;
     width: 150px;
     margin: 0 5px;
-  }
+}
   
-  .navbar-createtrip-button:hover {
+.navbar-createtrip-button:hover {
     background-color: #fbd8d8;
     transform: scale(1.05);
-  }
-  
-  @media (max-width: 768px) {
+}
 
+.profile-menu-item{
+  width: 15vw;
+  text-align: right;
+  padding: 0 10px;
+}
+  
+@media (max-width: 768px) {
     .navbar-item {
         width: 30%;
         justify-content: right; 
@@ -158,6 +159,7 @@
       width: 100px;
       font-size: 12px;
     }
+
     .search-input{
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
       padding: 8.4px;
@@ -167,6 +169,6 @@
       height: 35px;
       font-size: 10px;
     }
-  }
+}
 
 

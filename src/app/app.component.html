@@ -7,8 +7,14 @@
 
         <div class="navbar-content">
             <div class="search-container">
-                <input type="text" placeholder="Search Trips" class="search-input">
-                <button class="search-button">
+                <input type="text" 
+                    placeholder="Search Trips" 
+                    class="search-input" 
+                    [value]="searchName" 
+                    (input)="onInputChange($event)"
+                    (keydown)="onInputEnter($event)"
+                >
+                <button class="search-button" (click)="OnSearchClick()">
                     <mat-icon>search</mat-icon>
                 </button>
               </div>              
@@ -39,10 +45,10 @@
                 </mat-menu>
                 <div class="navbar-item" [matMenuTriggerFor]="profileMenu">Profile</div>
                 <mat-menu #profileMenu="matMenu">
-                    <button mat-menu-item>View Profile</button>
-                    <button mat-menu-item>Settings</button>
-                    <button mat-menu-item>Help</button>
-                    <button mat-menu-item>Log out</button>
+                    <button mat-menu-item class="profile-menu-item">View Profile</button>
+                    <button mat-menu-item class="profile-menu-item">Settings</button>
+                    <button mat-menu-item class="profile-menu-item">Help</button>
+                    <button mat-menu-item class="profile-menu-item">Log out</button>
                 </mat-menu>
             </div>
         </div>
