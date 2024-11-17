@@ -13,27 +13,26 @@
     <p><strong>Organizer:</strong> {{ trip.organizerData.fname }} {{ trip.organizerData.lname }}</p>
   </div>
 
-  <!-- Trip Description and Attendees List -->
-  <div class="trip-additional-info">
-    <div class="trip-description">
-      <h6>Description</h6>
-      <p>{{ trip.description }}</p>
-    </div>
-    <!-- Attendees List Section -->
-    <div class="attendees-list-container">
-      <h5>Attendees</h5>
-      <div class="attendee-list-horizontal">
-        <div class="attendee-card" *ngFor="let attendee of trip.attendees">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-               alt="avatar"
-               class="attendee-avatar" />
-          <div class="attendee-details">
-            <span class="attendee-name">{{ attendee.fname }} {{ attendee.lname }}</span>
-            <span class="attendee-role">Member</span>
-          </div>
-        </div>
+  <!-- Trip Description Section -->
+  <div class="trip-description">
+    <h6>Description</h6>
+    <p>{{ trip.description }}</p>
+  </div>
+
+  <!-- Attendees Section (Horizontal Layout Below Description) -->
+  <div class="attendees-list-container">
+    <h5>Attendees</h5>
+    <div *ngIf="trip.attendees && trip.attendees.length > 0; else noAttendees" class="attendee-list-horizontal">
+      <div class="attendee-card" *ngFor="let attendee of trip.attendees">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+             alt="avatar"
+             class="attendee-avatar" />
+        <div class="attendee-name">{{ attendee.fname }} {{ attendee.lname }}</div>
       </div>
     </div>
+    <ng-template #noAttendees>
+      <div class="no-attendees-message">No attendees</div>
+    </ng-template>
   </div>
 </div>
 
