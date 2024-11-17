@@ -19,17 +19,32 @@
       <h6>Description</h6>
       <p>{{ trip.description }}</p>
     </div>
+    <!-- Attendees List Section -->
     <div class="attendees-list-container">
       <h5>Attendees</h5>
-      <div class="attendee-list">
-        <div class="attendee-name" *ngFor="let attendee of trip.attendees">
-          <img src="https://www.w3schools.com/w3images/avatar2.png" alt="avatar" class="attendee-avatar">
-          <span>{{ attendee.fname }} {{ attendee.lname }}</span>
+      <div class="attendee-list-horizontal">
+        <div class="attendee-card" *ngFor="let attendee of trip.attendees">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+               alt="avatar"
+               class="attendee-avatar" />
+          <div class="attendee-details">
+            <span class="attendee-name">{{ attendee.fname }} {{ attendee.lname }}</span>
+            <span class="attendee-role">Member</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- Fixed Footer Section -->
+<div class="fixed-footer">
+  <!-- Trip Name and Date -->
+  <div class="footer-trip-details">
+    <div class="footer-trip-title">{{ trip.name }}</div>
+    <div class="footer-trip-date">{{ trip.timestamp | date: 'MMM dd, yyyy, hh:mm aa' }}</div>
+  </div>
 
   <!-- Join Button -->
-  <button class="join-trip-button" (click)="joinTrip()">Join Trip</button>
+  <button class="footer-join-button" (click)="joinTrip()">Join Trip</button>
 </div>

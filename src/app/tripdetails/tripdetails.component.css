@@ -1,14 +1,18 @@
-/* Trip Details Main Container */
+/* General Layout for the Trip Details Page */
 .trip-details-container {
   display: flex;
   gap: 2rem; /* Space between image and info */
   background-color: #ffffff;
   border-radius: 8px;
-  padding: 2rem;
+  padding: 2rem; /* Padding remains the same */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   flex-wrap: wrap; /* Allow wrapping for responsiveness */
   align-items: flex-start; /* Align items at the top */
   position: relative; /* For the button positioning */
+  width: 90%; /* Increased width to make the container bigger */
+  max-width: 1200px; /* Max width to prevent it from becoming too wide */
+  margin: 0 auto; /* Center the container */
+  padding-bottom: 120px; /* Increased bottom padding for the space for footer */
 }
 
 /* Trip Image Section */
@@ -27,9 +31,9 @@
   transition: transform 0.3s ease;
 }
 
-.trip-image:hover {
-  transform: scale(1.05); /* Zoom effect on image hover */
-}
+  .trip-image:hover {
+    transform: scale(1.05); /* Zoom effect on image hover */
+  }
 
 /* Trip Info Section */
 .trip-info-container {
@@ -43,25 +47,25 @@
 }
 
 .trip-title {
-  font-size: 1.3rem; /* Medium font size for the trip title */
+  font-size: 1.3rem;
   font-weight: bold;
-  color: #a32020; /* Dark red */
-  margin-bottom: 1.2rem; /* Increased margin for spacing */
+  color: #a32020;
+  margin-bottom: 1.2rem;
 }
 
 .trip-info-container p {
-  font-size: 1.0rem; /* Slightly larger text */
-  margin: 0.7rem 0; /* Increased space between paragraphs */
-  color: #333; /* Dark gray */
-  line-height: 1.8; /* Improved readability */
+  font-size: 1rem;
+  margin: 0.7rem 0;
+  color: #333;
+  line-height: 1.8;
 }
 
 .trip-info-container strong {
-  color: #a32020; /* Dark red */
+  color: #a32020;
   font-weight: bold;
 }
 
-/* Trip Additional Info Container (Description, Attendees, and Button) */
+/* Trip Additional Info Container (Description, Attendees) */
 .trip-additional-info {
   display: flex;
   gap: 1rem;
@@ -70,102 +74,162 @@
   position: relative;
 }
 
-/* Description Section */
 .trip-description {
   flex: 0 0 60%; /* Description takes up 60% */
   max-width: 60%;
-  padding-right: 1rem; /* Space on the right side */
+  padding-right: 1rem;
 }
 
-.trip-description h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #a32020;
-}
+  .trip-description h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #a32020;
+  }
 
-.trip-description p {
-  font-size: 1.1rem;
-  color: #555;
-  line-height: 1.7;
-}
+  .trip-description p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.7;
+  }
 
 /* Attendees List Section */
 .attendees-list-container {
-  flex: 0 1 30%; /* Attendees list takes up 30% */
-  max-width: 30%;
-  padding-left: 1rem; /* Space on the left side */
-  overflow-y: auto;
+  flex: 0 1 100%;
+  padding-left: 1rem;
+  overflow: hidden;
 }
 
-.attendee-list {
-  max-height: 150px; /* Set max height for the attendee list */
-  overflow-y: auto;
-  border: 1px solid #ccc;
+.attendee-list-horizontal {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
   padding: 0.5rem;
   background-color: #f9f9f9;
   border-radius: 5px;
+  border: 1px solid #ccc;
+  scroll-behavior: smooth;
 }
 
-.attendee-name {
-  font-size: 1rem;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid #ddd;
-  color: #333;
+.attendee-list-horizontal::-webkit-scrollbar {
+  height: 8px;
+}
+
+.attendee-list-horizontal::-webkit-scrollbar-thumb {
+  background-color: #a32020;
+  border-radius: 10px;
+}
+
+.attendee-list-horizontal::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.attendee-card {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center content horizontally and vertically */
+  flex-shrink: 0;
+  width: 80px; /* Square shape, adjust as necessary */
+  height: 80px; /* Square shape */
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .attendee-avatar {
-  width: 35px;
-  height: 35px;
+  width: 40px; /* Adjust size for square shape */
+  height: 40px; /* Adjust size for square shape */
   border-radius: 50%;
-  margin-right: 10px;
-  vertical-align: middle;
+  margin-bottom: 0.5rem; /* Space between avatar and name */
+  object-fit: cover;
 }
 
-/* Join Button Section */
-.join-button-container {
-  position: absolute;
-  bottom: 0; /* Align to the bottom */
-  right: 0; /* Align to the right */
+.attendee-name {
+  font-size: 0.9rem; /* Adjusted font size */
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap; /* Prevent text from wrapping */
 }
 
-.join-trip-button {
-  background-color: #a32020;
-  color: white;
+/* Footer Container */
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Full width of the viewport */
+  background-color: #fff; /* Light background for contrast */
+  padding: 10px 30px; /* Padding for spacing */
+  z-index: 1000; /* Ensures it stays on top */
+  display: flex;
+  justify-content: space-between; /* Space between trip details and button */
+  align-items: center; /* Center align items vertically */
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for separation */
+  border-top: 2px solid #ddd; /* Light border for a sleek separation */
+  flex-wrap: wrap; /* Allow the content to wrap in case of smaller screen or minimal content */
+  min-height: 60px; /* Minimum height to ensure the footer is always visible */
+}
+
+/* Trip Details Section in Footer */
+.footer-trip-details {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #333; /* Dark gray for text */
+  flex: 1; /* Allow this section to take available space */
+}
+
+.footer-trip-title {
+  font-size: 1.3rem; /* Medium title size */
+  font-weight: bold;
+  color: #a32020; /* Dark red from the theme */
+  margin-bottom: 0.3rem; /* Spacing below title */
+}
+
+.footer-trip-date {
+  font-size: 1rem;
+  color: #555; /* Lighter gray for date */
+}
+
+/* Join Button in Footer */
+.footer-join-button {
+  background-color: #a32020; /* Dark red background to match the theme */
+  color: #fff; /* White text for contrast */
+  font-size: 1.1rem; /* Slightly larger font size for readability */
+  font-weight: bold;
   border: none;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
+  padding: 10px 20px; /* Comfortable padding */
+  border-radius: 4px; /* Rounded corners */
   cursor: pointer;
-  border-radius: 5px;
+  transition: all 0.3s ease; /* Smooth transition for hover effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow effect */
 }
 
-.join-trip-button:hover {
-  background-color: #7f1a1a;
-}
+  .footer-join-button:hover {
+    background-color: #7f1a1a; /* Darker red on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+  }
 
-/* Mobile Responsive Adjustment */
+/* Mobile Responsive Design */
 @media (max-width: 768px) {
-  .trip-details-container {
-    flex-direction: column; /* Stack the image and details on mobile */
+  .fixed-footer {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    gap: 1rem; /* Add space between elements */
+    padding: 1rem 20px; /* Adjust padding for mobile */
   }
 
-  .trip-image-container,
-  .trip-info-container {
-    flex: 1 1 100%; /* Full width on small screens */
-    max-width: 100%;
+  .footer-trip-title {
+    font-size: 1.3rem; /* Smaller title on mobile */
   }
 
-  .trip-additional-info {
-    flex-direction: column; /* Stack description, attendees, and button on mobile */
+  .footer-trip-date {
+    font-size: 1rem; /* Smaller date on mobile */
   }
 
-  .trip-description,
-  .attendees-list-container,
-  .join-trip-button {
-    flex: 1 1 100%; /* Full width on mobile */
-    max-width: 100%;
-  }
-
-  .join-trip-button {
-    margin-top: 1rem;
+  .footer-join-button {
+    width: 100%; /* Full-width button on mobile */
+    padding: 14px 0; /* Adjust padding for larger button on mobile */
+    text-align: center; /* Center button text */
   }
 }
