@@ -10,6 +10,7 @@ export class WelcomepageComponent implements OnInit {
   yourTrips: any[] = []; // Array to hold trip data
   UpcomingActiveTrips: any[] = []; // Array to hold trips for the next 7 days
   studentId: string = 'c1e4f7b8d0c9a5e1b2f6a8e3d4c5b0f7'; // Replace with actual student ID
+  defaultImageUrl: string = 'https://www.seattleu.edu/media/seattle-university/web-redesign---admissions-amp-aid/Hero-CampusOverall.jpg'; // Default image URL
 
   constructor(private proxyService: CmproxyService) { }
 
@@ -29,7 +30,7 @@ export class WelcomepageComponent implements OnInit {
           this.yourTrips = result.map((trip: any) => ({
             name: trip.tripData.name, // Access tripData.name
             location: trip.tripData.location, // Access tripData.location
-            imageUrl: trip.tripData.image || 'assets/default-trip-image.jpg', // Default image if not provided
+            imageUrl: trip.tripData.image || this.defaultImageUrl, // Use default image if not provided
             date: new Date(trip.tripData.timestamp).toLocaleDateString(), // Convert timestamp to readable date
             tripId: trip.tripId, // For routing
           }));
@@ -43,7 +44,7 @@ export class WelcomepageComponent implements OnInit {
     );
   }
 
-
+  // Fetch trips for the next 7 days
   fetchUpcomingActiveTrips(): void {
     console.log('Fetching trips for the next 7 days');
 
@@ -55,7 +56,7 @@ export class WelcomepageComponent implements OnInit {
             tripId: trip.tripId, // Use tripId for routing
             name: trip.name,
             location: trip.location,
-            imageUrl: trip.image, // Ensure this points to the correct image URL
+            imageUrl: trip.image || this.defaultImageUrl, // Ensure the default image is used if imageUrl is empty
             description: trip.description,
             date: new Date(trip.timestamp).toLocaleDateString(), // Convert timestamp to readable date
           }));
@@ -69,5 +70,8 @@ export class WelcomepageComponent implements OnInit {
     );
   }
 
-
+  // Set the default image if the provided image fails to load
+  setDefaultImage(event: any): void {
+    event.target.src = this.defaultImageUrl;  // Set the default image if the original fails to load
+  }
 }
