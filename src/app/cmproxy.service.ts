@@ -1,23 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CmproxyService {
-  
-  hostUrl: string = 'http://localhost:8080/'; // Your server URL
+  // Server base URL
+  private readonly hostUrl: string = 'http://localhost:8080/';
 
   constructor(private httpClient: HttpClient) { }
 
-  // Fetch trips for a specific student by studentId
-  getYourTripsForStudent(studentId: string) {
-    // Updated URL format with studentId correctly placed in the path
-    return this.httpClient.get<any>(`${this.hostUrl}app/attendee/${studentId}`);
+  /**
+   * Fetch trips for a specific student by their studentId.
+   * @param studentId - The ID of the student whose trips to fetch.
+   * @returns An Observable of the student's trips.
+   */
+  getYourTripsForStudent(studentId: string): Observable<any> {
+    const url = `${this.hostUrl}app/attendee/${studentId}`;
+    console.log(`Fetching trips for student ID: ${studentId}, URL: ${url}`);
+    return this.httpClient.get<any>(url);
   }
 
-  // Fetch trips for the next 7 days (no studentId required)
-  retrieveUpcomingActiveTrips() {
-    return this.httpClient.get<any>(`${this.hostUrl}app/trip/upcoming?days=7&perPage=5&expand=true&sort=desc`);
+  /**
+   * Fetch upcoming trips within the next 7 days.
+   * Includes pagination and sorting options.
+   * @returns An Observable of upcoming trips.
+   */
+  retrieveUpcomingActiveTrips(): Observable<any> {
+    const url = `${this.hostUrl}app/trip/upcoming?days=7&perPage=5&expand=true&sort=desc`;
+    console.log(`Fetching upcoming trips: URL: ${url}`);
+    return this.httpClient.get<any>(url);
   }
 }

@@ -18,41 +18,36 @@
 
 
 <!-- Your Trips Section -->
-<section id="your-trips" class="your-trips text-center py-5 bg-white">
-  <div class="container">
-    <h2 class="display-4 mb-4">Your Trips</h2>
-    <p class="lead mb-5">
-      See all your planned meetups, past adventures, and upcoming trips in one place. Keep track of memories made and connections formed along the way!
-    </p>
+<!-- Display "No trips planned" if yourTrips array is empty -->
+<div *ngIf="yourTrips.length === 0" class="no-trips-message">
+  <p class="lead text-muted">No trips planned</p>
+</div>
 
-    <!-- Display "No trips planned" if yourTrips array is empty -->
-    <div *ngIf="yourTrips.length === 0" class="no-trips-message">
-      <p class="lead text-muted">No trips planned</p>
-    </div>
-
-    <!-- Scrollable section for all trips -->
-    <div class="trips-scrollable">
-      <div class="row" *ngIf="yourTrips.length > 0">
-        <div class="col-md-4 mb-4" *ngFor="let trip of yourTrips">
-          <mat-card class="shadow-sm">
-            <mat-card-header>
-              <mat-card-title>{{ trip.name }}</mat-card-title>
-              <mat-card-subtitle>{{ trip.location }}</mat-card-subtitle>
-            </mat-card-header>
-            <!-- Handle Image URL -->
-            <img mat-card-image [src]="trip.imageUrl" [alt]="trip.name">
-            <mat-card-content>
-              <p>{{ trip.date }}</p> <!-- Display the date -->
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button [routerLink]="['/trip-list', trip.tripId]">View Trip</button>
-            </mat-card-actions>
-          </mat-card>
-        </div>
-      </div>
+<!-- Scrollable section for all trips -->
+<div class="trips-scrollable">
+  <div class="row" *ngIf="yourTrips.length > 0">
+    <div class="col-md-4 mb-4" *ngFor="let trip of yourTrips">
+      <mat-card class="shadow-sm">
+        <mat-card-header>
+          <mat-card-title>{{ trip.name }}</mat-card-title>
+          <mat-card-subtitle>{{ trip.location }}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image
+             [src]="trip.imageUrl"
+             [alt]="trip.name"
+             class="img-fluid" />
+        <mat-card-content>
+          <p>{{ trip.date }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button [routerLink]="['/trip', trip.tripId]">
+            View Trip
+          </button>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
-</section>
+</div>
 
 
 

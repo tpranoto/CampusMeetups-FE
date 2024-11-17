@@ -25,12 +25,13 @@ export class WelcomepageComponent implements OnInit {
       (result: any) => {
         console.log('Your Trips API Response:', result); // Debugging the API response
         if (result && result.length > 0) {
-          // The result is an array of trips
+          // Map data to match the expected structure
           this.yourTrips = result.map((trip: any) => ({
-            name: trip.trip.name,
-            location: trip.trip.location,
-            imageUrl: trip.trip.image,
-            date: new Date(trip.trip.date.$date).toLocaleDateString(), // Convert MongoDB date format to readable date
+            name: trip.tripData.name, // Access tripData.name
+            location: trip.tripData.location, // Access tripData.location
+            imageUrl: trip.tripData.image || 'assets/default-trip-image.jpg', // Default image if not provided
+            date: new Date(trip.tripData.timestamp).toLocaleDateString(), // Convert timestamp to readable date
+            tripId: trip.tripId, // For routing
           }));
         } else {
           console.log('No data found for trips.');
@@ -41,6 +42,7 @@ export class WelcomepageComponent implements OnInit {
       }
     );
   }
+
 
   fetchUpcomingActiveTrips(): void {
     console.log('Fetching trips for the next 7 days');
