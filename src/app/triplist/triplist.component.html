@@ -1,40 +1,41 @@
 <div class="container-fluid triplist-container">
-
-     <!-- Header -->
-    <!-- <div class="container-fluid full-width-header">
-        <img src="Header.jpg" alt="Header Image" class="full-width-img" />
-        <div class="image-text">Adventure! Here I Come</div>
-    </div> -->
-    
-    <div class="row triplist-full-content">    
+    <div #scrollTarget class="row triplist-full-content">    
          <!-- ADS container -->
         <div class="col-sm-1 triplist-ads-space">
             <img src="ads-1.jpg" alt="Ad Image Left" class="ad-image" />
         </div>
         <div class="col-sm-10 triplist-content">
-            <div #scrollTarget class="container-fluid triplist-content-header">
-                                        
-            </div>
-            
-            <!-- Categories Menu -->
-            <div class="categories-container">
-                <button [matMenuTriggerFor]="categoryMenu" class="filter-button">
-                    {{categoryName}}
-                </button>
-                <mat-menu #categoryMenu="matMenu">
-                    <ng-container *ngFor="let category of categories">
-                        <button mat-menu-item (click)="onCategorySelect(category)" class="category-menu-item">
-                            {{ category.name }}
-                        </button>
-                    </ng-container>
-                </mat-menu>
+            <div class="container-fluid triplist-content-header">
+                <div class="triplist-header-title">Adventure! Here I Come</div>
 
-                <button class="name-filter-box" (click)="onNameFilterClick()" *ngIf="searchName != ''">
-                    {{searchName}}
-                </button>                    
+                <!-- Categories Menu -->
+                <div class="categories-container">
+                    <div class="name-filter-box">
+                        <mat-chip-grid #templateChipGrid class="name-filter-box-button" *ngIf="searchName != ''">
+                            <mat-chip-row (removed)="removeFilterKeyword()">
+                                {{searchName}}
+                                <button matChipRemove>
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+                            </mat-chip-row>
+                        </mat-chip-grid> 
+                    </div>  
+                    
+                    <button [matMenuTriggerFor]="categoryMenu" class="filter-button">
+                        {{categoryName}}
+                    </button>
+                    <mat-menu #categoryMenu="matMenu" xPosition="before">
+                        <ng-container *ngFor="let category of categories">
+                            <button mat-menu-item (click)="onCategorySelect(category)" class="category-menu-item">
+                                {{ category.name }}
+                            </button>
+                        </ng-container>
+                    </mat-menu>
+                </div>                    
             </div>
+
             <!-- Ttips by the filter -->
-            <div class="row">
+            <div class="row triplist-list" [ngClass]="trips.length <5&& trips.length >0? 'triplist-list-fixed-div':''">
                 <div class="col-md-3" *ngFor="let trip of trips">
                     <mat-card class="triplist-card" appearance="outlined" (click)="navigateToTripDetails(trip.tripId)">
                         <mat-card-header class="triplist-card-header"></mat-card-header>
@@ -62,10 +63,15 @@
                         </mat-card-content>
                     </mat-card>
                 </div>
+                <div class="row triplist-list-no-trips" *ngIf="trips==0">
+                        <div class="triplist-nolist-content">
+                            Couldnt find any trips
+                        </div>
+                </div>
             </div>
 
             <!-- Trip page Pagination -->            
-            <div class="container-fluid triplist-pagination-container">
+            <div class="triplist-pagination-container">
                 <button mat-fab extended class="triplist-pagination-button" (click)="clickPrevPage()" *ngIf="prevPage != null">
                     <div class="triplist-pagination-button-content">
                         <mat-icon>arrow_back_ios</mat-icon>
@@ -84,7 +90,7 @@
             </div>
 
             <!-- Footer -->        
-            <footer class="footer">
+            <!-- <footer class="footer">
                 <div class="footer-content">
                     <div class="footer-left">
                         <p>&copy; 2024. All rights reserved.</p>
@@ -99,7 +105,7 @@
                     <div class="footer-right">
                     </div>
                 </div>
-            </footer>
+            </footer> -->
         </div>
          <!-- ADS container -->
          <div class="col-sm-1 triplist-ads-space">

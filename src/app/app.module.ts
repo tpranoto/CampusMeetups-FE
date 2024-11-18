@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { TriplistComponent } from './triplist/triplist.component';
 import { TripdetailsComponent } from './tripdetails/tripdetails.component';
+import { CreatetripComponent } from './createtrip/createtrip.component';
 
 import { CmproxyService } from './cmproxy.service';
 import { provideHttpClient } from '@angular/common/http';
@@ -20,7 +21,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { CreatetripComponent } from './createtrip/createtrip.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CreatetripComponent } from './createtrip/createtrip.component';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    MatChipsModule,
   ],
   providers: [provideHttpClient(), CmproxyService, provideAnimationsAsync()],
   bootstrap: [AppComponent],

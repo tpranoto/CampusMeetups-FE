@@ -85,7 +85,7 @@ export class TriplistComponent {
     }
   }
 
-  onNameFilterClick(): void {
+  removeFilterKeyword() {
     this.searchName = '';
     this.router.navigate(['/trip']);
   }
