@@ -1,11 +1,11 @@
 <section id="campus-meetups" class="people-platform text-center py-5 bg-light">
   <div class="container">
-    <h2 class="display-4 mb-4">Welcome, User.</h2>
+    <!-- Display the student's name dynamically -->
+    <h2 class="display-4 mb-4">Welcome, {{ studentName }}.</h2>
     <div class="row align-items-center">
       <div class="col-md-6">
         <p class="lead mb-4">Whatever your interest, from hiking and reading to networking and skill sharing, there are thousands of people who share it on CampusMeetups. Events are happening every day—sign up to join the fun.</p>
         <a routerLink="/trip" class="btn btn-primary btn-lg">View all Trips</a>
-
       </div>
       <div class="col-md-6">
         <!-- Image Section -->
@@ -16,8 +16,6 @@
 </section>
 
 <!-- Your Trips Section -->
-
-<!-- Display "No trips planned" if yourTrips array is empty -->
 <div class="your-trips-section">
   <h2 class="section-heading">Your Trips</h2>
 
@@ -25,7 +23,6 @@
     <p class="lead text-muted">No trips planned</p>
   </div>
 
-  <!-- Scrollable section for all trips -->
   <div class="trips-scrollable">
     <div class="row" *ngIf="yourTrips.length > 0">
       <div class="col-md-4 mb-4" *ngFor="let trip of yourTrips">
@@ -49,18 +46,17 @@
   </div>
 </div>
 
-<!-- Upcoming Active Trips Section (Next 7 Days) -->
+
+<!-- Upcoming Active Trips Section -->
 <section id="UpcomingActiveTrips" class="upcoming-active-trips text-center py-5 bg-light">
   <div class="container">
     <h2 class="display-4 mb-4">Trips in the Next 7 Days</h2>
     <p class="lead mb-5">Explore upcoming trips within the next week!</p>
 
-    <!-- Display "No trips planned" if upcoming trips array is empty -->
     <div *ngIf="UpcomingActiveTrips.length === 0" class="no-trips-message">
       <p class="lead text-muted">No trips planned</p>
     </div>
 
-    <!-- Display trips for the next 7 days -->
     <div class="trips-scrollable">
       <div class="row" *ngIf="UpcomingActiveTrips.length > 0">
         <div class="col-md-4 mb-4" *ngFor="let trip of UpcomingActiveTrips">
@@ -74,9 +70,7 @@
               <p>{{ trip.description }}</p>
             </mat-card-content>
             <mat-card-actions>
-              <button mat-button class="view-trip-btn" [routerLink]="['/trip', trip.tripId]">
-                View Trip
-              </button>
+              <button mat-button class="view-trip-btn" [routerLink]="['/trip', trip.tripId]">View Trip</button>
             </mat-card-actions>
           </mat-card>
         </div>
@@ -84,7 +78,6 @@
     </div>
   </div>
 </section>
-
 
 
 

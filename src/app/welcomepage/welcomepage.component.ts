@@ -9,6 +9,7 @@ import { CmproxyService } from '../cmproxy.service';
 export class WelcomepageComponent implements OnInit {
   yourTrips: any[] = []; // Array to hold trip data
   UpcomingActiveTrips: any[] = []; // Array to hold trips for the next 7 days
+  studentName: string = 'User'; // Default name
   studentId: string = 'c1e4f7b8d0c9a5e1b2f6a8e3d4c5b0f7'; // Replace with actual student ID
   defaultImageUrl: string = 'https://www.seattleu.edu/media/seattle-university/web-redesign---admissions-amp-aid/Hero-CampusOverall.jpg'; // Default image URL
 
@@ -26,6 +27,8 @@ export class WelcomepageComponent implements OnInit {
       (result: any) => {
         console.log('Your Trips API Response:', result); // Debugging the API response
         if (result && result.length > 0) {
+          // Set the student name from the first entry
+          this.studentName = result[0]?.fname || 'User';
           // Map data to match the expected structure
           this.yourTrips = result.map((trip: any) => ({
             name: trip.tripData.name, // Access tripData.name
