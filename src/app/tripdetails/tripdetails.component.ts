@@ -57,4 +57,20 @@ export class TripdetailsComponent implements OnInit {
     const imgElement = event.target as HTMLImageElement;
     imgElement.src = 'assets/images/def_trip.jpg'; // Default image in case of error
   }
+
+  // Share functionality
+  shareTrip(): void {
+    if (navigator.share) {
+      navigator.share({
+        title: this.trip.name,
+        text: this.trip.description,
+        url: window.location.href
+      })
+        .then(() => console.log('Trip shared successfully!'))
+        .catch((error) => console.error('Error sharing trip:', error));
+    } else {
+      // Fallback for browsers that don't support Web Share API
+      alert('Share functionality is not supported in your browser.');
+    }
+  }
 }

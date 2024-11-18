@@ -44,6 +44,9 @@
     <div class="footer-trip-date">{{ trip.timestamp | date: 'MMM dd, yyyy, hh:mm aa' }}</div>
   </div>
 
-  <!-- Join Button -->
-  <button class="footer-join-button" (click)="joinTrip()">Join Trip</button>
+  <!-- Join Button and Share Button -->
+  <div class="footer-buttons">
+    <button class="footer-join-button" (click)="joinTrip()">Join Trip</button>
+    <button class="footer-share-button" (click)="shareTrip()">Share Trip</button>
+  </div>
 </div>

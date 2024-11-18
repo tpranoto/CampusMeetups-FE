@@ -196,6 +196,27 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
 
+/* Share Button in Footer */
+.footer-share-button {
+  background-color: #007bff; /* Blue color for the share button */
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 1rem; /* Adds space between Join and Share buttons */
+}
+
+  .footer-share-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+
 /* Mobile Responsive Design */
 @media (max-width: 768px) {
   .fixed-footer {
