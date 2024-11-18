@@ -167,13 +167,4 @@ export class TriplistComponent {
   navigateToTripDetails(tripId: string): void {
     this.router.navigate(['/trip', tripId]);
   }
-
-  // Scroll down the trip list
-  scrollDown(): void {
-    const contentElement = this.scrollTarget.nativeElement;
-    contentElement.scrollBy({
-      top: 200,
-      behavior: 'smooth',
-    });
-  }
 }
