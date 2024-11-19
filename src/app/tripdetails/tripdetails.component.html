@@ -1,10 +1,10 @@
 <div class="container trip-details-container">
-  <!-- Image Section (30% width) -->
+  <!-- Image Section -->
   <div class="trip-image-container">
     <img [src]="trip.image" alt="Trip Image" class="trip-image" (error)="onImageError($event)" />
   </div>
 
-  <!-- Trip Details Section (60% width) -->
+  <!-- Trip Details Section -->
   <div class="trip-info-container">
     <div class="trip-title">{{ trip.name }}</div>
     <p><strong>Location:</strong> {{ trip.location }}</p>
@@ -13,20 +13,18 @@
     <p><strong>Organizer:</strong> {{ trip.organizerData.fname }} {{ trip.organizerData.lname }}</p>
   </div>
 
-  <!-- Trip Description Section -->
+  <!-- Description Section -->
   <div class="trip-description">
     <h6>Description</h6>
     <p>{{ trip.description }}</p>
   </div>
 
-  <!-- Attendees Section (Horizontal Layout Below Description) -->
+  <!-- Attendees Section -->
   <div class="attendees-list-container">
     <h5>Attendees</h5>
     <div *ngIf="trip.attendees && trip.attendees.length > 0; else noAttendees" class="attendee-list-horizontal">
       <div class="attendee-card" *ngFor="let attendee of trip.attendees">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-             alt="avatar"
-             class="attendee-avatar" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" alt="avatar" class="attendee-avatar" />
         <div class="attendee-name">{{ attendee.fname }} {{ attendee.lname }}</div>
       </div>
     </div>
@@ -36,15 +34,12 @@
   </div>
 </div>
 
-<!-- Fixed Footer Section -->
+<!-- Footer Section -->
 <div class="fixed-footer">
-  <!-- Trip Name and Date -->
   <div class="footer-trip-details">
     <div class="footer-trip-title">{{ trip.name }}</div>
     <div class="footer-trip-date">{{ trip.timestamp | date: 'MMM dd, yyyy, hh:mm aa' }}</div>
   </div>
-
-  <!-- Join Button and Share Button -->
   <div class="footer-buttons">
     <button class="footer-join-button" (click)="joinTrip()">Join Trip</button>
     <button class="footer-share-button" (click)="shareTrip()">Share Trip</button>

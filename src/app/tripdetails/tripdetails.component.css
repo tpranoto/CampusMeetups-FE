@@ -85,20 +85,20 @@
 /* Attendees Section - Horizontal Layout Below Description */
 .attendees-list-container {
   margin-top: 2rem;
-  width: 100%; /* Make sure the container takes full width */
-  background-color: #f0f0f0; /* Grey background for the attendees section */
+  width: 100%;
+  background-color: #f0f0f0;
   padding: 1rem;
   border-radius: 8px;
 }
 
 .attendee-list-horizontal {
   display: flex;
-  justify-content: flex-start; /* Align cards to the left */
+  justify-content: flex-start;
   align-items: center;
-  gap: 1rem; /* Add space between cards */
+  gap: 1rem;
   width: 100%;
-  flex-wrap: wrap; /* Allow wrapping if there are too many attendees */
-  overflow-x: auto; /* Add horizontal scroll if necessary */
+  flex-wrap: wrap;
+  overflow-x: auto;
 }
 
 .attendee-card {
@@ -106,14 +106,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100px; /* Width of each attendee card */
-  height: 120px; /* Height of each card */
+  width: 100px;
+  height: 120px;
   padding: 1rem;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  flex: 1 1 100px; /* Allow the cards to scale evenly */
+  flex: 1 1 100px;
 }
 
 .attendee-avatar {
@@ -198,7 +198,7 @@
 
 /* Share Button in Footer */
 .footer-share-button {
-  background-color: #007bff; /* Blue color for the share button */
+  background-color: #007bff;
   color: #fff;
   font-size: 1.1rem;
   font-weight: bold;
@@ -208,11 +208,11 @@
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-left: 1rem; /* Adds space between Join and Share buttons */
+  margin-left: 1rem;
 }
 
   .footer-share-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   }
@@ -239,10 +239,9 @@
     text-align: center;
   }
 
-  /* Adjustments for Attendees Layout */
   .attendee-list-horizontal {
-    gap: 1rem; /* Smaller gap between cards */
-    justify-content: space-evenly; /* Distribute cards evenly */
+    gap: 1rem;
+    justify-content: space-evenly;
   }
 
   .attendee-card {
