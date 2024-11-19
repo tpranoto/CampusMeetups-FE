@@ -28,6 +28,25 @@ body {
     padding: 15px 30px;
   }
 
+
+.welcome-view-trips-btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+  background-color: lightpink;
+  color: deeppink;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 10px;
+  border: none;
+}
+
+  .welcome-view-trips-btn:hover {
+
+    transform: translateY(-3px);
+  }
+
+
 /* Styling for Cards */
 .trip-card {
   width: 100%;
@@ -45,7 +64,7 @@ body {
 .view-trip-btn {
   font-size: 1rem;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: lightpink;
   color: white;
   border-radius: 5px;
   text-transform: uppercase;
@@ -54,7 +73,6 @@ body {
 }
 
   .view-trip-btn:hover {
-    background-color: #0056b3;
     transform: translateY(-3px);
   }
 
@@ -62,7 +80,9 @@ body {
 .trips-scrollable {
   max-height: 350px; /* Adjusted for better fit */
   overflow-y: auto;
-  padding: 10px;
+  padding: 10px 10px;
+  margin: 0 auto; /* Centers the element horizontally */
+  max-width: 90%;
 }
 
 /* Upcoming Active Trips Section Styling */
@@ -73,13 +93,16 @@ body {
 
   .upcoming-active-trips .container {
     max-width: 1200px;
+    margin: 0 auto;
   }
 
 /* Section Heading Styling */
 .section-heading {
   font-size: 2.5rem;
-  font-weight: 600;
+  font-weight: 400;
   margin-bottom: 20px;
+  padding: 20px;
+  text-align:center;
 }
 
 /* Text Styling */
