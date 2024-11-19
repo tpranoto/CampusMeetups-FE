@@ -38,31 +38,7 @@
             <!-- Ttips by the filter -->
             <div class="row triplist-list" [ngClass]="trips.length <5&& trips.length >0? 'triplist-list-fixed-div':''">
                 <div class="col-md-3" *ngFor="let trip of trips">
-                    <mat-card class="triplist-card" appearance="outlined" (click)="navigateToTripDetails(trip.tripId)">
-                        <mat-card-header class="triplist-card-header"></mat-card-header>
-                        <div mat-card-image class="triplist-card-image-container">
-                            <img  class="triplist-card-image" [src]="trip.image || 'def_trip.jpg'" (error)="onImageError($event)" alt="Trip Image">
-                        </div>
-                        <mat-card-content class="triplist-card-content">
-                            <div class="triplist-card-header-name">
-                                {{ trip.name }}
-                            </div>
-                            <div class="triplist-card-header-location">
-                                <mat-icon>location_on</mat-icon>
-                                <b>{{ trip.location }}</b>
-                            </div>
-                            <div class="triplist-card-description">
-                                <b>Description:</b> 
-                                <div>
-                                    {{ trip.description }}
-                                </div>
-                            </div>
-                            <div class="triplist-card-footer">
-                                <div class="triplist-card-date"><b>Date:</b>&nbsp;{{ trip.timestamp | date:'MMM dd/yy' }}</div>
-                                <div class="triplist-card-category">{{ trip.categoryData.name }}</div>
-                            </div>
-                        </mat-card-content>
-                    </mat-card>
+                    <app-recttripcard [trip]="trip"></app-recttripcard>
                 </div>
                 <div class="row triplist-list-no-trips" *ngIf="trips==0">
                         <div class="triplist-nolist-content">

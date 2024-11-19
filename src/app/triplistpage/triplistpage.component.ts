@@ -67,12 +67,6 @@ export class TriplistpageComponent {
     this.checkIfScrollable();
   }
 
-  onImageError(event: Event): void {
-    // set up default image if some error happened on fetching image
-    const imgElement = event.target as HTMLImageElement;
-    imgElement.src = 'def_trip.jpg';
-  }
-
   onCategorySelect(category: any): void {
     // get filtered trips when a category is selected
     this.categoryName = category.name;
@@ -162,9 +156,5 @@ export class TriplistpageComponent {
       behavior: 'smooth',
       block: 'start',
     });
-  }
-
-  navigateToTripDetails(tripId: string): void {
-    this.router.navigate(['/trip', tripId]);
   }
 }

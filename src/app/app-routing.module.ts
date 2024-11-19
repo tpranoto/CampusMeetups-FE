@@ -4,11 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailsComponent } from './tripdetails/tripdetails.component';
-import { CreatetripComponent } from './createtrip/createtrip.component';
+import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
 
 const routes: Routes = [
   { path: '', component: WelcomepageComponent },
-  { path: 'trip/create', component: CreatetripComponent },
+  { path: 'trip/create', component: CreatetrippageComponent },
   { path: 'trip', component: TriplistpageComponent },
   { path: 'trip/:tripId', component: TripdetailsComponent },
 ];

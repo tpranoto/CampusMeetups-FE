@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreatetripComponent } from './createtrip.component';
+import { RecttripcardComponent } from './recttripcard.component';
 
-describe('CreatetripComponent', () => {
-  let component: CreatetripComponent;
-  let fixture: ComponentFixture<CreatetripComponent>;
+describe('RecttripcardComponent', () => {
+  let component: RecttripcardComponent;
+  let fixture: ComponentFixture<RecttripcardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CreatetripComponent]
+      declarations: [RecttripcardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CreatetripComponent);
+    fixture = TestBed.createComponent(RecttripcardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

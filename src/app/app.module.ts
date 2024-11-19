@@ -7,7 +7,10 @@ import { AppComponent } from './app.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailsComponent } from './tripdetails/tripdetails.component';
-import { CreatetripComponent } from './createtrip/createtrip.component';
+import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
+
+import { AvatarComponent } from './avatar/avatar.component';
+import { RecttripcardComponent } from './recttripcard/recttripcard.component';
 
 import { CmproxyService } from './cmproxy.service';
 import { CookiesService } from './cookie.service';
@@ -23,7 +26,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
-import { AvatarComponent } from './avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -31,8 +33,9 @@ import { AvatarComponent } from './avatar/avatar.component';
     WelcomepageComponent,
     TriplistpageComponent,
     TripdetailsComponent,
-    CreatetripComponent,
+    CreatetrippageComponent,
     AvatarComponent,
+    RecttripcardComponent,
   ],
   imports: [
     BrowserModule,
