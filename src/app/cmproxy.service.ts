@@ -46,4 +46,10 @@ export class CmproxyService {
   getCategories(): Observable<any[]> {
     return this.httpClient.get<any[]>(this.hostUrl + 'app/category');
   }
+
+  getStudentDetailsByEmail(email: string) {
+    return this.httpClient.get<any[]>(
+      this.hostUrl + `app/student/email/${email}`
+    );
+  }
 }

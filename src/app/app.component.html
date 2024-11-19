@@ -43,7 +43,10 @@
                         hi
                     </div>
                 </mat-menu>
-                <div class="navbar-item" [matMenuTriggerFor]="profileMenu">Profile</div>
+                <div class="navbar-item navbar-profile" [matMenuTriggerFor]="profileMenu">
+                    <div class="navbar-avatar-name">{{ fName }}</div>
+                    <app-avatar [imgUrl]="pImageUrl" [fName]="fName" [lName]="lName"></app-avatar>
+                </div>
                 <mat-menu #profileMenu="matMenu">
                     <button mat-menu-item class="profile-menu-item">View Profile</button>
                     <button mat-menu-item class="profile-menu-item">Settings</button>

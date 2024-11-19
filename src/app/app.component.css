@@ -171,4 +171,13 @@
     }
 }
 
+.navbar-profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
 
+.navbar-avatar-name{
+    margin-right: 5px;
+}

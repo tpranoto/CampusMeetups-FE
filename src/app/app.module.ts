@@ -10,6 +10,7 @@ import { TripdetailsComponent } from './tripdetails/tripdetails.component';
 import { CreatetripComponent } from './createtrip/createtrip.component';
 
 import { CmproxyService } from './cmproxy.service';
+import { CookiesService } from './cookie.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -22,6 +23,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
+import { AvatarComponent } from './avatar/avatar.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { MatChipsModule } from '@angular/material/chips';
     TriplistComponent,
     TripdetailsComponent,
     CreatetripComponent,
+    AvatarComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,12 @@ import { MatChipsModule } from '@angular/material/chips';
     MatMenuModule,
     MatChipsModule,
   ],
-  providers: [provideHttpClient(), CmproxyService, provideAnimationsAsync()],
+  providers: [
+    provideHttpClient(),
+    CmproxyService,
+    provideAnimationsAsync(),
+    CookiesService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
