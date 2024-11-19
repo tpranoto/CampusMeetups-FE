@@ -5,7 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
-import { TriplistComponent } from './triplist/triplist.component';
+import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailsComponent } from './tripdetails/tripdetails.component';
 import { CreatetripComponent } from './createtrip/createtrip.component';
 
@@ -29,7 +29,7 @@ import { AvatarComponent } from './avatar/avatar.component';
   declarations: [
     AppComponent,
     WelcomepageComponent,
-    TriplistComponent,
+    TriplistpageComponent,
     TripdetailsComponent,
     CreatetripComponent,
     AvatarComponent,

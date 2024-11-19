@@ -12,11 +12,11 @@ import { CmproxyService } from '../cmproxy.service';
 // }
 
 @Component({
-  selector: 'app-triplist',
-  templateUrl: './triplist.component.html',
-  styleUrl: './triplist.component.css',
+  selector: 'app-triplistpage',
+  templateUrl: './triplistpage.component.html',
+  styleUrl: './triplistpage.component.css',
 })
-export class TriplistComponent {
+export class TriplistpageComponent {
   response: any = {};
   trips: any = [];
   categories: any = [];
