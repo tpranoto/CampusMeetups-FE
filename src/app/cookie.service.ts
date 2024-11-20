@@ -13,7 +13,7 @@ export class CookiesService {
   }
 
   // Get the value of a cookie by name
-  getCookie(name: string): object {
+  getCookie(name: string): any {
     return JSON.parse(this.cookieService.get(name));
   }
 

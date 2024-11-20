@@ -6,9 +6,49 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CmproxyService {
-  hostUrl: string = 'http://localhost:8080/';
+  private hostUrl: string = 'http://localhost:8080/';
 
   constructor(private httpClient: HttpClient) {}
+
+  getAttendedTripsForStudent(
+    studentId: string,
+    limit: string
+  ): Observable<any> {
+    var params = new HttpParams();
+
+    if (limit != '') {
+      params = params.set('limit', limit);
+    }
+
+    const options = {
+      params: params,
+    };
+
+    return this.httpClient.get<any>(
+      this.hostUrl + `app/attendee/${studentId}`,
+      options
+    );
+  }
+
+  getLimitedUpcomingActiveTrips(
+    numDays: string,
+    limit: string,
+    expand: boolean
+  ): Observable<any> {
+    var params = new HttpParams().set('days', numDays).set('expand', expand);
+    if (limit != '') {
+      params = params.set('perPage', limit);
+    }
+
+    const options = {
+      params: params,
+    };
+
+    return this.httpClient.get<any>(
+      this.hostUrl + 'app/trip/upcoming',
+      options
+    );
+  }
 
   getListofTrips(
     searchedName: string,
@@ -40,8 +80,6 @@ export class CmproxyService {
   getListOfTripsByUrl(url: string) {
     return this.httpClient.get<any[]>(url);
   }
-
-  getTripDetails() {}
 
   getCategories(): Observable<any[]> {
     return this.httpClient.get<any[]>(this.hostUrl + 'app/category');

@@ -36,18 +36,6 @@ export class TriplistpageComponent {
     private proxy$: CmproxyService
   ) {
     this.page = 0;
-    this.fetchTrips(
-      this.searchName,
-      this.page,
-      this.perPage,
-      this.categoryId,
-      true
-    );
-    this.fetchCategories();
-  }
-
-  ngOnInit(): void {
-    this.page = 0;
     this.actRouter.queryParams.subscribe((params) => {
       this.searchName = params['name'] || '';
       this.page = 0;
@@ -61,7 +49,18 @@ export class TriplistpageComponent {
         );
       }
     });
+
+    this.fetchTrips(
+      this.searchName,
+      this.page,
+      this.perPage,
+      this.categoryId,
+      true
+    );
+    this.fetchCategories();
   }
+
+  ngOnInit(): void {}
 
   ngAfterViewInit(): void {
     this.checkIfScrollable();

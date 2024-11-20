@@ -1,0 +1,75 @@
+.welcome-cm-summary{
+  margin: 0 8vw;
+}
+
+.welcome-cm-summary-title{
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+.welcome-cm-summary-content{
+  align-items: center;
+}
+
+.welcome-cm-img{
+  border-radius: 20px;
+}
+
+.welcome-cm-summary-trips-button{
+  background-color: darkred;          
+  color: white;                    
+  border-radius: 11px;
+  font-size: 18px;                   
+  font-weight: bold;                
+  border: none;                      
+  cursor: pointer;                   
+  transition: background-color 0.3s ease-in-out; 
+  width: 10vw;
+  height: 5vh;
+}
+
+.your-trips {
+  margin: 0 8vw;
+  padding: 20px 15px;
+}
+
+.your-trips-title{
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+.upcoming-trips {
+  background-color: #f8f9fa;
+  padding: 40px 0;
+  align-items: center;
+}
+
+.upcoming-trips-content{
+  align-items: center;
+  margin: 0 8vw;
+  padding: 20px 15px;
+}
+
+.upcoming-trips-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+}
+
+.upcoming-trips-subtitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-trips-message {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.no-trips-message p {
+  color: #6c757d;
+}

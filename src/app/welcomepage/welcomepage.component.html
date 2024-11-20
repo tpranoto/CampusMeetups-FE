@@ -1,1 +1,84 @@
-<p>welcomepage works!</p>
+<section id="campus-meetups" class="people-platform text-center py-5 bg-light">
+  <div class="welcome-cm-summary">
+    <!-- Display the student's name dynamically -->
+    <h2 class="welcome-cm-summary-title">Welcome, {{ studentName }}!</h2>
+    <div class="row welcome-cm-summary-content">
+      <div class="col-md-6">
+        <p class="lead">Whatever your interest, from hiking and reading to networking and skill sharing, there are thousands of people who share it on CampusMeetups. Trips are happening every day—explore all available trips.</p>
+        <button [routerLink]="['/trip']" class="welcome-cm-summary-trips-button">
+          View all trips
+        </button>
+      </div>
+      <div class="col-md-6">
+        <!-- Image Section -->
+        <img src="welcomepage-img.jpg" class="img-fluid welcome-cm-img" alt="Campus Scene">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Your Trips Section -->
+<section class="your-trips">
+  <h2 class="your-trips-title">Your Trips</h2>
+
+  <div *ngIf="trips.length === 0" class="no-trips-message">
+    <p class="lead text-muted text-times">No trips planned</p>
+  </div>
+
+  <div class="row" *ngIf="trips.length > 0">
+    <div class="col-md-3 mb-3" *ngFor="let trip of trips">
+      <app-recttripcard [trip]="trip"></app-recttripcard>
+    </div>
+  </div>
+</section>
+
+
+<!-- Upcoming Active Trips Section -->
+<section class="upcoming-trips">
+  <div class="upcoming-trips-content">
+    <h2 class="upcoming-trips-title">Upcoming Trips</h2>
+    <p class="lead upcoming-trips-subtitle">Explore upcoming trips within the next week!</p>
+
+    <div *ngIf="upcomingTrips.length === 0" class="no-trips-message">
+      <p class="lead text-muted text-times">No trips planned</p>
+    </div>
+
+    <div class="row" *ngIf="upcomingTrips.length > 0">
+      <div class="col-md-3 mb-3" *ngFor="let trip of upcomingTrips">
+        <app-recttripcard [trip]="trip"></app-recttripcard>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="text-center py-5">
+  <div class="container">
+    <h2 class="display-4 mb-4 text-times">What We Offer</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title text-times">Explore New Places</h5>
+            <p class="card-text text-times">Join groups traveling to exciting destinations, whether you're looking for adventure or relaxation.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title text-times">Make New Connections</h5>
+            <p class="card-text text-times">Meet students from various campuses, bond over shared interests, and make lifelong friendships.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title text-times">Organize Your Own Trips</h5>
+            <p class="card-text text-times">Take the lead, create your own meetups, and invite others to join you on your adventures.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
