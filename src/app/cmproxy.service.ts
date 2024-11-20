@@ -6,16 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CmproxyService {
-  // Server base URL
-  private readonly hostUrl: string = 'http://localhost:8080/';
+  private hostUrl: string = 'http://localhost:8080/';
 
   constructor(private httpClient: HttpClient) {}
 
-  /**
-   * Fetch trips for a specific student by their studentId.
-   * @param studentId - The ID of the student whose trips to fetch.
-   * @returns An Observable of the student's trips.
-   */
   getAttendedTripsForStudent(
     studentId: string,
     limit: string
@@ -36,12 +30,7 @@ export class CmproxyService {
     );
   }
 
-  /**
-   * Fetch upcoming trips within the next 7 days.
-   * Includes pagination and sorting options.
-   * @returns An Observable of upcoming trips.
-   */
-  retrieveLimitedUpcomingActiveTrips(
+  getLimitedUpcomingActiveTrips(
     numDays: string,
     limit: string,
     expand: boolean

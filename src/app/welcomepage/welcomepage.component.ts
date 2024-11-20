@@ -39,7 +39,7 @@ export class WelcomepageComponent implements OnInit {
   // Fetch trips for the next 7 days
   fetchUpcomingActiveTrips(): void {
     this.proxy$
-      .retrieveLimitedUpcomingActiveTrips(this.upcomingDays, '4', true)
+      .getLimitedUpcomingActiveTrips(this.upcomingDays, '4', true)
       .subscribe((result: any) => {
         this.upcomingTrips = result.data;
       });
