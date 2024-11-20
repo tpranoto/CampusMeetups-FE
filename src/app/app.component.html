@@ -1,35 +1,60 @@
-<mat-toolbar class="navbar">
+<router-outlet>
+    <mat-toolbar class="navbar">
     <div class="navbar-left">
-        <div class="navbar-content logo">
-            <img src="logo.png" alt="Campus Meetups" class="logo-img" />
-        </div>
+        <div class="navbar-content logo" [routerLink]="['/']">
+            <img src="Campus Meetups (2).png" alt="Campus Meetups" class="logo-img" />
+            </div>
 
         <div class="navbar-content">
-            <div class="navbar-searchbar">
-                <input type="text" class="navbar-searchbar-input" placeholder="Search trips..." />
-                <mat-icon class="navbar-searchbar-icon" fontIcon="search"></mat-icon>
-            </div>
+            <div class="search-container">
+                <input type="text" 
+                    placeholder="Search Trips" 
+                    class="search-input" 
+                    [value]="searchName" 
+                    (input)="onInputChange($event)"
+                    (keydown)="onInputEnter($event)"
+                >
+                <button class="search-button" (click)="OnSearchClick()">
+                    <mat-icon>search</mat-icon>
+                </button>
+              </div>              
         </div>
     </div>
 
     <div class="navbar-right">
         <div class="navbar-content">
-            <button mat-fab extended class="navbar-createtrip-button">
-                <div class="navbar-createtrip-button-content">
-                    <mat-icon fontIcon="add"></mat-icon>
-                    <span>New trip</span>
-                </div>
-            </button>
+            <div class="navbar-content">
+                <button mat-fab extended class="navbar-createtrip-button" [routerLink]="['/trip/create']">
+                    <div class="navbar-createtrip-button-content">
+                        Start a Trip
+                    </div>
+                </button>
+            </div>
+            
+
         </div>
 
         <div class="navbar-content">
             <div class="navbar-selection navbar-left-border">
-                <mat-icon fontIcon="home"></mat-icon>
-                <mat-icon fontIcon="explore"></mat-icon>
-                <mat-icon fontIcon="notifications"></mat-icon>
-                <mat-icon fontIcon="account_circle"></mat-icon>
+                <div class="navbar-item" [routerLink]="['/trip']">Explore</div>
+                <div class="navbar-item" [matMenuTriggerFor]="notificationMenu">Notifications</div>
+                <mat-menu #notificationMenu="matMenu">
+                    <div>
+                        hi
+                    </div>
+                </mat-menu>
+                <div class="navbar-item navbar-profile" [matMenuTriggerFor]="profileMenu">
+                    <div class="navbar-avatar-name">{{ fName }}</div>
+                    <app-avatar [imgUrl]="pImageUrl" [fName]="fName" [lName]="lName"></app-avatar>
+                </div>
+                <mat-menu #profileMenu="matMenu">
+                    <button mat-menu-item [routerLink]="['/profile',userId]" class="profile-menu-item">View Profile</button>
+                    <button mat-menu-item class="profile-menu-item">Settings</button>
+                    <button mat-menu-item class="profile-menu-item">Help</button>
+                    <button mat-menu-item class="profile-menu-item">Log out</button>
+                </mat-menu>
             </div>
         </div>
     </div>
   </mat-toolbar>
-<router-outlet />
+</router-outlet>

@@ -6,23 +6,67 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CmproxyService {
-  hostUrl: string = 'http://localhost:8080/';
+  private hostUrl: string = 'http://localhost:8080/';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {}
 
-  // Method to get the list of trips
+  getAttendedTripsForStudent(
+    studentId: string,
+    limit: string
+  ): Observable<any> {
+    var params = new HttpParams();
+
+    if (limit != '') {
+      params = params.set('limit', limit);
+    }
+
+    const options = {
+      params: params,
+    };
+
+    return this.httpClient.get<any>(
+      this.hostUrl + `app/attendee/${studentId}`,
+      options
+    );
+  }
+
+  getLimitedUpcomingActiveTrips(
+    numDays: string,
+    limit: string,
+    expand: boolean
+  ): Observable<any> {
+    var params = new HttpParams().set('days', numDays).set('expand', expand);
+    if (limit != '') {
+      params = params.set('perPage', limit);
+    }
+
+    const options = {
+      params: params,
+    };
+
+    return this.httpClient.get<any>(
+      this.hostUrl + 'app/trip/upcoming',
+      options
+    );
+  }
+
   getListofTrips(
+    searchedName: string,
     page: number,
     perPage: number,
     catId: string,
     expand: boolean
-  ): Observable<any[]> {
-    let params = new HttpParams()
-      .set('page', page.toString())
-      .set('perPage', perPage.toString())
-      .set('expand', expand.toString());
+  ) {
+    var params = new HttpParams()
+      .set('page', page)
+      .set('perPage', perPage)
+      .set('expand', expand);
 
-    if (catId) {
+    if (searchedName != '') {
+      params = params.set('name', searchedName);
+    }
+
+    if (catId != '') {
       params = params.set('categoryId', catId);
     }
 
@@ -40,7 +84,16 @@ export class CmproxyService {
 
   // Method to get trip details by tripId
   getTripDetails(tripId: string): Observable<any> {
-    // Construct the API endpoint for the specific trip
     return this.httpClient.get<any>(`${this.hostUrl}app/trip/${tripId}`);
+  }
+
+  getCategories(): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.hostUrl + 'app/category');
+  }
+
+  getStudentDetailsByEmail(email: string) {
+    return this.httpClient.get<any[]>(
+      this.hostUrl + `app/student/email/${email}`
+    );
   }
 }
