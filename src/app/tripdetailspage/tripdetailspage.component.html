@@ -23,7 +23,7 @@
     
       <!-- Attendees Section -->
       <div class="attendees-list-container">
-        <h6 class="attendees-list-title">Attendees  ({{trip.attendees?.length}})</h6>
+        <h6 class="attendees-list-title">Attendees  ({{attendeeList?.length}})</h6>
         <div *ngIf="trip.attendees && trip.attendees.length > 0; else noAttendees" class="row attendees-list">
           <div class="col-md-2 attendee-card" 
             [matBadge]="attendee.host ? 'Host' : null"
