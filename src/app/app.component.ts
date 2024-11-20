@@ -12,10 +12,10 @@ export class AppComponent {
   title: string = 'CampusMeetups';
   searchName: string = '';
   loggedInEmail = 'oliviajohnson@seattleu.edu'; // static for now
-  response: any = {};
-  fName = '';
-  lName = '';
-  pImageUrl = '';
+  userId: string = '';
+  fName: string = '';
+  lName: string = '';
+  pImageUrl: string = '';
 
   constructor(
     private router: Router,
@@ -50,12 +50,12 @@ export class AppComponent {
   fetchStudentData(): void {
     this.proxy$
       .getStudentDetailsByEmail(this.loggedInEmail)
-      .subscribe((result: any[]) => {
+      .subscribe((result: any) => {
         this.cookieServ.setCookie('user', result);
-        this.response = result;
-        this.fName = this.response.fname;
-        this.lName = this.response.lname;
-        this.pImageUrl = this.response.image;
+        this.userId = result.studentId;
+        this.fName = result.fname;
+        this.lName = result.lname;
+        this.pImageUrl = result.image;
       });
   }
 }

@@ -8,6 +8,7 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailsComponent } from './tripdetails/tripdetails.component';
 import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
+import { ProfilepageComponent } from './profilepage/profilepage.component';
 
 import { AvatarComponent } from './avatar/avatar.component';
 import { RecttripcardComponent } from './recttripcard/recttripcard.component';
@@ -34,6 +35,7 @@ import { MatChipsModule } from '@angular/material/chips';
     TriplistpageComponent,
     TripdetailsComponent,
     CreatetrippageComponent,
+    ProfilepageComponent,
     AvatarComponent,
     RecttripcardComponent,
   ],

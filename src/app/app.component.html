@@ -48,7 +48,7 @@
                     <app-avatar [imgUrl]="pImageUrl" [fName]="fName" [lName]="lName"></app-avatar>
                 </div>
                 <mat-menu #profileMenu="matMenu">
-                    <button mat-menu-item class="profile-menu-item">View Profile</button>
+                    <button mat-menu-item [routerLink]="['/profile',userId]" class="profile-menu-item">View Profile</button>
                     <button mat-menu-item class="profile-menu-item">Settings</button>
                     <button mat-menu-item class="profile-menu-item">Help</button>
                     <button mat-menu-item class="profile-menu-item">Log out</button>
