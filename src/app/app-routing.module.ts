@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { TriplistpageComponent } from './triplistpage/triplistpage.component';
-import { TripdetailsComponent } from './tripdetails/tripdetails.component';
+import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.component';
 import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 
@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: WelcomepageComponent },
   { path: 'trip/create', component: CreatetrippageComponent },
   { path: 'trip', component: TriplistpageComponent },
-  { path: 'trip/:tripId', component: TripdetailsComponent },
+  { path: 'trip/:tripId', component: TripdetailspageComponent },
   { path: 'profile/:studentId', component: ProfilepageComponent },
 ];
 

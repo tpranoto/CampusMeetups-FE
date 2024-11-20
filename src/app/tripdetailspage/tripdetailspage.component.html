@@ -1,0 +1,66 @@
+<div class="container trip-details-container">
+  <!-- Image Section -->
+  <div class="trip-image-container">
+    <img [src]="trip.image || 'def_trip.jpg'" alt="Trip Image" class="trip-image" />
+  </div>
+
+  <!-- Trip Details Section -->
+  <div class="trip-info-container">
+    <div class="trip-title">{{ trip.name }}</div>
+    <p><strong>Location:</strong> {{ trip.location }}</p>
+    <p><strong>Date & Time:</strong> {{ trip.timestamp | date: 'MMM dd, yyyy, hh:mm aa' }}</p>
+    <p><strong>Status:</strong> {{ trip.status }}</p>
+    <p><strong>Organizer:</strong> {{ trip.organizerData?.fname }} {{ trip.organizerData?.lname }}</p>
+  </div>
+
+  <!-- Description Section -->
+  <div class="row">
+    <div class="col-8">
+      <div class="trip-description">
+        <h6>Description</h6>
+        <p>{{ trip.description }}</p>
+      </div>
+    
+      <!-- Attendees Section -->
+      <div class="attendees-list-container">
+        <h6 class="attendees-list-title">Attendees  ({{trip.attendees?.length}})</h6>
+        <div *ngIf="trip.attendees && trip.attendees.length > 0; else noAttendees" class="row attendees-list">
+          <div class="col-md-2 attendee-card" 
+            [matBadge]="attendee.host ? 'Host' : null"
+            *ngFor="let attendee of attendeeList.slice(0, 5)" 
+            [routerLink]="['/profile',attendee.studentId]"
+          >
+            <app-avatar [imgUrl]="attendee.image" [fName]="attendee.fname" [lName]="attendee.lname"></app-avatar>
+            <div class="attendee-name">{{ attendee.fname }}</div>
+          </div>
+          <div class="col-md-2 attendee-card" *ngIf="trip.attendees.length > 5" (click)="onAttendeeListClick()">
+            <div class="attendee-card-more">
+              <app-avatar [imgUrl]="trip.attendees[5].image" [fName]="trip.attendees[5].fname" [lName]="trip.attendees[5].lname" class="avatar-more"></app-avatar>
+              <app-avatar class="avatar-more"></app-avatar>
+            </div>
+            <div class="attendee-name">+{{trip.attendees.length-5}}</div>
+          </div>
+          
+        </div>
+        <ng-template #noAttendees>
+          <div class="no-attendees-message">No attendees</div>
+        </ng-template>
+      </div>
+    </div>
+    <div class="col-4"></div>
+  </div>
+
+  </div>
+  
+
+<!-- Footer Section -->
+<div class="fixed-footer">
+  <div class="footer-trip-details">
+    <div class="footer-trip-title">{{ trip.name }}</div>
+    <div class="footer-trip-date">{{ trip.timestamp | date: 'MMM dd, yyyy, hh:mm aa' }}</div>
+  </div>
+  <div class="footer-buttons">
+    <button class="footer-join-button" (click)="joinTrip()">Join Trip</button>
+    <button class="footer-share-button" (click)="shareTrip()">Share Trip</button>
+  </div>
+</div>

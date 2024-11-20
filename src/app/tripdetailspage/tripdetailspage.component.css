@@ -60,7 +60,7 @@
   line-height: 1.8;
 }
 
-.trip-info-container strong {
+.trip-info-container {
   color: #a32020;
   font-weight: bold;
 }
@@ -87,18 +87,21 @@
   margin-top: 2rem;
   width: 100%;
   background-color: #f0f0f0;
-  padding: 1rem;
+  padding-top: 10px;
+  padding-bottom: 30px;
   border-radius: 8px;
+  align-items: center;
 }
 
-.attendee-list-horizontal {
+.attendees-list-title{
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.attendees-list{
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  gap: 1rem;
-  width: 100%;
-  flex-wrap: wrap;
-  overflow-x: auto;
+  margin: 0 5%;
 }
 
 .attendee-card {
@@ -106,14 +109,38 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 120px;
-  padding: 1rem;
+  width: 15%;
+  height: 100px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  flex: 1 1 100px;
+  margin: 0 5px;
+}
+
+.attendee-card .mat-badge-content {
+  left: 20% !important; /* Center horizontally */
+  background-color: darkred;
+}
+
+.attendee-card:hover{
+  background-color: rgba(255, 233, 220, 0.5); 
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.attendee-card-more {
+  display: inline-flex;
+  flex-direction: row-reverse;
+}
+
+.avatar-more {
+  overflow: hidden;
+}
+
+.avatar-more:first-child {
+  margin-left: -50px;
 }
 
 .attendee-avatar {
@@ -237,11 +264,6 @@
     width: 100%;
     padding: 14px 0;
     text-align: center;
-  }
-
-  .attendee-list-horizontal {
-    gap: 1rem;
-    justify-content: space-evenly;
   }
 
   .attendee-card {

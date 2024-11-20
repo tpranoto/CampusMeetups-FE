@@ -6,12 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { TriplistpageComponent } from './triplistpage/triplistpage.component';
-import { TripdetailsComponent } from './tripdetails/tripdetails.component';
+import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.component';
 import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 
 import { AvatarComponent } from './avatar/avatar.component';
 import { RecttripcardComponent } from './recttripcard/recttripcard.component';
+import { AttendeelistdialogComponent } from './attendeelistdialog/attendeelistdialog.component';
 
 import { CmproxyService } from './cmproxy.service';
 import { CookiesService } from './cookie.service';
@@ -27,17 +28,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomepageComponent,
     TriplistpageComponent,
-    TripdetailsComponent,
+    TripdetailspageComponent,
     CreatetrippageComponent,
     ProfilepageComponent,
     AvatarComponent,
     RecttripcardComponent,
+    AttendeelistdialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatInputModule,
     MatMenuModule,
     MatChipsModule,
+    MatBadgeModule,
+    MatDialogModule,
   ],
   providers: [
     provideHttpClient(),
