@@ -1,5 +1,5 @@
 .navbar{
-    background-color: lightgray;
+    background-color: rgb(244, 238, 224);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -29,7 +29,7 @@
 }
 
 .logo{
-    height: 40%;
+    height: 140%;
     cursor: pointer;
 }
 
@@ -39,74 +39,145 @@
     object-fit: contain;
 }
 
-.navbar-searchbar{
-    cursor: pointer;
-    border-radius: 15px;
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.7px;
+    margin-left: 25px;
+}
+
+.search-input {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 8.4px;
+    width: 180px;
     border: 2px solid darkred;
-    background-color: white;
-    overflow: scroll;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    padding: 1% 0 1% 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 11px 0 0 11px;
+    height: 35px;
+    font-size: 14px;
 }
 
-.navbar-searchbar-input{
-    flex-grow: 1;
-    background: transparent;
-    outline-width: 0;
-    border: none;
+.search-input:focus{
+    outline: none;
 }
-
-.navbar-searchbar-icon{
-    color: darkred;
-}
-
-.navbar-createtrip-button{
-    width: fit-content;
-    height: max-content;
-    padding: 5%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  
+.search-button {
+    padding: 8px;
     background-color: darkred;
-    border: 1px solid darkgray;
-}
-
-.navbar-createtrip-button-content{
+    color: rgb(255, 255, 255);
+    border: 2px solid darkred;
+    border-radius: 0 11px 11px 0;
+    cursor: pointer;
+    height: 35px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bolder;
-    color:lightgray;
-    margin: 1px;
+    align-items: center;      
+    justify-content: center; 
+    text-align: center;
 }
 
-.navbar-createtrip-button-content span{
-    padding-right: 5px;
+.search-button mat-icon {
+    margin-right: 8px; 
+    font-size: 25px; 
 }
+  
+.search-button:hover {
+    background-color: rgb(100, 7, 7);
+}
+  
 
-.navbar-selection{
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-evenly;
-}
 
 .navbar-left-border{
     border-left: 2px solid darkred;
+    margin-left: 30px;
+    padding-left: 10px;
 }
 
-.navbar-selection mat-icon{
-    flex-grow: 1;
+.navbar-selection {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 70%;
+}
+  
+.navbar-item {
+    font-family: 'Times New Roman', Times, serif;
     font-weight: normal;
-    font-size: 36px;
-    display: contents;
+    font-size: 14px;
+    display: flex;  
     line-height: 1;
     text-transform: none;
     letter-spacing: normal;
     word-wrap: normal;
     direction: ltr;
     color: darkred;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.navbar-item:hover{
+    background-color: rgb(244, 260, 224);
+    cursor: pointer;
+}
+
+.navbar-createtrip-button {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 12px 24px;
+    background-color: darkred;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    height: 35px;
+    width: 150px;
+    margin: 0 5px;
+}
+  
+.navbar-createtrip-button:hover {
+    background-color: #fbd8d8;
+    transform: scale(1.05);
+}
+
+.profile-menu-item{
+  width: 15vw;
+  text-align: right;
+  padding: 0 10px;
+}
+  
+@media (max-width: 768px) {
+    .navbar-item {
+        width: 30%;
+        justify-content: right; 
+    }
+
+    .navbar-createtrip-button{
+      padding: 2px;
+      height: 35px;
+      width: 100px;
+      font-size: 12px;
+    }
+
+    .search-input{
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      padding: 8.4px;
+      width: 80px;
+      border: 2px solid darkred;
+      border-radius: 11px 0 0 11px;
+      height: 35px;
+      font-size: 10px;
+    }
+}
+
+.navbar-profile{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-avatar-name{
+    margin-right: 5px;
 }

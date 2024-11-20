@@ -1,0 +1,22 @@
+.avatar{
+    background-color: white; 
+    border: 2px solid darkred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:100%;
+    width:40px;
+    height: 40px;
+    font-weight: 600;
+}
+
+.avatar-img{
+    flex: 1;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 100%;
+}
+
+.avatar-initials{
+    color: darkred;
+}

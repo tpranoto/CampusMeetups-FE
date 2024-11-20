@@ -5,10 +5,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
-import { TriplistComponent } from './triplist/triplist.component';
+import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailsComponent } from './tripdetails/tripdetails.component';
+import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
+
+import { AvatarComponent } from './avatar/avatar.component';
+import { RecttripcardComponent } from './recttripcard/recttripcard.component';
 
 import { CmproxyService } from './cmproxy.service';
+import { CookiesService } from './cookie.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -18,14 +23,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input'; // Required for matInput
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomepageComponent,
-    TriplistComponent,
+    TriplistpageComponent,
     TripdetailsComponent,
+    CreatetrippageComponent,
+    AvatarComponent,
+    RecttripcardComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,8 +48,15 @@ import { MatInputModule } from '@angular/material/input'; // Required for matInp
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatMenuModule,
+    MatChipsModule,
   ],
-  providers: [provideHttpClient(), CmproxyService, provideAnimationsAsync()],
+  providers: [
+    provideHttpClient(),
+    CmproxyService,
+    provideAnimationsAsync(),
+    CookiesService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
