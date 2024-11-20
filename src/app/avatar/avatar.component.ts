@@ -15,6 +15,9 @@ export class AvatarComponent {
   }
 
   getInitials() {
+    if (this.fName == '' || this.lName == '') {
+      return '';
+    }
     return this.fName[0].toUpperCase() + this.lName[0].toUpperCase();
   }
 }

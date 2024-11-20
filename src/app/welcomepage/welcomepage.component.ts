@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CmproxyService } from '../cmproxy.service';
+import { CookiesService } from '../cookie.service';
 
 @Component({
   selector: 'app-welcomepage',
@@ -7,74 +8,40 @@ import { CmproxyService } from '../cmproxy.service';
   styleUrls: ['./welcomepage.component.css'],
 })
 export class WelcomepageComponent implements OnInit {
-  yourTrips: any[] = []; // Array to hold trip data
-  UpcomingActiveTrips: any[] = []; // Array to hold trips for the next 7 days
-  studentName: string = 'User'; // Default name
-  studentId: string = 'c1e4f7b8d0c9a5e1b2f6a8e3d4c5b0f7'; // Replace with actual student ID
-  defaultImageUrl: string = 'https://www.seattleu.edu/media/seattle-university/web-redesign---admissions-amp-aid/Hero-CampusOverall.jpg'; // Default image URL
+  trips: any = [];
+  upcomingDays: string = '7';
+  upcomingTrips: any = [];
+  studentName: string = 'User';
+  studentId: string = '';
 
-  constructor(private proxyService: CmproxyService) { }
-
-  ngOnInit(): void {
-    this.fetchYourTrips();
+  constructor(
+    private proxy$: CmproxyService,
+    private cookieServ: CookiesService
+  ) {
+    var userDt = this.cookieServ.getCookie('user');
+    this.studentName = userDt.fname;
+    this.studentId = userDt.studentId;
+    this.fetchAttendedTrips();
     this.fetchUpcomingActiveTrips();
   }
 
+  ngOnInit(): void {}
+
   // Fetch trips for the specific student
-  fetchYourTrips(): void {
-    console.log('Fetching trips for student with ID:', this.studentId);
-    this.proxyService.getYourTripsForStudent(this.studentId).subscribe(
-      (result: any) => {
-        console.log('Your Trips API Response:', result); // Debugging the API response
-        if (result && result.length > 0) {
-          // Set the student name from the first entry
-          this.studentName = result[0]?.fname || 'User';
-          // Map data to match the expected structure
-          this.yourTrips = result.map((trip: any) => ({
-            name: trip.tripData.name, // Access tripData.name
-            location: trip.tripData.location, // Access tripData.location
-            imageUrl: trip.tripData.image || this.defaultImageUrl, // Use default image if not provided
-            date: new Date(trip.tripData.timestamp).toLocaleDateString(), // Convert timestamp to readable date
-            tripId: trip.tripId, // For routing
-          }));
-        } else {
-          console.log('No data found for trips.');
-        }
-      },
-      (error) => {
-        console.error('Error fetching your trips:', error);
-      }
-    );
+  fetchAttendedTrips(): void {
+    this.proxy$
+      .getAttendedTripsForStudent(this.studentId, '4')
+      .subscribe((result: any) => {
+        this.trips = result.map((trip: any) => trip.tripData);
+      });
   }
 
   // Fetch trips for the next 7 days
   fetchUpcomingActiveTrips(): void {
-    console.log('Fetching trips for the next 7 days');
-
-    this.proxyService.retrieveUpcomingActiveTrips().subscribe(
-      (result: any) => {
-        console.log('Upcoming Active Trips API Response:', result);
-        if (result && result.data && result.data.length > 0) {
-          this.UpcomingActiveTrips = result.data.map((trip: any) => ({
-            tripId: trip.tripId, // Use tripId for routing
-            name: trip.name,
-            location: trip.location,
-            imageUrl: trip.image || this.defaultImageUrl, // Ensure the default image is used if imageUrl is empty
-            description: trip.description,
-            date: new Date(trip.timestamp).toLocaleDateString(), // Convert timestamp to readable date
-          }));
-        } else {
-          console.log('No trips found for the next 7 days.');
-        }
-      },
-      (error) => {
-        console.error('Error fetching upcoming active trips:', error);
-      }
-    );
-  }
-
-  // Set the default image if the provided image fails to load
-  setDefaultImage(event: any): void {
-    event.target.src = this.defaultImageUrl;  // Set the default image if the original fails to load
+    this.proxy$
+      .retrieveLimitedUpcomingActiveTrips(this.upcomingDays, '4', true)
+      .subscribe((result: any) => {
+        this.upcomingTrips = result.data;
+      });
   }
 }

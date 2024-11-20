@@ -1,179 +1,75 @@
-/* Global Styles */
-body {
-  font-family: "Times New Roman", Times, serif;
-  margin: 0;
-  padding: 0;
+.welcome-cm-summary{
+  margin: 0 8vw;
 }
 
-/* Hero Section */
-.hero-section {
-  background-image: url('https://via.placeholder.com/1500x500'); /* Replace with your own background image */
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+.welcome-cm-summary-title{
   font-family: "Times New Roman", Times, serif;
-}
-
-  .hero-section h1 {
-    font-family: "Times New Roman", Times, serif;
-    font-size: 3rem;
-    font-weight: bold;
-  }
-
-  .hero-section .btn {
-    font-family: "Times New Roman", Times, serif;
-    font-size: 1.25rem;
-    padding: 15px 30px;
-  }
-
-.text-times {
-  font-family: "Times New Roman", Times, serif;
-}
-
-.your-trips-section .section-heading,
-.upcoming-active-trips .display-4,
-.people-platform .display-4 {
   font-weight: bold;
 }
 
-.welcome-view-trips-btn {
-  font-size: 1rem;
-  padding: 10px 20px;
-  background-color: lightpink;
-  color: deeppink;
-  border-radius: 5px;
-  text-transform: uppercase;
-  font-family: "Times New Roman", Times, serif;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-top: 10px;
-  border: none;
+.welcome-cm-summary-content{
+  align-items: center;
 }
 
-  .welcome-view-trips-btn:hover {
-    transform: translateY(-3px);
-  }
+.welcome-cm-img{
+  border-radius: 20px;
+}
 
-/* Section Containers */
-.trips-section {
-  max-width: 1200px; /* Consistent width for both sections */
-  margin: 0 auto; /* Centers the container */
+.welcome-cm-summary-trips-button{
+  background-color: darkred;          
+  color: white;                    
+  border-radius: 11px;
+  font-size: 18px;                   
+  font-weight: bold;                
+  border: none;                      
+  cursor: pointer;                   
+  transition: background-color 0.3s ease-in-out; 
+  width: 10vw;
+  height: 5vh;
+}
+
+.your-trips {
+  margin: 0 8vw;
   padding: 20px 15px;
 }
 
-/* Scrollable Divs */
-.trips-scrollable {
-  max-height: 400px; /* Standardized height for scrollable content */
-  overflow-y: auto;
-  padding: 10px;
-}
-
-/* Styling for Cards */
-.trip-card {
-  height: 350px; /* Reduced height to match upcoming trips size */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.your-trips-title{
   font-family: "Times New Roman", Times, serif;
-}
-
-  .trip-card img {
-    height: 150px;
-    object-fit: cover;
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-.trip-card-header {
-  padding-bottom: 10px;
-  font-family: "Times New Roman", Times, serif;
-}
-
-.trip-card-actions {
-  margin-top: auto;
+  font-weight: bold;
   text-align: center;
 }
 
-.view-trip-btn {
-  font-size: 1rem;
-  padding: 10px 20px;
-  background-color: lightpink;
-  color: white;
-  border-radius: 5px;
-  text-transform: uppercase;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-top: 10px;
-  font-family: "Times New Roman", Times, serif;
-}
-
-  .view-trip-btn:hover {
-    transform: translateY(-3px);
-  }
-
-.row .col-md-4 {
-  margin-bottom: 20px; /* Adds consistent space between cards */
-}
-
-/* Scrollable Sections */
-.trips-scrollable {
-  max-height: 350px; /* Adjusted for better fit */
-  overflow-y: auto;
-  margin: 0 auto; /* Centers the element horizontally */
-  max-width: 90%;
-}
-
-.trips-row {
-  margin: 0 -10px; /* Adjusts row margins for full-width behavior */
-  width: calc(100% + 30px); /* Increases width beyond container padding */
-}
-
-  /* Ensure Columns Fit Correctly */
-  .trips-row .col-md-4 {
-    padding: 0 10px; /* Adds spacing between columns */
-  }
-
-/* Upcoming Active Trips Section Styling */
-.upcoming-active-trips {
+.upcoming-trips {
   background-color: #f8f9fa;
   padding: 40px 0;
+  align-items: center;
 }
 
-  .upcoming-active-trips .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+.upcoming-trips-content{
+  align-items: center;
+  margin: 0 8vw;
+  padding: 20px 15px;
+}
 
-/* Section Heading Styling */
-.section-heading {
-  font-size: 2.5rem;
-  font-weight: 400;
-  margin-bottom: 20px;
-  padding: 20px;
-  text-align: center;
+.upcoming-trips-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
 }
 
-/* Text Styling */
+.upcoming-trips-subtitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .no-trips-message {
   text-align: center;
   font-family: "Times New Roman", Times, serif;
 }
 
-  .no-trips-message p {
-    color: #6c757d;
-  }
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .trip-card {
-    height: auto;
-  }
-  .trip-card-image {
-    height: auto;
-  }
+.no-trips-message p {
+  color: #6c757d;
 }

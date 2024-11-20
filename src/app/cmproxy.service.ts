@@ -16,10 +16,24 @@ export class CmproxyService {
    * @param studentId - The ID of the student whose trips to fetch.
    * @returns An Observable of the student's trips.
    */
-  getYourTripsForStudent(studentId: string): Observable<any> {
-    const url = `${this.hostUrl}app/attendee/${studentId}`;
-    console.log(`Fetching trips for student ID: ${studentId}, URL: ${url}`);
-    return this.httpClient.get<any>(url);
+  getAttendedTripsForStudent(
+    studentId: string,
+    limit: string
+  ): Observable<any> {
+    var params = new HttpParams();
+
+    if (limit != '') {
+      params = params.set('limit', limit);
+    }
+
+    const options = {
+      params: params,
+    };
+
+    return this.httpClient.get<any>(
+      this.hostUrl + `app/attendee/${studentId}`,
+      options
+    );
   }
 
   /**
@@ -27,10 +41,24 @@ export class CmproxyService {
    * Includes pagination and sorting options.
    * @returns An Observable of upcoming trips.
    */
-  retrieveUpcomingActiveTrips(): Observable<any> {
-    const url = `${this.hostUrl}app/trip/upcoming?days=7&perPage=5&expand=true&sort=desc`;
-    console.log(`Fetching upcoming trips: URL: ${url}`);
-    return this.httpClient.get<any>(url);
+  retrieveLimitedUpcomingActiveTrips(
+    numDays: string,
+    limit: string,
+    expand: boolean
+  ): Observable<any> {
+    var params = new HttpParams().set('days', numDays).set('expand', expand);
+    if (limit != '') {
+      params = params.set('perPage', limit);
+    }
+
+    const options = {
+      params: params,
+    };
+
+    return this.httpClient.get<any>(
+      this.hostUrl + 'app/trip/upcoming',
+      options
+    );
   }
 
   getListofTrips(
