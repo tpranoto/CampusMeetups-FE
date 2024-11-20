@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CmproxyService } from '../cmproxy.service';
 import { CookiesService } from '../cookie.service';
 
 @Component({
   selector: 'app-welcomepage',
   templateUrl: './welcomepage.component.html',
-  styleUrls: ['./welcomepage.component.css'],
+  styleUrl: './welcomepage.component.css',
 })
-export class WelcomepageComponent implements OnInit {
+export class WelcomepageComponent {
   trips: any = [];
   upcomingDays: string = '7';
   upcomingTrips: any = [];
