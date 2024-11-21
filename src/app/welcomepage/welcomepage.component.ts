@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CmproxyService } from '../cmproxy.service';
 import { CookiesService } from '../cookie.service';
+import { AttendedTripsData, TripsData, StudentDetails } from '../models/models';
 
 @Component({
   selector: 'app-welcomepage',
@@ -8,20 +9,18 @@ import { CookiesService } from '../cookie.service';
   styleUrl: './welcomepage.component.css',
 })
 export class WelcomepageComponent {
-  trips: any = [];
+  trips: AttendedTripsData[] = [];
   upcomingDays: string = '7';
-  upcomingTrips: any = [];
-  studentName: string = 'User';
+  upcomingTrips: TripsData[] = [];
+  loggedInEmail: string = 'oliviajohnson@seattleu.edu'; // static for now
+  userData: any = {};
   studentId: string = '';
 
   constructor(
     private proxy$: CmproxyService,
     private cookieServ: CookiesService
   ) {
-    var userDt = this.cookieServ.getCookie('user');
-    this.studentName = userDt.fname;
-    this.studentId = userDt.studentId;
-    this.fetchAttendedTrips();
+    this.fetchStudentData();
     this.fetchUpcomingActiveTrips();
   }
 
@@ -30,7 +29,7 @@ export class WelcomepageComponent {
   // Fetch trips for the specific student
   fetchAttendedTrips(): void {
     this.proxy$
-      .getAttendedTripsForStudent(this.studentId, '4')
+      .getAttendedTripsForStudent(this.userData.studentId, '4')
       .subscribe((result: any) => {
         this.trips = result.map((trip: any) => trip.tripData);
       });
@@ -42,6 +41,16 @@ export class WelcomepageComponent {
       .getLimitedUpcomingActiveTrips(this.upcomingDays, '4', true)
       .subscribe((result: any) => {
         this.upcomingTrips = result.data;
+      });
+  }
+
+  fetchStudentData(): void {
+    this.proxy$
+      .getStudentDetailsByEmail(this.loggedInEmail)
+      .subscribe((result: any) => {
+        this.cookieServ.setCookie('user', result);
+        this.userData = result;
+        this.fetchAttendedTrips();
       });
   }
 }

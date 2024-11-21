@@ -1,15 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CmproxyService } from '../cmproxy.service';
-
-// interface Trip {
-//   tripId: string;
-//   name: string;
-//   description: string;
-//   timestamp: Date;
-//   status: string;
-//   organizerId: string;
-// }
+import { TripsData, CategoryDetails } from '../models/models';
 
 @Component({
   selector: 'app-triplistpage',
@@ -17,9 +9,8 @@ import { CmproxyService } from '../cmproxy.service';
   styleUrl: './triplistpage.component.css',
 })
 export class TriplistpageComponent {
-  response: any = {};
-  trips: any = [];
-  categories: any = [];
+  trips: TripsData[] = [];
+  categories: CategoryDetails[] = [];
   page: number = 0;
   perPage: number = 12;
   categoryName: string = 'Select Category';
@@ -67,7 +58,6 @@ export class TriplistpageComponent {
   }
 
   onCategorySelect(category: any): void {
-    // get filtered trips when a category is selected
     this.categoryName = category.name;
     this.categoryId = category.categoryId;
     if (category.name != 'Select Category') {
@@ -124,22 +114,20 @@ export class TriplistpageComponent {
     url?: string
   ) {
     if (url) {
-      this.proxy$.getListOfTripsByUrl(url).subscribe((result: any[]) => {
-        this.response = result;
-        this.page = this.response.page;
-        this.trips = this.response.data;
-        this.nextPage = this.response.nextPage;
-        this.prevPage = this.response.prevPage;
+      this.proxy$.getListOfTripsByUrl(url).subscribe((result: any) => {
+        this.page = result.page;
+        this.trips = result.data;
+        this.nextPage = result.nextPage;
+        this.prevPage = result.prevPage;
       });
     } else {
       this.proxy$
         .getListofTrips(searchedName, page, perPage, catId, expand)
-        .subscribe((result: any[]) => {
-          this.response = result;
-          this.page = this.response.page;
-          this.trips = this.response.data;
-          this.nextPage = this.response.nextPage;
-          this.prevPage = this.response.prevPage;
+        .subscribe((result: any) => {
+          this.page = result.page;
+          this.trips = result.data;
+          this.nextPage = result.nextPage;
+          this.prevPage = result.prevPage;
         });
     }
   }
@@ -147,7 +135,7 @@ export class TriplistpageComponent {
   checkIfScrollable(): void {
     const contentElement = this.scrollTarget.nativeElement;
     this.isScrollable =
-      contentElement.scrollHeight > contentElement.clientHeight; // Check if scroll height is greater than the client height
+      contentElement.scrollHeight > contentElement.clientHeight;
   }
 
   scrollToTop(): void {
