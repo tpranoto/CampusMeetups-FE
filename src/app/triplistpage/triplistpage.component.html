@@ -5,10 +5,22 @@
         <div class="col-sm-10 triplist-content">
             <div #scrollTarget></div> <!--target for scrolling up after prev & next page -->
             <div class="container-fluid triplist-content-header">
-                <div class="triplist-header-title">Adventure! Here I Come</div>
+                <div class="triplist-header-title">Find your next adventure from our curated trips below!</div>
+                <div class="triplist-header-subtitle">Browse through amazing destinations and start planning your journey today.</div>
 
                 <!-- Categories Menu -->
                 <div class="categories-container">
+                    <button [matMenuTriggerFor]="categoryMenu" class="filter-button">
+                        {{categoryName}}
+                    </button>
+                    <mat-menu #categoryMenu="matMenu" xPosition="after">
+                        <ng-container *ngFor="let category of categories">
+                            <button mat-menu-item (click)="onCategorySelect(category)" class="category-menu-item">
+                                {{ category.name }}
+                            </button>
+                        </ng-container>
+                    </mat-menu>
+
                     <div class="name-filter-box">
                         <mat-chip-set #templateChipGrid class="name-filter-box-button" *ngIf="searchName != ''">
                             <mat-chip-row (removed)="removeFilterKeyword()">
@@ -19,17 +31,6 @@
                             </mat-chip-row>
                         </mat-chip-set> 
                     </div>  
-                    
-                    <button [matMenuTriggerFor]="categoryMenu" class="filter-button">
-                        {{categoryName}}
-                    </button>
-                    <mat-menu #categoryMenu="matMenu" xPosition="before">
-                        <ng-container *ngFor="let category of categories">
-                            <button mat-menu-item (click)="onCategorySelect(category)" class="category-menu-item">
-                                {{ category.name }}
-                            </button>
-                        </ng-container>
-                    </mat-menu>
                 </div>                    
             </div>
 

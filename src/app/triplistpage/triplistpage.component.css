@@ -11,14 +11,9 @@
 
 .triplist-content-header{
     display: flex;
-    color: rgb(0, 0, 0); 
-    border-radius: 8px; 
-    display: flex;
-    align-items: center; 
-    padding: 1%;
-    margin: 2vh 0;
+    flex-direction: column;
     justify-content:space-between;
-    border: 2px solid darkred;
+    margin-top: 2vh;
 }
 
 .category-menu-item{
@@ -29,8 +24,8 @@
 
 .categories-container{
     display: flex;
-    text-align: center;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .name-filter-box{
@@ -227,14 +222,24 @@
 
 .triplist-header-title {
     display: flex;
-    justify-content: center;
     align-items: center;
     color: darkred;
     font-family: 'Times New Roman', Times, serif;
-    font-size: 3vw; 
+    font-size: 2vw; 
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     pointer-events: none;
+    margin-bottom: 5px;
+    height: 4vh;
+    overflow: hidden;
+}
+
+.triplist-header-subtitle{
+    display: flex;
+    align-items: center;
+    margin-left: 1px;
+    margin-bottom: 5px;
+    overflow: hidden;
+
 }
 
 @keyframes bounce {
