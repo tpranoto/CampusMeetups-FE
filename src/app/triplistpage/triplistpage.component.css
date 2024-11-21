@@ -307,7 +307,6 @@
     transition: background-color 0.3s ease-in-out; 
     width: 10vw;
     height: 5vh;
-    margin-left: 1vw;
 }
 
 .filter-button:hover {
