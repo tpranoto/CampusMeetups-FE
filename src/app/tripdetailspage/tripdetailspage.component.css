@@ -1,4 +1,3 @@
-/* General Layout for the Trip Details Page */
 .trip-details-container {
   display: flex;
   gap: 2rem;
@@ -12,15 +11,22 @@
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-  padding-bottom: 120px;
+  padding-bottom: 15vh;
 }
 
-/* Trip Image Section */
+.trip-details{
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  padding-bottom: 15vh;
+}
+
 .trip-image-container {
-  flex: 0 0 60%;
-  max-width: 60%;
+  width: 65%;
   border-radius: 8px;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .trip-image {
@@ -28,22 +34,27 @@
   height: 350px;
   object-fit: cover;
   border-radius: 8px;
-  transition: transform 0.3s ease;
 }
 
-  .trip-image:hover {
-    transform: scale(1.05);
-  }
-
-/* Trip Info Section */
 .trip-info-container {
-  flex: 0 1 30%;
-  max-width: 30%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
   color: #444;
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.report-trip{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+  text-decoration: underline;
+}
+
+.report-trip:hover{
+  cursor: pointer;
 }
 
 .trip-title {
@@ -51,6 +62,18 @@
   font-weight: bold;
   color: #a32020;
   margin-bottom: 1.2rem;
+}
+
+.trip-location, .trip-time, .trip-status, .trip-category{
+  display: flex;
+  align-items: center;
+}
+
+.trip-location span, .trip-time span, .trip-status span, .trip-category span{
+  padding-left: 10px;
+  font-size: medium;
+  font-weight: lighter;
+  color: black;
 }
 
 .trip-info-container p {
@@ -65,28 +88,22 @@
   font-weight: bold;
 }
 
-/* Trip Description Section */
-.trip-description {
-  margin-top: 2rem;
+.trip-description h6 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #a32020;
 }
 
-  .trip-description h6 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #a32020;
-  }
+.trip-description p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+}
 
-  .trip-description p {
-    font-size: 1.1rem;
-    color: #555;
-    line-height: 1.7;
-  }
-
-/* Attendees Section - Horizontal Layout Below Description */
 .attendees-list-container {
   margin-top: 2rem;
   width: 100%;
-  background-color: #f0f0f0;
+  background-color: #f8f9fa;
   padding-top: 10px;
   padding-bottom: 30px;
   border-radius: 8px;
@@ -119,7 +136,7 @@
 }
 
 .attendee-card .mat-badge-content {
-  left: 20% !important; /* Center horizontally */
+  left: 20% !important;
   background-color: darkred;
 }
 
@@ -165,6 +182,20 @@
   padding: 2rem;
 }
 
+.ads-space{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ads-image{
+  width: 100%;
+  height: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  padding: 10px;
+}
+
 /* Footer Container */
 .fixed-footer {
   position: fixed;
@@ -204,45 +235,46 @@
 }
 
 /* Join Button in Footer */
-.footer-join-button {
-  background-color: #a32020;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.footer-join-button, .footer-leave-button, .footer-edit-button {
+  background-color: darkred;          
+    color: white;                    
+    border-radius: 11px;
+    font-size: 12px;                   
+    font-weight: bold;                
+    border: none;                      
+    cursor: pointer;                   
+    transition: background-color 0.3s ease-in-out; 
+    width: 10vw;
+    height: 5vh;
+    margin-left: 1vw;
 }
 
-  .footer-join-button:hover {
-    background-color: #7f1a1a;
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
+.footer-join-button:hover, .footer-leave-button:hover, .footer-edit-button:hover {
+  background-color: #7f1a1a;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
 
 /* Share Button in Footer */
 .footer-share-button {
   background-color: #007bff;
-  color: #fff;
-  font-size: 1.1rem;
-  font-weight: bold;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-left: 1rem;
+  color: white;                    
+  border-radius: 11px;
+  font-size: 12px;                   
+  font-weight: bold;                
+  border: none;                      
+  cursor: pointer;                   
+  transition: background-color 0.3s ease-in-out; 
+  width: 10vw;
+  height: 5vh;
+  margin-left: 1vw;
 }
 
-  .footer-share-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  }
+.footer-share-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
 
 /* Mobile Responsive Design */
 @media (max-width: 768px) {

@@ -1,4 +1,5 @@
 import { Component, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -9,13 +10,15 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AttendeelistdialogComponent {
   attendees: any = [];
   constructor(
+    private router: Router,
     private dialogRef: MatDialogRef<AttendeelistdialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { data: any }
   ) {
     this.attendees = data.data;
   }
 
-  onProfileClick(): void {
+  onProfileClick(studentId: string): void {
+    this.router.navigate(['/profile', studentId]);
     this.dialogRef.close();
   }
 }

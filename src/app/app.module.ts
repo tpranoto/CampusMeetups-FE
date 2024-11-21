@@ -9,6 +9,7 @@ import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.component';
 import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
+import { EdittrippageComponent } from './edittrippage/edittrippage.component';
 
 import { AvatarComponent } from './avatar/avatar.component';
 import { RecttripcardComponent } from './recttripcard/recttripcard.component';
@@ -39,6 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     TripdetailspageComponent,
     CreatetrippageComponent,
     ProfilepageComponent,
+    EdittrippageComponent,
     AvatarComponent,
     RecttripcardComponent,
     AttendeelistdialogComponent,

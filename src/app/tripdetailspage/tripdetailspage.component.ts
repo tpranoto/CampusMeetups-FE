@@ -14,6 +14,8 @@ export class TripdetailspageComponent implements OnInit {
   trip: any = {};
   userId: string = '';
   attendeeList: any = [];
+  isHostOfTrip: boolean = false;
+  hasJoinedTrip: boolean = false;
 
   constructor(
     private router: Router,
@@ -33,6 +35,7 @@ export class TripdetailspageComponent implements OnInit {
   fetchTripDetails(tripId: string): void {
     this.proxy$.getTripDetails(tripId).subscribe((result: any) => {
       this.trip = result;
+      this.attendeeList = [];
       this.attendeeList.push({
         studentId: this.trip.organizerId,
         fname: this.trip.organizerData.fname,
@@ -41,39 +44,68 @@ export class TripdetailspageComponent implements OnInit {
         host: true,
       });
       this.attendeeList.push(...this.trip.attendees);
+      this.checkJoinedTrip();
     });
   }
 
   onAttendeeListClick(): void {
     const dialogRef = this.dialog.open(AttendeelistdialogComponent, {
-      width: '400px',
+      width: '30vw',
       data: {
         data: this.attendeeList,
       },
-      panelClass: 'attendee-list-dialog', // Custom styles for dialog
       backdropClass: 'attendee-list-dialog-backdrop',
     });
   }
 
-  joinTrip(): void {
-    console.log(`Joining trip: ${this.trip.name}`);
-    alert(`You have joined the trip: ${this.trip.name}`);
+  onEditTripClick(tripId: string): void {
+    this.router.navigate(['/trip/edit', tripId]);
   }
 
-  // Share functionality
-  shareTrip(): void {
+  onLeaveTripClick(): void {
+    this.proxy$
+      .removeAttendeeForTrip(this.trip.tripId, this.userId)
+      .subscribe((result: any) => {
+        if (result.error) {
+          alert(`failed`);
+        } else {
+          this.hasJoinedTrip = false;
+          this.fetchTripDetails(this.trip.tripId);
+          alert(`You have left the trip: ${this.trip.name}`);
+        }
+      });
+  }
+
+  onJoinTripClick(): void {
+    this.proxy$
+      .createAttendeeForTrip(this.trip.tripId, this.userId)
+      .subscribe((result: any) => {
+        if (result.error) {
+          alert(`failed`);
+        } else {
+          this.hasJoinedTrip = true;
+          this.fetchTripDetails(this.trip.tripId);
+          alert(`You have joined the trip: ${this.trip.name}`);
+        }
+      });
+  }
+
+  onShareTripClick(): void {
     if (navigator.share) {
-      navigator
-        .share({
-          title: this.trip.name,
-          text: this.trip.description,
-          url: window.location.href,
-        })
-        .then(() => console.log('Trip shared successfully!'))
-        .catch((error) => console.error('Error sharing trip:', error));
+      navigator.share({
+        title: this.trip.name,
+        text: this.trip.description,
+        url: window.location.href,
+      });
     } else {
-      // Fallback for browsers that don't support Web Share API
       alert('Share functionality is not supported in your browser.');
     }
+  }
+
+  checkJoinedTrip(): void {
+    this.isHostOfTrip = this.trip.organizerId === this.userId;
+    this.hasJoinedTrip = this.attendeeList.some(
+      (attendee: any) => attendee.studentId === this.userId
+    );
   }
 }
