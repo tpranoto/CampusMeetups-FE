@@ -51,8 +51,6 @@ export class TriplistpageComponent {
     this.fetchCategories();
   }
 
-  ngOnInit(): void {}
-
   onCategorySelect(category: any): void {
     this.categoryName = category.name;
     this.categoryId = category.categoryId;

@@ -24,8 +24,6 @@ export class WelcomepageComponent {
     this.fetchUpcomingActiveTrips();
   }
 
-  ngOnInit(): void {}
-
   // Fetch trips for the specific student
   fetchAttendedTrips(): void {
     this.proxy$

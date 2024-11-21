@@ -11,7 +11,7 @@ import { NotificationdialogComponent } from '../notificationdialog/notificationd
   templateUrl: './tripdetailspage.component.html',
   styleUrls: ['./tripdetailspage.component.css'],
 })
-export class TripdetailspageComponent implements OnInit {
+export class TripdetailspageComponent {
   trip: any = {};
   userId: string = '';
   attendeeList: any = [];
@@ -30,8 +30,6 @@ export class TripdetailspageComponent implements OnInit {
     const tripId = actRouter.snapshot.params['tripId'];
     this.fetchTripDetails(tripId);
   }
-
-  ngOnInit(): void {}
 
   fetchTripDetails(tripId: string): void {
     this.proxy$.getTripDetails(tripId).subscribe((result: any) => {
