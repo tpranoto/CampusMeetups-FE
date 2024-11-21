@@ -287,11 +287,11 @@
 }
 
 .triplist-nolist-content{
-    display: flex;                /* Enable Flexbox */
-    justify-content: center;      /* Center horizontally */
-    align-items: center;          /* Center vertically */
-    height: 75%;                /* Full viewport height (optional, based on your layout) */
-    font-size: 1.5em;             /* Optional, adjust font size */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+    font-size: 1.5em;
     text-align: center;  
 }
 
