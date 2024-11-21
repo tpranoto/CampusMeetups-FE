@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class CmproxyService {
   private hostUrl: string = 'http://localhost:8080/';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) { }
 
   getAttendedTripsForStudent(
     studentId: string,
@@ -89,5 +89,8 @@ export class CmproxyService {
     return this.httpClient.get<any[]>(
       this.hostUrl + `app/student/email/${email}`
     );
+  }
+  createTrip(tripData: any): Observable<any> {
+    return this.httpClient.post(this.hostUrl + 'app/trip', tripData); 
   }
 }

@@ -28,6 +28,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +54,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatInputModule,
     MatMenuModule,
     MatChipsModule,
+    FormsModule
   ],
   providers: [
     provideHttpClient(),
