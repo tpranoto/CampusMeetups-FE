@@ -53,10 +53,6 @@ export class TriplistpageComponent {
 
   ngOnInit(): void {}
 
-  ngAfterViewInit(): void {
-    this.checkIfScrollable();
-  }
-
   onCategorySelect(category: any): void {
     this.categoryName = category.name;
     this.categoryId = category.categoryId;
@@ -130,12 +126,6 @@ export class TriplistpageComponent {
           this.prevPage = result.prevPage;
         });
     }
-  }
-
-  checkIfScrollable(): void {
-    const contentElement = this.scrollTarget.nativeElement;
-    this.isScrollable =
-      contentElement.scrollHeight > contentElement.clientHeight;
   }
 
   scrollToTop(): void {
