@@ -1,0 +1,30 @@
+.dialog-title{
+    background-color: #f0f0f0 ;
+}
+
+.attendee-info{
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.attendee-info:hover{
+    background-color: antiquewhite;
+    cursor: pointer;
+}
+
+.attendee-info-name{
+    font-size: large;
+    margin-left: 10px;
+}
+
+.dialog-content{
+    background-color: #f0f0f0 ;
+}
+
+.attendee-info-sub{
+    font-size: small;
+    font-weight: bold;
+}

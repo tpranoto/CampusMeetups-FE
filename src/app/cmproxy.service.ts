@@ -77,8 +77,14 @@ export class CmproxyService {
     return this.httpClient.get<any[]>(this.hostUrl + 'app/trip', options);
   }
 
-  getListOfTripsByUrl(url: string) {
+  // Method to fetch list of trips by URL
+  getListOfTripsByUrl(url: string): Observable<any[]> {
     return this.httpClient.get<any[]>(url);
+  }
+
+  // Method to get trip details by tripId
+  getTripDetails(tripId: string) {
+    return this.httpClient.get<any>(`${this.hostUrl}app/trip/${tripId}`);
   }
 
   getCategories(): Observable<any[]> {
@@ -88,6 +94,21 @@ export class CmproxyService {
   getStudentDetailsByEmail(email: string) {
     return this.httpClient.get<any[]>(
       this.hostUrl + `app/student/email/${email}`
+    );
+  }
+
+  createAttendeeForTrip(tripId: string, studentId: string) {
+    const body = {
+      tripId: tripId,
+      studentId: studentId,
+    };
+
+    return this.httpClient.post<any[]>(this.hostUrl + `app/attendee`, body);
+  }
+
+  removeAttendeeForTrip(tripId: string, studentId: string) {
+    return this.httpClient.delete<any[]>(
+      this.hostUrl + `app/attendee/${studentId}/trip/${tripId}`
     );
   }
 }

@@ -5,3 +5,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.attendee-list-dialog-backdrop{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
