@@ -4,6 +4,7 @@ import { CmproxyService } from '../cmproxy.service';
 import { CookiesService } from '../cookie.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AttendeelistdialogComponent } from '../attendeelistdialog/attendeelistdialog.component';
+import { NotificationdialogComponent } from '../notificationdialog/notificationdialog.component';
 
 @Component({
   selector: 'app-tripdetailspage',
@@ -67,11 +68,15 @@ export class TripdetailspageComponent implements OnInit {
       .removeAttendeeForTrip(this.trip.tripId, this.userId)
       .subscribe((result: any) => {
         if (result.error) {
-          alert(`failed`);
+          this.showNotificationDialog(
+            `failed to leave the trip, please try again.`
+          );
         } else {
           this.hasJoinedTrip = false;
+          this.showNotificationDialog(
+            `You have left the trip: ${this.trip.name}.`
+          );
           this.fetchTripDetails(this.trip.tripId);
-          alert(`You have left the trip: ${this.trip.name}`);
         }
       });
   }
@@ -81,11 +86,15 @@ export class TripdetailspageComponent implements OnInit {
       .createAttendeeForTrip(this.trip.tripId, this.userId)
       .subscribe((result: any) => {
         if (result.error) {
-          alert(`failed`);
+          this.showNotificationDialog(
+            `failed to leave the trip, please try again.`
+          );
         } else {
           this.hasJoinedTrip = true;
+          this.showNotificationDialog(
+            `You have joined the trip: ${this.trip.name}.`
+          );
           this.fetchTripDetails(this.trip.tripId);
-          alert(`You have joined the trip: ${this.trip.name}`);
         }
       });
   }
@@ -98,7 +107,9 @@ export class TripdetailspageComponent implements OnInit {
         url: window.location.href,
       });
     } else {
-      alert('Share functionality is not supported in your browser.');
+      this.showNotificationDialog(
+        'Share functionality is not supported in your browser.'
+      );
     }
   }
 
@@ -107,5 +118,18 @@ export class TripdetailspageComponent implements OnInit {
     this.hasJoinedTrip = this.attendeeList.some(
       (attendee: any) => attendee.studentId === this.userId
     );
+  }
+
+  showNotificationDialog(content: string): void {
+    const dialogRef = this.dialog.open(NotificationdialogComponent, {
+      width: '30vw',
+      position: {
+        top: '1vh',
+      },
+      data: {
+        data: content,
+      },
+      backdropClass: 'notification-dialog-backdrop',
+    });
   }
 }

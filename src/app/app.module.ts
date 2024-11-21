@@ -14,6 +14,7 @@ import { EdittrippageComponent } from './edittrippage/edittrippage.component';
 import { AvatarComponent } from './avatar/avatar.component';
 import { RecttripcardComponent } from './recttripcard/recttripcard.component';
 import { AttendeelistdialogComponent } from './attendeelistdialog/attendeelistdialog.component';
+import { NotificationdialogComponent } from './notificationdialog/notificationdialog.component';
 
 import { CmproxyService } from './cmproxy.service';
 import { CookiesService } from './cookie.service';
@@ -44,6 +45,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     AvatarComponent,
     RecttripcardComponent,
     AttendeelistdialogComponent,
+    NotificationdialogComponent,
   ],
   imports: [
     BrowserModule,
