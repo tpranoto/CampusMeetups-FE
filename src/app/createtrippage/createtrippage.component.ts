@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { CmproxyService } from '../cmproxy.service'; // Assuming your service is in the same folder
+import { CmproxyService } from '../cmproxy.service';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component'; // Import AppComponent
 
 @Component({
   selector: 'app-createtrippage',
@@ -14,31 +15,35 @@ export class CreatetrippageComponent {
     location: '',
     image: '',
     date: '',
-    organizerId: '',
     categoryId: '',
   };
 
   errorMessage: string | null = null;
 
-  constructor(private cmproxyService: CmproxyService, private router: Router) { }
+  constructor(
+    private cmproxyService: CmproxyService,
+    private router: Router,
+    private appComponent: AppComponent // Inject AppComponent
+  ) { }
 
   onSubmit() {
-    // Ensure the date is properly formatted before submission
+    const organizerId = this.appComponent.userId; // Get the logged-in user's ID
+
     const tripData = {
       ...this.trip,
       date: new Date(this.trip.date).toISOString(),
+      organizerId, // Include organizerId from AppComponent
     };
 
     this.cmproxyService.createTrip(tripData).subscribe(
       (response) => {
-        // Extract tripId and show it in a success message
-        const tripId = response.tripId; // Ensure this matches the backend response
+        const tripId = response.tripId;
         if (tripId) {
           alert(`Trip created successfully! Trip ID: ${tripId}`);
+          this.router.navigate(['/trip-detail', tripId]); // Navigate to the trip details page
         } else {
           alert('Trip created successfully, but trip ID is not available.');
         }
-        this.router.navigate(['/trips']); // Redirect to trips page
       },
       (error) => {
         console.error('Error creating trip:', error);

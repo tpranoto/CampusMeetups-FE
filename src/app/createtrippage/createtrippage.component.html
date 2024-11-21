@@ -55,17 +55,6 @@
     </div>
 
     <div class="form-group">
-      <label for="organizerId">Organizer ID:</label>
-      <input type="text"
-             id="organizerId"
-             class="form-control"
-             [(ngModel)]="trip.organizerId"
-             name="organizerId"
-             required
-             placeholder="Enter organizer ID" />
-    </div>
-
-    <div class="form-group">
       <label for="categoryId">Category ID:</label>
       <input type="text"
              id="categoryId"
@@ -76,7 +65,9 @@
              placeholder="Enter category ID" />
     </div>
 
-    <button type="submit" [disabled]="!tripForm.form.valid" class="btn-submit">
+    <button type="submit"
+            [disabled]="!tripForm.form.valid"
+            class="btn-submit">
       Create Trip
     </button>
   </form>
