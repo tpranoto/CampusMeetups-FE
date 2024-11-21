@@ -1,6 +1,5 @@
 <div class="container-fluid triplist-container">
     <div class="row triplist-full-content">    
-         <!-- ADS container -->
         <div class="col-sm-1 triplist-ads-space">
         </div>
         <div class="col-sm-10 triplist-content">
@@ -11,14 +10,14 @@
                 <!-- Categories Menu -->
                 <div class="categories-container">
                     <div class="name-filter-box">
-                        <mat-chip-grid #templateChipGrid class="name-filter-box-button" *ngIf="searchName != ''">
+                        <mat-chip-set #templateChipGrid class="name-filter-box-button" *ngIf="searchName != ''">
                             <mat-chip-row (removed)="removeFilterKeyword()">
                                 {{searchName}}
                                 <button matChipRemove>
                                     <mat-icon>cancel</mat-icon>
                                 </button>
                             </mat-chip-row>
-                        </mat-chip-grid> 
+                        </mat-chip-set> 
                     </div>  
                     
                     <button [matMenuTriggerFor]="categoryMenu" class="filter-button">
@@ -34,17 +33,17 @@
                 </div>                    
             </div>
 
-            <!-- Ttips by the filter -->
-            <div class="row triplist-list" [ngClass]="trips.length <5&& trips.length >0? 'triplist-list-fixed-div':''">
-                <div class="col-md-3" *ngFor="let trip of trips">
-                    <app-recttripcard [trip]="trip"></app-recttripcard>
-                </div>
-                <div class="row triplist-list-no-trips" *ngIf="trips==0">
-                        <div class="triplist-nolist-content">
-                            Couldnt find any trips
-                        </div>
+            <!-- Trips by the filter -->
+            <div *ngIf="trips.length>0; else noTrips" class="triplist-list-container">
+                <div class="row triplist-list" [ngClass]="trips.length <5? 'triplist-list-fixed-div':''">
+                    <div class="col-md-3" *ngFor="let trip of trips">
+                        <app-recttripcard [trip]="trip"></app-recttripcard>
+                    </div>
                 </div>
             </div>
+            <ng-template #noTrips>
+                <div class="triplist-nolist-content">No trips found. Try again!</div>
+            </ng-template>
 
             <!-- Trip page Pagination -->            
             <div class="triplist-pagination-container">

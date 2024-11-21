@@ -257,6 +257,13 @@
     height: 0px;
 }
 
+.triplist-list-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
 .triplist-list{
     flex: 1;
 }
@@ -275,11 +282,12 @@
 }
 
 .triplist-nolist-content{
-    height: 80%;
-    width: 80%;
-    border-radius: 20px;
-    background-color: lightgray;
-    border: 5px solid darkred;
+    display: flex;                /* Enable Flexbox */
+    justify-content: center;      /* Center horizontally */
+    align-items: center;          /* Center vertically */
+    height: 75%;                /* Full viewport height (optional, based on your layout) */
+    font-size: 1.5em;             /* Optional, adjust font size */
+    text-align: center;  
 }
 
 /* Filter Button */
