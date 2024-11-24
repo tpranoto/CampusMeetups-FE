@@ -1,0 +1,102 @@
+/* Profile Page Styles */
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+  .profile-avatar-container img {
+    width: 150px; /* Increase the width */
+    height: 150px; /* Increase the height */
+    border-radius: 50%; /* Ensure the image is circular */
+    object-fit: cover; /* Crop and fit the image if necessary */
+    border: 3px solid #ddd; /* Optional: add a border for better visibility */
+  }
+
+.change-profile-btn {
+  background-color: darkred;
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+  .change-profile-btn:hover {
+    transform: scale(1.05);
+    background-color: rgb(238, 206, 206);
+    color: darkred;
+  }
+
+.profile-details {
+  border: 1px solid #dee2e6;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.profile-title,
+.section-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: darkred;
+  font-family: 'Times New Roman', Times, serif;
+}
+ 
+
+.no-trips-message {
+  text-align: center;
+  font-style: italic;
+  color: #6c757d;
+}
+
+.action-buttons .btn {
+  width: 50px;
+  margin: 10px;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+  padding: 10px;
+}
+  }
+
+  .profile-avatar-container {
+    gap: 5px;
+  }
+
+  .profile-details {
+    padding: 20px;
+  }
+
+  .action-buttons .btn {
+    width: 100%;
+  }
+
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 10px;
+  }
+
+  .profile-avatar-container {
+    gap: 5px;
+  }
+
+  .profile-details {
+    padding: 20px;
+  }
+
+  .action-buttons .btn {
+    width: auto;
+  }
+}

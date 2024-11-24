@@ -50,6 +50,14 @@ export class CmproxyService {
     );
   }
 
+  getTripsOrganizedByStudent(
+    studentId: string
+  ): Observable<any> {
+    return this.httpClient.get<any>(
+      `${this.hostUrl}app/trips/organized?studentId=${studentId}`
+    );
+  }
+
   getListofTrips(
     searchedName: string,
     page: number,
