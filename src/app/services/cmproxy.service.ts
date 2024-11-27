@@ -33,13 +33,17 @@ export class CmproxyService {
   getLimitedUpcomingActiveTrips(
     numDays: string,
     limit: string,
-    expand: boolean
+    expand: boolean,
+    sort: string
   ): Observable<any> {
     var params = new HttpParams().set('days', numDays).set('expand', expand);
     if (limit != '') {
       params = params.set('perPage', limit);
     }
 
+    if (sort != '' && (sort == 'asc' || sort == 'desc')) {
+      params = params.set('sort', sort);
+    }
     const options = {
       params: params,
     };

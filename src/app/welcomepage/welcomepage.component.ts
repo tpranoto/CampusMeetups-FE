@@ -41,7 +41,7 @@ export class WelcomepageComponent {
   // Fetch trips for the next 7 days
   fetchUpcomingActiveTrips(): void {
     this.proxy$
-      .getLimitedUpcomingActiveTrips(this.upcomingDays, '4', true)
+      .getLimitedUpcomingActiveTrips(this.upcomingDays, '4', true, 'asc')
       .subscribe((result: any) => {
         if (result.error) {
           this.notifServ.showNotificationDialog(result.error, 'fail');
