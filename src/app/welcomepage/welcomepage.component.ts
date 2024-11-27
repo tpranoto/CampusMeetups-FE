@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { CmproxyService } from '../cmproxy.service';
+import { CmproxyService } from '../services/cmproxy.service';
 import { AttendedTripsData, TripsData } from '../models/models';
-import { UserService } from '../user.service';
-import { MatDialog } from '@angular/material/dialog';
-import { NotificationdialogComponent } from '../notificationdialog/notificationdialog.component';
+import { UserService } from '../services/user.service';
+import { NotificationdialogService } from '../services/notificationdialog.service';
 
 @Component({
   selector: 'app-welcomepage',
@@ -19,7 +18,7 @@ export class WelcomepageComponent {
   constructor(
     private proxy$: CmproxyService,
     private userServ: UserService,
-    private dialog: MatDialog
+    private notifServ: NotificationdialogService
   ) {
     this.trackUserSession();
     this.fetchAttendedTrips();
@@ -32,7 +31,7 @@ export class WelcomepageComponent {
       .getAttendedTripsForStudent(this.user.studentId, '4')
       .subscribe((result: any) => {
         if (result.error) {
-          this.showNotificationDialog(result.error, 'fail');
+          this.notifServ.showNotificationDialog(result.error, 'fail');
         } else {
           this.trips = result.map((trip: any) => trip.tripData);
         }
@@ -45,7 +44,7 @@ export class WelcomepageComponent {
       .getLimitedUpcomingActiveTrips(this.upcomingDays, '4', true)
       .subscribe((result: any) => {
         if (result.error) {
-          this.showNotificationDialog(result.error, 'fail');
+          this.notifServ.showNotificationDialog(result.error, 'fail');
         } else {
           this.upcomingTrips = result.data;
         }
@@ -56,18 +55,5 @@ export class WelcomepageComponent {
     this.userServ.user$.subscribe((user) => {
       this.user = user;
     });
-  }
-
-  showNotificationDialog(content: string, type: string): void {
-    const dialogRef = this.dialog.open(NotificationdialogComponent, {
-      data: {
-        data: content,
-        type: type,
-      },
-    });
-
-    setTimeout(() => {
-      dialogRef.close();
-    }, 1000);
   }
 }

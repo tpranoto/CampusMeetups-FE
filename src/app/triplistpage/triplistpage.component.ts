@@ -1,9 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CmproxyService } from '../cmproxy.service';
+import { CmproxyService } from '../services/cmproxy.service';
+import { NotificationdialogService } from '../services/notificationdialog.service';
 import { TripsData, CategoryDetails } from '../models/models';
-import { MatDialog } from '@angular/material/dialog';
-import { NotificationdialogComponent } from '../notificationdialog/notificationdialog.component';
 
 @Component({
   selector: 'app-triplistpage',
@@ -27,7 +26,7 @@ export class TriplistpageComponent {
     private router: Router,
     private actRouter: ActivatedRoute,
     private proxy$: CmproxyService,
-    private dialog: MatDialog
+    private notifServ: NotificationdialogService
   ) {
     this.page = 0;
     this.actRouter.queryParams.subscribe((params) => {
@@ -99,7 +98,7 @@ export class TriplistpageComponent {
   fetchCategories(): void {
     this.proxy$.getCategories().subscribe((result: any) => {
       if (result.error) {
-        this.showNotificationDialog(result.error, 'fail');
+        this.notifServ.showNotificationDialog(result.error, 'fail');
       } else {
         this.categories = [{ name: 'Select Category' }, ...result];
       }
@@ -117,7 +116,7 @@ export class TriplistpageComponent {
     if (url) {
       this.proxy$.getListOfTripsByUrl(url).subscribe((result: any) => {
         if (result.error) {
-          this.showNotificationDialog(result.error, 'fail');
+          this.notifServ.showNotificationDialog(result.error, 'fail');
         } else {
           this.page = result.page;
           this.trips = result.data;
@@ -130,7 +129,7 @@ export class TriplistpageComponent {
         .getListofTrips(searchedName, page, perPage, catId, expand)
         .subscribe((result: any) => {
           if (result.error) {
-            this.showNotificationDialog(result.error, 'fail');
+            this.notifServ.showNotificationDialog(result.error, 'fail');
           } else {
             this.page = result.page;
             this.trips = result.data;
@@ -146,18 +145,5 @@ export class TriplistpageComponent {
       behavior: 'smooth',
       block: 'start',
     });
-  }
-
-  showNotificationDialog(content: string, type: string): void {
-    const dialogRef = this.dialog.open(NotificationdialogComponent, {
-      data: {
-        data: content,
-        type: type,
-      },
-    });
-
-    setTimeout(() => {
-      dialogRef.close();
-    }, 1000);
   }
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CmproxyService } from '../cmproxy.service';
+import { CmproxyService } from '../services/cmproxy.service';
 
 @Component({
   selector: 'app-loginpage',

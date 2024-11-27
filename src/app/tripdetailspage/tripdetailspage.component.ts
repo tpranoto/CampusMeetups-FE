@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CmproxyService } from '../cmproxy.service';
-import { UserService } from '../user.service';
+import { CmproxyService } from '../services/cmproxy.service';
+import { UserService } from '../services/user.service';
+import { NotificationdialogService } from '../services/notificationdialog.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AttendeelistdialogComponent } from '../attendeelistdialog/attendeelistdialog.component';
-import { NotificationdialogComponent } from '../notificationdialog/notificationdialog.component';
 
 @Component({
   selector: 'app-tripdetailspage',
@@ -23,7 +23,8 @@ export class TripdetailspageComponent {
     private actRouter: ActivatedRoute,
     private proxy$: CmproxyService,
     private userServ: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private notifServ: NotificationdialogService
   ) {
     const userDt = this.userServ.user;
     this.userId = userDt.studentId;
@@ -66,10 +67,10 @@ export class TripdetailspageComponent {
       .removeAttendeeForTrip(this.trip.tripId, this.userId)
       .subscribe((result: any) => {
         if (result.error) {
-          this.showNotificationDialog(result.error, 'fail');
+          this.notifServ.showNotificationDialog(result.error, 'fail');
         } else {
           this.hasJoinedTrip = false;
-          this.showNotificationDialog(
+          this.notifServ.showNotificationDialog(
             `You have left the trip: ${this.trip.name}.`,
             'success'
           );
@@ -83,10 +84,10 @@ export class TripdetailspageComponent {
       .createAttendeeForTrip(this.trip.tripId, this.userId)
       .subscribe((result: any) => {
         if (result.error) {
-          this.showNotificationDialog(result.error, 'fail');
+          this.notifServ.showNotificationDialog(result.error, 'fail');
         } else {
           this.hasJoinedTrip = true;
-          this.showNotificationDialog(
+          this.notifServ.showNotificationDialog(
             `You have joined the trip: ${this.trip.name}.`,
             'success'
           );
@@ -103,7 +104,7 @@ export class TripdetailspageComponent {
         url: window.location.href,
       });
     } else {
-      this.showNotificationDialog(
+      this.notifServ.showNotificationDialog(
         'Share functionality is not supported in your browser.',
         'fail'
       );
@@ -115,18 +116,5 @@ export class TripdetailspageComponent {
     this.hasJoinedTrip = this.attendeeList.some(
       (attendee: any) => attendee.studentId === this.userId
     );
-  }
-
-  showNotificationDialog(content: string, type: string): void {
-    const dialogRef = this.dialog.open(NotificationdialogComponent, {
-      data: {
-        data: content,
-        type: type,
-      },
-    });
-
-    setTimeout(() => {
-      dialogRef.close();
-    }, 1000);
   }
 }

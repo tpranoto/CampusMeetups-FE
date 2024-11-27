@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CmproxyService } from './cmproxy.service';
-import { UserService } from './user.service';
+import { CmproxyService } from './services/cmproxy.service';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'app-root',

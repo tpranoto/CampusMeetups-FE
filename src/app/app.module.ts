@@ -17,8 +17,8 @@ import { RecttripcardComponent } from './recttripcard/recttripcard.component';
 import { AttendeelistdialogComponent } from './attendeelistdialog/attendeelistdialog.component';
 import { NotificationdialogComponent } from './notificationdialog/notificationdialog.component';
 
-import { CmproxyService } from './cmproxy.service';
-import { UserService } from './user.service';
+import { CmproxyService } from './services/cmproxy.service';
+import { UserService } from './services/user.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -67,8 +67,8 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   providers: [
     provideHttpClient(),
-    CmproxyService,
     provideAnimationsAsync(),
+    CmproxyService,
     UserService,
   ],
   bootstrap: [AppComponent],
