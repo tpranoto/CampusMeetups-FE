@@ -88,6 +88,10 @@
   font-weight: bold;
 }
 
+.trip-description{
+  min-height: 25vh;
+}
+
 .trip-description h6 {
   font-size: 1.2rem;
   font-weight: bold;

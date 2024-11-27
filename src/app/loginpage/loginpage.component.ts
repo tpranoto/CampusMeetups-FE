@@ -11,8 +11,6 @@ export class LoginpageComponent {
   constructor(private router: Router, private proxy$: CmproxyService) {}
 
   onLoginButtonClick(): void {
-    this.proxy$.login().subscribe(() => {
-      console.log('Login successful:');
-    });
+    this.proxy$.login().subscribe(() => {});
   }
 }

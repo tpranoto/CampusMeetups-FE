@@ -33,16 +33,16 @@
                     <div class="navbar-item" [routerLink]="['/']">Home</div>
                     <div class="navbar-item" [routerLink]="['/trip']">Explore</div>
                     <div class="navbar-item" [matMenuTriggerFor]="notificationMenu">Notifications</div>
-                    <mat-menu #notificationMenu="matMenu">
-                        <div>
-                            notification here
+                    <mat-menu #notificationMenu="matMenu" class="notifcation-menu">
+                        <div class="notification-menu-content">
+                            no new notifications
                         </div>
                     </mat-menu>
                     <div class="navbar-item navbar-profile" [matMenuTriggerFor]="profileMenu">
                         <div class="navbar-avatar-name">{{ user.fname }}</div>
                         <app-avatar [imgUrl]="user.image" [fName]="user.fname" [lName]="user.lname"></app-avatar>
                     </div>
-                    <mat-menu #profileMenu="matMenu">
+                    <mat-menu #profileMenu="matMenu" class="profile-menu">
                         <button mat-menu-item [routerLink]="['/profile',user.studentId]" class="profile-menu-item">View Profile</button>
                         <button mat-menu-item class="profile-menu-item">Settings</button>
                         <button mat-menu-item class="profile-menu-item">Help</button>
@@ -53,3 +53,20 @@
         </div>
     </mat-toolbar>
 </router-outlet>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <p>&copy; 2024. All rights reserved.</p>
+        </div>
+        <div class="footer-center">
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </div>
+        <div class="footer-right">
+        </div>
+    </div>
+</footer>
