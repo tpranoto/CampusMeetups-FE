@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CmproxyService } from '../cmproxy.service';
-import { CookiesService } from '../cookie.service';
+import { UserService } from '../user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AttendeelistdialogComponent } from '../attendeelistdialog/attendeelistdialog.component';
 import { NotificationdialogComponent } from '../notificationdialog/notificationdialog.component';
@@ -22,10 +22,10 @@ export class TripdetailspageComponent {
     private router: Router,
     private actRouter: ActivatedRoute,
     private proxy$: CmproxyService,
-    private cookieServ: CookiesService,
+    private userServ: UserService,
     private dialog: MatDialog
   ) {
-    const userDt = this.cookieServ.getCookie('user');
+    const userDt = this.userServ.user;
     this.userId = userDt.studentId;
     const tripId = actRouter.snapshot.params['tripId'];
     this.fetchTripDetails(tripId);
@@ -66,13 +66,12 @@ export class TripdetailspageComponent {
       .removeAttendeeForTrip(this.trip.tripId, this.userId)
       .subscribe((result: any) => {
         if (result.error) {
-          this.showNotificationDialog(
-            `failed to leave the trip, please try again.`
-          );
+          this.showNotificationDialog(result.error, 'fail');
         } else {
           this.hasJoinedTrip = false;
           this.showNotificationDialog(
-            `You have left the trip: ${this.trip.name}.`
+            `You have left the trip: ${this.trip.name}.`,
+            'success'
           );
           this.fetchTripDetails(this.trip.tripId);
         }
@@ -84,13 +83,12 @@ export class TripdetailspageComponent {
       .createAttendeeForTrip(this.trip.tripId, this.userId)
       .subscribe((result: any) => {
         if (result.error) {
-          this.showNotificationDialog(
-            `failed to leave the trip, please try again.`
-          );
+          this.showNotificationDialog(result.error, 'fail');
         } else {
           this.hasJoinedTrip = true;
           this.showNotificationDialog(
-            `You have joined the trip: ${this.trip.name}.`
+            `You have joined the trip: ${this.trip.name}.`,
+            'success'
           );
           this.fetchTripDetails(this.trip.tripId);
         }
@@ -106,7 +104,8 @@ export class TripdetailspageComponent {
       });
     } else {
       this.showNotificationDialog(
-        'Share functionality is not supported in your browser.'
+        'Share functionality is not supported in your browser.',
+        'fail'
       );
     }
   }
@@ -118,16 +117,16 @@ export class TripdetailspageComponent {
     );
   }
 
-  showNotificationDialog(content: string): void {
+  showNotificationDialog(content: string, type: string): void {
     const dialogRef = this.dialog.open(NotificationdialogComponent, {
-      width: '30vw',
-      position: {
-        top: '1vh',
-      },
       data: {
         data: content,
+        type: type,
       },
-      backdropClass: 'notification-dialog-backdrop',
     });
+
+    setTimeout(() => {
+      dialogRef.close();
+    }, 1000);
   }
 }

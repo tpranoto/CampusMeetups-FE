@@ -1,7 +1,14 @@
-<mat-dialog-content class="notification-dialog">
-    <div class="notification-dialog-title">Notification</div>
-    <div class="notification-dialog-content">
-        {{content}}
+<div class="notification-dialog">
+    <div class="notification-container" [ngClass]="'notification-' + type">
+        <div class="notification-dialog-success" *ngIf="type == 'success'">
+            <mat-icon>check_circle</mat-icon>
+        </div>
+        <div class="notification-dialog-fail" *ngIf="type=='fail'">
+            <mat-icon>cancel</mat-icon>
+        </div>
+        <div class="notification-dialog-info" *ngIf="type=='info'">
+            <mat-icon>info</mat-icon>
+        </div>
+        {{ content }}
     </div>
-
-</mat-dialog-content>
+</div>

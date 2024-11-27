@@ -1,10 +1,21 @@
 .navbar{
-    background-color: rgb(244, 238, 224);
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 7vh;
     padding: 0 1% 0 1%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand{
+    color: darkred;
+    font-weight: bolder;
+}
+
+.navbar-brand:hover{
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .navbar-left{
@@ -26,17 +37,6 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-}
-
-.logo{
-    height: 140%;
-    cursor: pointer;
-}
-
-.logo-img{
-    max-height: 100%;
-    width: auto;
-    object-fit: contain;
 }
 
 .search-container {
@@ -115,10 +115,11 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
+    border-radius: 5px;
 }
 
 .navbar-item:hover{
-    background-color: rgb(244, 260, 224);
+    background-color: #edc3c3;
     cursor: pointer;
 }
 
@@ -137,7 +138,7 @@
 }
   
 .navbar-createtrip-button:hover {
-    background-color: #fbd8d8;
+    background-color: #f46363;
     transform: scale(1.05);
 }
 

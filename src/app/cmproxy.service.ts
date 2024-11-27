@@ -111,4 +111,13 @@ export class CmproxyService {
       this.hostUrl + `app/attendee/${studentId}/trip/${tripId}`
     );
   }
+
+  login() {
+    window.location.href = `${this.hostUrl}app/login`;
+    return new Observable();
+  }
+
+  logout() {
+    return this.httpClient.get<any[]>(this.hostUrl + `app/logout`);
+  }
 }

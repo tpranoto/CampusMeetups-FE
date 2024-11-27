@@ -10,6 +10,7 @@ import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.comp
 import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { EdittrippageComponent } from './edittrippage/edittrippage.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
 
 import { AvatarComponent } from './avatar/avatar.component';
 import { RecttripcardComponent } from './recttripcard/recttripcard.component';
@@ -17,7 +18,7 @@ import { AttendeelistdialogComponent } from './attendeelistdialog/attendeelistdi
 import { NotificationdialogComponent } from './notificationdialog/notificationdialog.component';
 
 import { CmproxyService } from './cmproxy.service';
-import { CookiesService } from './cookie.service';
+import { UserService } from './user.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -42,6 +43,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     CreatetrippageComponent,
     ProfilepageComponent,
     EdittrippageComponent,
+    LoginpageComponent,
     AvatarComponent,
     RecttripcardComponent,
     AttendeelistdialogComponent,
@@ -67,7 +69,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     provideHttpClient(),
     CmproxyService,
     provideAnimationsAsync(),
-    CookiesService,
+    UserService,
   ],
   bootstrap: [AppComponent],
 })

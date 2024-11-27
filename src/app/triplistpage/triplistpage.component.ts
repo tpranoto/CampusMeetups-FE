@@ -2,6 +2,8 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CmproxyService } from '../cmproxy.service';
 import { TripsData, CategoryDetails } from '../models/models';
+import { MatDialog } from '@angular/material/dialog';
+import { NotificationdialogComponent } from '../notificationdialog/notificationdialog.component';
 
 @Component({
   selector: 'app-triplistpage',
@@ -24,7 +26,8 @@ export class TriplistpageComponent {
   constructor(
     private router: Router,
     private actRouter: ActivatedRoute,
-    private proxy$: CmproxyService
+    private proxy$: CmproxyService,
+    private dialog: MatDialog
   ) {
     this.page = 0;
     this.actRouter.queryParams.subscribe((params) => {
@@ -94,8 +97,12 @@ export class TriplistpageComponent {
   }
 
   fetchCategories(): void {
-    this.proxy$.getCategories().subscribe((result: any[]) => {
-      this.categories = [{ name: 'Select Category' }, ...result];
+    this.proxy$.getCategories().subscribe((result: any) => {
+      if (result.error) {
+        this.showNotificationDialog(result.error, 'fail');
+      } else {
+        this.categories = [{ name: 'Select Category' }, ...result];
+      }
     });
   }
 
@@ -109,19 +116,27 @@ export class TriplistpageComponent {
   ) {
     if (url) {
       this.proxy$.getListOfTripsByUrl(url).subscribe((result: any) => {
-        this.page = result.page;
-        this.trips = result.data;
-        this.nextPage = result.nextPage;
-        this.prevPage = result.prevPage;
+        if (result.error) {
+          this.showNotificationDialog(result.error, 'fail');
+        } else {
+          this.page = result.page;
+          this.trips = result.data;
+          this.nextPage = result.nextPage;
+          this.prevPage = result.prevPage;
+        }
       });
     } else {
       this.proxy$
         .getListofTrips(searchedName, page, perPage, catId, expand)
         .subscribe((result: any) => {
-          this.page = result.page;
-          this.trips = result.data;
-          this.nextPage = result.nextPage;
-          this.prevPage = result.prevPage;
+          if (result.error) {
+            this.showNotificationDialog(result.error, 'fail');
+          } else {
+            this.page = result.page;
+            this.trips = result.data;
+            this.nextPage = result.nextPage;
+            this.prevPage = result.prevPage;
+          }
         });
     }
   }
@@ -131,5 +146,18 @@ export class TriplistpageComponent {
       behavior: 'smooth',
       block: 'start',
     });
+  }
+
+  showNotificationDialog(content: string, type: string): void {
+    const dialogRef = this.dialog.open(NotificationdialogComponent, {
+      data: {
+        data: content,
+        type: type,
+      },
+    });
+
+    setTimeout(() => {
+      dialogRef.close();
+    }, 1000);
   }
 }

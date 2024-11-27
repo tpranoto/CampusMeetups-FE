@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CmproxyService } from './cmproxy.service';
-import { CookiesService } from './cookie.service';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -10,52 +10,51 @@ import { CookiesService } from './cookie.service';
 })
 export class AppComponent {
   title: string = 'CampusMeetups';
-  searchName: string = '';
-  loggedInEmail = 'oliviajohnson@seattleu.edu'; // static for now
-  userId: string = '';
-  fName: string = '';
-  lName: string = '';
-  pImageUrl: string = '';
+  searchTripName: string = '';
+  user: any = {};
 
   constructor(
     private router: Router,
     private proxy$: CmproxyService,
-    private cookieServ: CookiesService
+    private userServ: UserService
   ) {
-    this.fetchStudentData();
+    this.trackUserSession();
   }
 
   onInputChange(event: any) {
-    this.searchName = event.target.value;
+    this.searchTripName = event.target.value;
   }
 
   onInputEnter(event: KeyboardEvent): void {
-    if (event.key === 'Enter' && this.searchName != '') {
+    if (event.key === 'Enter' && this.searchTripName != '') {
       this.router.navigate(['/trip'], {
-        queryParams: { name: this.searchName },
+        queryParams: { name: this.searchTripName },
       });
-      this.searchName = '';
+      this.searchTripName = '';
     }
   }
 
-  OnSearchClick(): void {
-    if (this.searchName != '') {
+  onSearchClick(): void {
+    if (this.searchTripName != '') {
       this.router.navigate(['/trip'], {
-        queryParams: { name: this.searchName },
+        queryParams: { name: this.searchTripName },
       });
-      this.searchName = '';
+      this.searchTripName = '';
     }
   }
 
-  fetchStudentData(): void {
-    this.proxy$
-      .getStudentDetailsByEmail(this.loggedInEmail)
-      .subscribe((result: any) => {
-        this.cookieServ.setCookie('user', result);
-        this.userId = result.studentId;
-        this.fName = result.fname;
-        this.lName = result.lname;
-        this.pImageUrl = result.image;
-      });
+  onLogoutClick(): void {
+    this.proxy$.logout().subscribe(() => {
+      this.userServ.clearUser();
+    });
+  }
+
+  trackUserSession(): void {
+    this.userServ.user$.subscribe((user) => {
+      this.user = user;
+      if (this.user == null) {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }
