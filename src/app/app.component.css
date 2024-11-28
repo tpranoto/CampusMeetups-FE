@@ -184,7 +184,7 @@
 
 
 .footer {
-    background-color: darkred; 
+    background-color: rgb(52, 52, 52); 
     color: white; 
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
@@ -253,13 +253,15 @@
 }
 
 ::ng-deep .profile-menu {
-    transform: translateY(2%) translateX(7%) !important; /* Move it 10px down */
+    transform: translateY(2%) translateX(7%) !important;
+    background-color: #f8f9fa !important;
 }
 
 ::ng-deep .notifcation-menu{
-    transform: translateY(2%) translateX(-15%) !important; /* Move it 10px down */
+    transform: translateY(2%) translateX(-15%) !important;
+    background-color: #f8f9fa !important;
 }
 
 .notification-menu-content{
-    margin: 20%;
+    padding: 20%;
 }
