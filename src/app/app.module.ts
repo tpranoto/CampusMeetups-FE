@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { AvatarComponent } from './avatar/avatar.component';
 import { RecttripcardComponent } from './recttripcard/recttripcard.component';
 import { AttendeelistdialogComponent } from './attendeelistdialog/attendeelistdialog.component';
 import { NotificationdialogComponent } from './notificationdialog/notificationdialog.component';
+import { ReportdialogComponent } from './reportdialog/reportdialog.component';
 
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
@@ -48,11 +50,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     RecttripcardComponent,
     AttendeelistdialogComponent,
     NotificationdialogComponent,
+    ReportdialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,

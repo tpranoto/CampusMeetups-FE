@@ -116,6 +116,21 @@ export class CmproxyService {
     );
   }
 
+  createNewReport(
+    reason: string,
+    detail: string,
+    reporterId: string,
+    reportedId: string
+  ) {
+    const body = {
+      reason: reason,
+      detail: detail,
+      reportedId: reportedId,
+      reporterId: reporterId,
+    };
+    return this.httpClient.post<any[]>(this.hostUrl + `app/report/`, body);
+  }
+
   login() {
     window.location.href = `${this.hostUrl}app/login`;
     return new Observable();

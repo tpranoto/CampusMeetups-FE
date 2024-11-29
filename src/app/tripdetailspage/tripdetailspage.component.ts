@@ -5,11 +5,12 @@ import { UserService } from '../services/user.service';
 import { NotificationdialogService } from '../services/notificationdialog.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AttendeelistdialogComponent } from '../attendeelistdialog/attendeelistdialog.component';
+import { ReportdialogComponent } from '../reportdialog/reportdialog.component';
 
 @Component({
   selector: 'app-tripdetailspage',
   templateUrl: './tripdetailspage.component.html',
-  styleUrls: ['./tripdetailspage.component.css'],
+  styleUrl: './tripdetailspage.component.css',
 })
 export class TripdetailspageComponent {
   trip: any = {};
@@ -109,6 +110,22 @@ export class TripdetailspageComponent {
         'fail'
       );
     }
+  }
+
+  onReportTripClick(): void {
+    const dialogRef = this.dialog.open(ReportdialogComponent, {
+      width: '50vw',
+      data: { reporterId: this.userId, reportedId: this.trip.organizerId },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Report submitted:', result);
+        // Handle the result (reason and details)
+      } else {
+        console.log('Report dialog was closed without submission');
+      }
+    });
   }
 
   checkJoinedTrip(): void {
