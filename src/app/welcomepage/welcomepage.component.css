@@ -68,8 +68,30 @@
 .no-trips-message {
   text-align: center;
   font-family: "Times New Roman", Times, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  font-size: 1.5em;
 }
 
 .no-trips-message p {
   color: #6c757d;
+}
+
+.your-trips-link, .upcoming-trips-link{
+  display: flex;
+  justify-content:flex-end;
+}
+
+.your-trips-link button, .upcoming-trips-link button{
+  background-color: darkred;          
+  color: white;                    
+  border-radius: 10px;
+  border: none;                      
+  cursor: pointer;                   
+  transition: background-color 0.3s ease-in-out; 
+  width: 7vw;
+  height: 5vh;
+  margin-right: 5vw;
 }

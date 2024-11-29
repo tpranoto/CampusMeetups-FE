@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { CmproxyService } from '../cmproxy.service';
-import { CookiesService } from '../cookie.service';
-import { AttendedTripsData, TripsData, StudentDetails } from '../models/models';
+import { CmproxyService } from '../services/cmproxy.service';
+import { AttendedTripsData, TripsData } from '../models/models';
+import { UserService } from '../services/user.service';
+import { NotificationdialogService } from '../services/notificationdialog.service';
 
 @Component({
   selector: 'app-welcomepage',
@@ -12,43 +13,47 @@ export class WelcomepageComponent {
   trips: AttendedTripsData[] = [];
   upcomingDays: string = '7';
   upcomingTrips: TripsData[] = [];
-  loggedInEmail: string = 'oliviajohnson@seattleu.edu'; // static for now
-  userData: any = {};
-  studentId: string = '';
+  user: any = {};
 
   constructor(
     private proxy$: CmproxyService,
-    private cookieServ: CookiesService
+    private userServ: UserService,
+    private notifServ: NotificationdialogService
   ) {
-    this.fetchStudentData();
+    this.trackUserSession();
+    this.fetchAttendedTrips();
     this.fetchUpcomingActiveTrips();
   }
 
   // Fetch trips for the specific student
   fetchAttendedTrips(): void {
     this.proxy$
-      .getAttendedTripsForStudent(this.userData.studentId, '4')
+      .getAttendedTripsForStudent(this.user.studentId, '4')
       .subscribe((result: any) => {
-        this.trips = result.map((trip: any) => trip.tripData);
+        if (result.error) {
+          this.notifServ.showNotificationDialog(result.error, 'fail');
+        } else {
+          this.trips = result.map((trip: any) => trip.tripData);
+        }
       });
   }
 
   // Fetch trips for the next 7 days
   fetchUpcomingActiveTrips(): void {
     this.proxy$
-      .getLimitedUpcomingActiveTrips(this.upcomingDays, '4', true)
+      .getLimitedUpcomingActiveTrips(this.upcomingDays, '4', true, 'asc')
       .subscribe((result: any) => {
-        this.upcomingTrips = result.data;
+        if (result.error) {
+          this.notifServ.showNotificationDialog(result.error, 'fail');
+        } else {
+          this.upcomingTrips = result.data;
+        }
       });
   }
 
-  fetchStudentData(): void {
-    this.proxy$
-      .getStudentDetailsByEmail(this.loggedInEmail)
-      .subscribe((result: any) => {
-        this.cookieServ.setCookie('user', result);
-        this.userData = result;
-        this.fetchAttendedTrips();
-      });
+  trackUserSession(): void {
+    this.userServ.user$.subscribe((user) => {
+      this.user = user;
+    });
   }
 }

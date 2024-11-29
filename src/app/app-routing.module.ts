@@ -7,9 +7,11 @@ import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.comp
 import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { EdittrippageComponent } from './edittrippage/edittrippage.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
 
 const routes: Routes = [
   { path: '', component: WelcomepageComponent },
+  { path: 'login', component: LoginpageComponent },
   { path: 'trip/create', component: CreatetrippageComponent },
   { path: 'trip/edit/:tripId', component: EdittrippageComponent },
   { path: 'trip', component: TriplistpageComponent },

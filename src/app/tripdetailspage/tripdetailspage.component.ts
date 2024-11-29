@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CmproxyService } from '../cmproxy.service';
-import { CookiesService } from '../cookie.service';
+import { CmproxyService } from '../services/cmproxy.service';
+import { UserService } from '../services/user.service';
+import { NotificationdialogService } from '../services/notificationdialog.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AttendeelistdialogComponent } from '../attendeelistdialog/attendeelistdialog.component';
-import { NotificationdialogComponent } from '../notificationdialog/notificationdialog.component';
+import { ReportdialogComponent } from '../reportdialog/reportdialog.component';
 
 @Component({
   selector: 'app-tripdetailspage',
   templateUrl: './tripdetailspage.component.html',
-  styleUrls: ['./tripdetailspage.component.css'],
+  styleUrl: './tripdetailspage.component.css',
 })
 export class TripdetailspageComponent {
   trip: any = {};
@@ -22,10 +23,11 @@ export class TripdetailspageComponent {
     private router: Router,
     private actRouter: ActivatedRoute,
     private proxy$: CmproxyService,
-    private cookieServ: CookiesService,
-    private dialog: MatDialog
+    private userServ: UserService,
+    private dialog: MatDialog,
+    private notifServ: NotificationdialogService
   ) {
-    const userDt = this.cookieServ.getCookie('user');
+    const userDt = this.userServ.user;
     this.userId = userDt.studentId;
     const tripId = actRouter.snapshot.params['tripId'];
     this.fetchTripDetails(tripId);
@@ -66,13 +68,12 @@ export class TripdetailspageComponent {
       .removeAttendeeForTrip(this.trip.tripId, this.userId)
       .subscribe((result: any) => {
         if (result.error) {
-          this.showNotificationDialog(
-            `failed to leave the trip, please try again.`
-          );
+          this.notifServ.showNotificationDialog(result.error, 'fail');
         } else {
           this.hasJoinedTrip = false;
-          this.showNotificationDialog(
-            `You have left the trip: ${this.trip.name}.`
+          this.notifServ.showNotificationDialog(
+            `You have left the trip: ${this.trip.name}.`,
+            'success'
           );
           this.fetchTripDetails(this.trip.tripId);
         }
@@ -84,13 +85,12 @@ export class TripdetailspageComponent {
       .createAttendeeForTrip(this.trip.tripId, this.userId)
       .subscribe((result: any) => {
         if (result.error) {
-          this.showNotificationDialog(
-            `failed to leave the trip, please try again.`
-          );
+          this.notifServ.showNotificationDialog(result.error, 'fail');
         } else {
           this.hasJoinedTrip = true;
-          this.showNotificationDialog(
-            `You have joined the trip: ${this.trip.name}.`
+          this.notifServ.showNotificationDialog(
+            `You have joined the trip: ${this.trip.name}.`,
+            'success'
           );
           this.fetchTripDetails(this.trip.tripId);
         }
@@ -105,10 +105,27 @@ export class TripdetailspageComponent {
         url: window.location.href,
       });
     } else {
-      this.showNotificationDialog(
-        'Share functionality is not supported in your browser.'
+      this.notifServ.showNotificationDialog(
+        'Share functionality is not supported in your browser.',
+        'fail'
       );
     }
+  }
+
+  onReportTripClick(): void {
+    const dialogRef = this.dialog.open(ReportdialogComponent, {
+      width: '50vw',
+      data: { reporterId: this.userId, reportedId: this.trip.organizerId },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        console.log('Report submitted:', result);
+        // Handle the result (reason and details)
+      } else {
+        console.log('Report dialog was closed without submission');
+      }
+    });
   }
 
   checkJoinedTrip(): void {
@@ -116,18 +133,5 @@ export class TripdetailspageComponent {
     this.hasJoinedTrip = this.attendeeList.some(
       (attendee: any) => attendee.studentId === this.userId
     );
-  }
-
-  showNotificationDialog(content: string): void {
-    const dialogRef = this.dialog.open(NotificationdialogComponent, {
-      width: '30vw',
-      position: {
-        top: '1vh',
-      },
-      data: {
-        data: content,
-      },
-      backdropClass: 'notification-dialog-backdrop',
-    });
   }
 }

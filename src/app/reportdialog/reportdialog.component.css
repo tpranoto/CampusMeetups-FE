@@ -1,0 +1,34 @@
+.report-dialog {
+    background-color: white;
+    padding: 2rem;
+}
+
+.dialog-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.form{
+    width: 100%;
+}
+
+.form-title{
+    margin-bottom: 1vh;
+}
+
+.form-group{
+    padding: 0 1vw;
+    margin-bottom: 2vh;
+}
+
+.error-message{
+    color: red;
+    height: 1rem;
+    overflow: hidden;
+    margin-top: 1vh;
+}

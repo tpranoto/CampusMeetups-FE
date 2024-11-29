@@ -1,10 +1,20 @@
 .navbar{
-    background-color: rgb(244, 238, 224);
+    background-color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 7vh;
-    padding: 0 1% 0 1%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand{
+    color: darkred;
+    font-weight: bolder;
+}
+
+.navbar-brand:hover{
+    transform: scale(1.05);
+    cursor: pointer;
 }
 
 .navbar-left{
@@ -26,17 +36,6 @@
     align-items: center;
     justify-content: center;
     height: 100%;
-}
-
-.logo{
-    height: 140%;
-    cursor: pointer;
-}
-
-.logo-img{
-    max-height: 100%;
-    width: auto;
-    object-fit: contain;
 }
 
 .search-container {
@@ -115,10 +114,11 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
+    border-radius: 5px;
 }
 
 .navbar-item:hover{
-    background-color: rgb(244, 260, 224);
+    background-color: #efcfcf;
     cursor: pointer;
 }
 
@@ -137,7 +137,7 @@
 }
   
 .navbar-createtrip-button:hover {
-    background-color: #fbd8d8;
+    background-color: #f46363;
     transform: scale(1.05);
 }
 
@@ -180,4 +180,88 @@
 
 .navbar-avatar-name{
     margin-right: 5px;
+}
+
+
+.footer {
+    background-color: rgb(52, 52, 52); 
+    color: white; 
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    padding: 20px 0; 
+    display: flex;
+    justify-content: space-between; 
+     align-items: center;
+    flex-direction: row;
+    font-size: 14px;
+    position: relative;
+}
+
+.footer-content {
+    width: 100%;
+    max-width: 1200px; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 0 20px;
+}
+
+
+.footer-left {
+    text-align: left;
+    margin-left: 0; 
+}
+
+
+.footer-center {
+    text-align: center;
+    flex: 1;
+    
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.footer-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.footer-links li a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left, .footer-center {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+::ng-deep .profile-menu {
+    transform: translateY(2%) translateX(7%) !important;
+    background-color: #f8f9fa !important;
+}
+
+::ng-deep .notifcation-menu{
+    transform: translateY(2%) translateX(-15%) !important;
+    background-color: #f8f9fa !important;
+}
+
+.notification-menu-content{
+    padding: 20%;
 }
