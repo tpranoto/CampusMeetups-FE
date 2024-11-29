@@ -1,6 +1,7 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CmproxyService } from '../cmproxy.service';
+import { CmproxyService } from '../services/cmproxy.service';
+import { NotificationdialogService } from '../services/notificationdialog.service';
 import { TripsData, CategoryDetails } from '../models/models';
 
 @Component({
@@ -24,7 +25,8 @@ export class TriplistpageComponent {
   constructor(
     private router: Router,
     private actRouter: ActivatedRoute,
-    private proxy$: CmproxyService
+    private proxy$: CmproxyService,
+    private notifServ: NotificationdialogService
   ) {
     this.page = 0;
     this.actRouter.queryParams.subscribe((params) => {
@@ -94,8 +96,12 @@ export class TriplistpageComponent {
   }
 
   fetchCategories(): void {
-    this.proxy$.getCategories().subscribe((result: any[]) => {
-      this.categories = [{ name: 'Select Category' }, ...result];
+    this.proxy$.getCategories().subscribe((result: any) => {
+      if (result.error) {
+        this.notifServ.showNotificationDialog(result.error, 'fail');
+      } else {
+        this.categories = [{ name: 'Select Category' }, ...result];
+      }
     });
   }
 
@@ -109,19 +115,27 @@ export class TriplistpageComponent {
   ) {
     if (url) {
       this.proxy$.getListOfTripsByUrl(url).subscribe((result: any) => {
-        this.page = result.page;
-        this.trips = result.data;
-        this.nextPage = result.nextPage;
-        this.prevPage = result.prevPage;
+        if (result.error) {
+          this.notifServ.showNotificationDialog(result.error, 'fail');
+        } else {
+          this.page = result.page;
+          this.trips = result.data;
+          this.nextPage = result.nextPage;
+          this.prevPage = result.prevPage;
+        }
       });
     } else {
       this.proxy$
         .getListofTrips(searchedName, page, perPage, catId, expand)
         .subscribe((result: any) => {
-          this.page = result.page;
-          this.trips = result.data;
-          this.nextPage = result.nextPage;
-          this.prevPage = result.prevPage;
+          if (result.error) {
+            this.notifServ.showNotificationDialog(result.error, 'fail');
+          } else {
+            this.page = result.page;
+            this.trips = result.data;
+            this.nextPage = result.nextPage;
+            this.prevPage = result.prevPage;
+          }
         });
     }
   }

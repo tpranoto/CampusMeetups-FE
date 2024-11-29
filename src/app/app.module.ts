@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,14 +11,16 @@ import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.comp
 import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { EdittrippageComponent } from './edittrippage/edittrippage.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
 
 import { AvatarComponent } from './avatar/avatar.component';
 import { RecttripcardComponent } from './recttripcard/recttripcard.component';
 import { AttendeelistdialogComponent } from './attendeelistdialog/attendeelistdialog.component';
 import { NotificationdialogComponent } from './notificationdialog/notificationdialog.component';
+import { ReportdialogComponent } from './reportdialog/reportdialog.component';
 
-import { CmproxyService } from './cmproxy.service';
-import { CookiesService } from './cookie.service';
+import { CmproxyService } from './services/cmproxy.service';
+import { UserService } from './services/user.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -42,15 +45,18 @@ import { MatDialogModule } from '@angular/material/dialog';
     CreatetrippageComponent,
     ProfilepageComponent,
     EdittrippageComponent,
+    LoginpageComponent,
     AvatarComponent,
     RecttripcardComponent,
     AttendeelistdialogComponent,
     NotificationdialogComponent,
+    ReportdialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,
@@ -65,9 +71,9 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   providers: [
     provideHttpClient(),
-    CmproxyService,
     provideAnimationsAsync(),
-    CookiesService,
+    CmproxyService,
+    UserService,
   ],
   bootstrap: [AppComponent],
 })
