@@ -37,9 +37,6 @@ export class ProfilepageComponent {
         this.notifServ.showNotificationDialog(result.error, 'fail');
       } else {
         this.userData = result;
-        if (this.userData.image == '') {
-          this.userData.image = 'def_profile.jpg';
-        }
         this.fetchOrganizedTrips(studentId);
         this.fetchJoinedTrips(studentId);
       }

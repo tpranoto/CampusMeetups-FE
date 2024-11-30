@@ -52,7 +52,6 @@
 
 .profile-edit-link{
   display: flex;
-  justify-content: center;
   text-decoration: underline;
   color: #314080;
 }
@@ -133,6 +132,11 @@
   margin: 1vh 0;
 }
 
+.right-section{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .ads{
   background: url('../../../public/ads-2.png');
   height: 13vh;
@@ -147,7 +151,7 @@
   border-radius: 5px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   background-color: white;
-  padding: 2% 1%;
+  padding: 2% 2%;
   margin-bottom: 2vh;
 }
 
