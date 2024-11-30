@@ -1,19 +1,44 @@
-<div class="container-fluid banner">
-    <!-- Header text content-->
-    <div class="banner-container">
-        <h3 class="banner-header-text">Start Planning Your Next Adventure Today!</h3>
-        <div class="banner-text">
-            The world is waiting for you and Campus Meetups is here to help you get there!
-            Log in now with your campus email to create your first trip, meet fellow students, and get started on your next adventure.
+<div class="container-fluid triplist-container">
+<router-outlet>
+    <mat-toolbar class="navbar" >
+        <div class="navbar-left">
+            <img src="Logo.C.png" alt="Campus Meetups Logo" class="navbar-logo" />            
         </div>
-        <div class="banner-login" (click)="onLoginButtonClick()">
-            <button class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" >Login</button>
-        </div>
-    </div> 
-</div>
 
+        <div class="navbar-right">
+            <div class="navbar-content">
+                <div class="navbar-selection navbar-left-border">
+                    <div class="navbar-item" [routerLink]="['/']">Home</div>
+                    <div class="navbar-item">About</div>
+                    <div class="navbar-item" [matMenuTriggerFor]="notificationMenu">Contact</div>
+                    <mat-menu #notificationMenu="matMenu" class="notifcation-menu">
+                        <div class="notification-menu-content">
+                            no Contact info
+                        </div>
+                    </mat-menu>
+                    </div>
+            </div>
+        </div>
+    </mat-toolbar>
+</router-outlet>
+
+
+<div class="container-fluid banner">
+        <carousel [slides]="slides"></carousel>
+        </div>
+ 
+           <!-- Middle container where the login button is placed -->
+    <div class="col-sm-10 middle-container">
+         <div class="banner-login" (click)="onLoginButtonClick()">
+            <h2 class="banner-header-text">What’s there to wait?!</h2>
+            <p class="banner-text">Let's log you In!</p>
+             <button class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder">Login</button>
+        </div>
+            </div>
+
+<!--Last section container-->
 <section class="text-center py-5">
-    <div class="container">
+    <div class="container1">
         <h2 class="display-4 mb-4 text-times">What We Offer</h2>
         <div class="row">
             <div class="col-md-4 mb-4">
@@ -43,3 +68,4 @@
         </div>
     </div>
 </section>
+</div>

@@ -7,6 +7,11 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.navbar-logo {
+    height: 190px; 
+    margin-left: 15px; 
+}
+
 .navbar-brand{
     color: darkred;
     font-weight: bolder;
@@ -184,84 +189,66 @@
 
 
 .footer {
-    background-color: rgb(52, 52, 52); 
-    color: white; 
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
+    background-color: darkred; 
+    color: white;
     padding: 20px 0; 
-    display: flex;
-    justify-content: space-between; 
-     align-items: center;
-    flex-direction: row;
-    font-size: 14px;
+    font-family: Arial, sans-serif;
+    text-align: center;
     position: relative;
 }
 
 .footer-content {
-    width: 100%;
-    max-width: 1200px; 
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 0 20px;
 }
 
-
-.footer-left {
-    text-align: left;
-    margin-left: 0; 
+.footer-top {
+    margin-bottom: 20px;
 }
 
+.footer-top p {
+    font-size: 14px;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
 
 .footer-center {
-    text-align: center;
     flex: 1;
-    
+    text-align: center;
 }
 
 .footer-links {
     list-style: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .footer-links li {
     display: inline;
-    margin: 0 15px;
 }
 
-.footer-links li a {
+.footer-links a {
     color: white;
     text-decoration: none;
-    font-weight: normal;
+    font-size: 14px;
+    transition: color 0.3s ease;
 }
 
-.footer-links li a:hover {
-    text-decoration: underline;
+.footer-links a:hover {
+    color: #db3434;
 }
 
-@media (max-width: 768px) {
-    .footer-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-left, .footer-center {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-}
-
-::ng-deep .profile-menu {
-    transform: translateY(2%) translateX(7%) !important;
-    background-color: #f8f9fa !important;
-}
-
-::ng-deep .notifcation-menu{
-    transform: translateY(2%) translateX(-15%) !important;
-    background-color: #f8f9fa !important;
-}
-
-.notification-menu-content{
-    padding: 20%;
+.footer-right {
+    text-align: right;
 }

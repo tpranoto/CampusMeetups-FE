@@ -42,7 +42,7 @@
               "@angular/material/prebuilt-themes/rose-red.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
           },
           "configurations": {
             "production": {
@@ -102,7 +102,7 @@
               "@angular/material/prebuilt-themes/rose-red.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [ ]
           }
         }
       }

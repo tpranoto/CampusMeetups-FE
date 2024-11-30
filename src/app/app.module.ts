@@ -33,6 +33,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CarouselComponent } from './loginpage/carousel/carousel.component';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -48,9 +50,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     RecttripcardComponent,
     AttendeelistdialogComponent,
     NotificationdialogComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
     MatIconModule,
