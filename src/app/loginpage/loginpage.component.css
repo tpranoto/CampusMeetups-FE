@@ -8,27 +8,28 @@
 
   .middle-container{
     position: relative;
-    height: 100vh;
+    height: 70vh;
     left: 10%;  
     justify-content: center;
     overflow: hidden;
-    background-color: rgba(217, 217, 194, 0.37);
   }
 
 .banner-header-text {
     font-size: 2 rem;
     font-weight: bold;
     margin-bottom: 20px; 
-    color: darkred;
+    color: rgba(0, 0, 0, 0.751);
     font-family:inherit;
   }
+
   .banner-text {
     font-size: 1.0rem;
     font-weight: bold;
     margin-bottom: 20px; 
-    color: darkred;
+    color:rgba(0, 0, 0, 0.745);
     font-family:inherit;
   }
+
   .text-times{
     color: darkred;
     font-family:inherit;
@@ -38,7 +39,7 @@
     text-align: center;
     padding: 20px;
     height: 150%;
-    margin-top: 300px;
+    margin-top: 150px;
     border-radius: 10px;
   }
   
@@ -62,7 +63,37 @@
     border: none;
   }
 
-  
+
+.row{
+  margin-left: 10px;
+  justify-content: space-between;
+  font-family: inherit;
+
+}
+
+.avatar {
+  width: 70px; 
+  height: 70px;
+  border-radius: 50%; 
+  margin-bottom: 15px; 
+}
+
+.h4{
+  font-family:inherit;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.page-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: inherit;
+  background-color: rgba(217, 217, 194, 0.37);
+  height: 600px;
+}
+
 .navbar{
     background-color: white;
     display: flex;
@@ -73,7 +104,7 @@
 }
 
 .navbar-logo {
-    height: 190px; 
+    height: 70px; 
     margin-left: 15px; 
 }
 
