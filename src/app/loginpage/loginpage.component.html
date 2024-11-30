@@ -2,10 +2,15 @@
 <router-outlet>
     <mat-toolbar class="navbar" >
         <div class="navbar-left">
-            <img src="Logo.png" alt="Campus Meetups Logo" class="navbar-logo" />            
+            <a [routerLink]="['/login']">
+                <img src="Logo.png" alt="Campus Meetups Logo" class="navbar-logo" />
+            </a>        
         </div>
 
         <div class="navbar-right">
+            <div class="login-button" (click)="onLoginButtonClick()">
+                <button class="bttn bttn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder">login</button>
+           </div>
             <div class="navbar-content">
                 <div class="navbar-selection navbar-left-border">
                     <div class="navbar-item" [routerLink]="['/']">Home</div>
@@ -22,12 +27,12 @@
     </mat-toolbar>
 </router-outlet>
 
-
+<!--Carousel-->
 <div class="container-fluid banner">
         <carousel [slides]="slides"></carousel>
         </div>
- 
-           <!-- Middle container where the login button is placed -->
+
+    <!--Login button-->
     <div class="col-sm-10 middle-container">
          <div class="banner-login" (click)="onLoginButtonClick()">
             <h2 class="banner-header-text">What’s there to wait?!</h2>
@@ -36,6 +41,7 @@
         </div>
             </div>
 
+        <!--What we offer-->
         <section class="page-section" id="services">
             <div class="container px-4 px-lg-5">
                 <h2 class="text-center mt-0">What We Offer</h2>
@@ -77,5 +83,4 @@
                 </div>
             </div>
         </section>
-        
 </div>

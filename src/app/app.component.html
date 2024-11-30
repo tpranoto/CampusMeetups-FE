@@ -1,8 +1,9 @@
 <router-outlet>
     <mat-toolbar class="navbar"  *ngIf="showNavbar">
         <div class="navbar-left">
-            <img src="Logo.C.png" alt="Campus Meetups Logo" class="navbar-logo" />
-
+            <a [routerLink]="['/']">
+                <img src="Logo.png" alt="Campus Meetups Logo" class="navbar-logo" />
+            </a> 
             <div class="navbar-content">
                 <div class="search-container" *ngIf="user!=null && user.studentId != ''">
                     <input type="text" 

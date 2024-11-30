@@ -103,6 +103,35 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.login-button{
+  text-align: center;
+  padding: 1px;
+  border-radius: 10px;
+}
+
+.bttn{
+  display: flex;
+  margin-top: 8px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 15px; 
+  width: 15px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.bttn:hover {
+  background-color: #a41616; 
+  transform: scale(1.1);
+}
+
+.bttn-primary {
+  background-color: darkred;
+  color: white;
+}
+
 .navbar-logo {
     height: 70px; 
     margin-left: 15px; 
