@@ -1,70 +1,77 @@
-<section id="profile-page" class="profile-container py-5 bg-light">
-  <div class="container">
+<section id="profile-page" class="profile-container py-5">
+  <div class="container-fluid">
     <div class="row justify-content-center">
-      <!-- Profile Picture Section -->
-      <div class="col-md-4 text-center mb-4">
+
+      <div class="col-md-4 text-center">
         <div class="profile-avatar-container">
-          <img [src]="pImageUrl" alt="Profile Image" />
-          <button class="change-profile-btn" (click)="changeProfileImage()">Change Profile Picture</button>
+          <div class="profile-pic-wrapper">
+            <img [src]="userData.image" (error)="onImageError($event)" alt="Profile Image"/>
+            <div class="profile-basic-info">
+              <div class="profile-name">{{userData.fname}} {{userData.lname}}<mat-icon *ngIf="userData.verified">verified</mat-icon></div>
+              <div class="profile-joined"><mat-icon>calendar_today</mat-icon> Joined on {{userData.joined | date:'MMM, yyyy' }}</div>
+            </div>
+          </div>
+
+          <div class="profile-stats">
+            <div class="profile-stats-organized">
+              <div class="profile-stats-number">{{organizedTrips.length}}</div>
+              <div>organized trips</div>
+            </div>
+            <div class="profile-stats-joined">
+              <div class="profile-stats-number">{{joinedTrips.length}}</div>
+              <div>joined trips</div>
+            </div>
+          </div>
+
+          <div class="profile-bio" *ngIf="userData.bio && userData.bio!==''">
+            <div class="profile-bio-title">About me</div>
+            {{userData.bio}}
+          </div>
+        </div>
+
+        <div class="action-buttons" *ngIf="!isMyAccount">
+          <button class="btn btn-danger" (click)="onReportUserClick()">Report Student</button>
+        </div>
+
+        <div class="profile-edit-container" *ngIf="isMyAccount">
+          <div class="profile-edit-info">
+            <app-avatar [size]="'medium'"[imgUrl]="userData.image" [fName]="userData.fname" [lName]="userData.lname"></app-avatar>
+            <div class="profile-edit-name">
+              <div class="profile-edit-title">{{userData.fname || "Heyo"}} {{userData.lname}}</div>
+              <div class="profile-edit-link" [routerLink]="['/profile/edit',userData.studentId]"><mat-icon>edit</mat-icon>Edit profile</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Profile Details Section -->
       <div class="col-md-8">
-        <div class="profile-details bg-white p-4 shadow-lg rounded">
-          <h2 class="profile-title">Profile</h2>
-          <hr />
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><strong>Name:</strong> {{ userData.fname }} {{ userData.lname }}</li>
-            <li class="list-group-item"><strong>Email:</strong> {{ userData.email }}</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+        <div class="ads"></div>
 
-    <!-- Trips Section -->
-    <div class="row mt-5">
-      <div class="col-md-6 mb-4">
-        <div class="joined-trips bg-white p-4 shadow-lg rounded">
+        <div class="organized-trips" *ngIf="organizedTrips.length > 0">
+          <h2 class="section-title">Trips Organized</h2>
+          <hr />
+      
+          <div class="list-trips">
+            <div class="trip-details" *ngFor="let trip of organizedTrips">
+              <app-recttripcard [trip]="trip"></app-recttripcard>
+            </div>
+          </div>
+        </div>
+
+        <div class="joined-trips" *ngIf="joinedTrips.length > 0">
           <h3 class="section-title">Trips Joined</h3>
           <hr />
-          <div *ngIf="joinedTrips.length === 0" class="no-trips-message">
-            <p class="lead text-muted">No trips joined yet.</p>
+      
+          <div class="list-trips">
+            <div class="trip-details" *ngFor="let trip of joinedTrips">
+              <app-recttripcard [trip]="trip.tripData"></app-recttripcard>
+            </div>
           </div>
-          <ul class="list-group" *ngIf="joinedTrips.length > 0">
-            <li class="list-group-item" *ngFor="let trip of joinedTrips">
-              <strong>{{ trip.name }}</strong>
-            </li>
-          </ul>
+
         </div>
-      </div>
-      <div class="col-md-6 mb-4">
-        <div class="organized-trips bg-white p-4 shadow-lg rounded">
-          <h3 class="section-title">Trips Organized</h3>
-          <hr />
-          <div *ngIf="organizedTrips.length === 0" class="no-trips-message">
-            <p class="lead text-muted">No trips organized yet.</p>
-          </div>
-          <ul class="list-group" *ngIf="organizedTrips.length > 0">
-            <li class="list-group-item" *ngFor="let trip of organizedTrips">
-              <strong>{{ trip.name }}</strong>
-            </li>
-          </ul>
-        </div>
+
       </div>
     </div>
 
-    <!-- Report and Block Buttons -->
-    <div class="row justify-content-center mt-5">
-      <div class="col-md-8 text-center">
-        <div class="action-buttons">
-          <button class="btn btn-danger report-btn" (click)="reportUser()">Report User</button>
-          <button class="btn btn-warning block-btn" (click)="blockUser()">Block User</button>
-        </div>
-        <p class="text-muted mt-3">
-          <small>Reporting or blocking a user helps us maintain a safe and inclusive community.</small>
-        </p>
-      </div>
-    </div>
   </div>
 </section>

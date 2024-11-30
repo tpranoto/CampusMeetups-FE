@@ -54,7 +54,7 @@
     </mat-toolbar>
 </router-outlet>
 
-<footer class="footer">
+<footer class="footer" *ngIf="!currentPath.startsWith('/trip/')">
     <div class="footer-content">
         <div class="footer-left">
             <p>&copy; 2024 Campus Meetups | All Rights Reserved</p>

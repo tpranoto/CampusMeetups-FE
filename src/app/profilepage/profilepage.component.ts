@@ -1,78 +1,84 @@
-import { Component, OnInit } from '@angular/core';
-import { CmproxyService } from '../cmproxy.service';
-import { CookiesService } from '../cookie.service';
-import { TripsData, StudentDetails } from '../models/models';
+import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { CmproxyService } from '../services/cmproxy.service';
+import { TripsData, AttendedTrips, StudentDetails } from '../models/models';
+import { NotificationdialogService } from '../services/notificationdialog.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ReportdialogComponent } from '../reportdialog/reportdialog.component';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-profilepage',
   templateUrl: './profilepage.component.html',
-  styleUrls: ['./profilepage.component.css'],
+  styleUrl: './profilepage.component.css',
 })
-export class ProfilepageComponent implements OnInit {
-  joinedTrips: TripsData[] = [];
-  organizedTrips: TripsData[] = [];
-  loggedInEmail: string = 'oliviajohnson@seattleu.edu'; // Replace with dynamic email
+export class ProfilepageComponent {
   userData: StudentDetails | any = {};
-  studentId: string = '';
-  pImageUrl: string = ''; // Placeholder or default image URL
-  fName: string = 'John'; // Default or fetched first name
-  lName: string = 'Doe';  // Default or fetched last name
+  organizedTrips: TripsData[] = [];
+  joinedTrips: AttendedTrips[] = [];
+  isMyAccount: Boolean = false;
 
   constructor(
     private proxy$: CmproxyService,
-    private cookieServ: CookiesService
-  ) { }
-
-  ngOnInit(): void {
-    this.fetchStudentData();
+    private actRouter: ActivatedRoute,
+    private dialog: MatDialog,
+    private notifServ: NotificationdialogService,
+    private userServ: UserService
+  ) {
+    const studentId = actRouter.snapshot.params['studentId'];
+    const userSessionData = this.userServ.user;
+    this.isMyAccount = userSessionData.studentId === studentId;
+    this.fetchStudentData(studentId);
   }
 
-  // Fetch student details and use the data to load trips
-  fetchStudentData(): void {
-    this.proxy$
-      .getStudentDetailsByEmail(this.loggedInEmail)
-      .subscribe((result: any) => {
-        this.cookieServ.setCookie('user', result);
+  fetchStudentData(studentId: string): void {
+    this.proxy$.getStudentDetailsById(studentId).subscribe((result: any) => {
+      if (result.error) {
+        this.notifServ.showNotificationDialog(result.error, 'fail');
+      } else {
         this.userData = result;
-        this.studentId = result.studentId;
-
-        // Fetch trips after obtaining the user data
-        this.fetchJoinedTrips();
-        this.fetchOrganizedTrips();
-      });
+        if (this.userData.image == '') {
+          this.userData.image = 'def_profile.jpg';
+        }
+        this.fetchOrganizedTrips(studentId);
+        this.fetchJoinedTrips(studentId);
+      }
+    });
   }
 
-  changeProfileImage(): void {
-    console.log('Change Profile Image button clicked');
-    // Add logic to update the profile image
-  }
-
-  // Fetch trips joined by the user
-  fetchJoinedTrips(): void {
+  fetchJoinedTrips(studentId: string): void {
     this.proxy$
-      .getAttendedTripsForStudent(this.studentId, '5') // Adjust number of trips to fetch
+      .getAttendedTripsForStudent(studentId)
       .subscribe((result: any) => {
-        this.joinedTrips = result.map((trip: any) => trip.tripData);
+        if (result.error) {
+          this.notifServ.showNotificationDialog(result.error, 'fail');
+        } else {
+          this.joinedTrips = result;
+        }
       });
   }
 
-  // Fetch trips organized by the user
-  fetchOrganizedTrips(): void {
+  fetchOrganizedTrips(studentId: string): void {
     this.proxy$
-      .getTripsOrganizedByStudent(this.studentId) // Adjust API method if needed
+      .getTripsOrganizedByStudent(studentId)
       .subscribe((result: any) => {
-        this.organizedTrips = result;
+        if (result.error) {
+          this.notifServ.showNotificationDialog(result.error, 'fail');
+        } else {
+          this.organizedTrips = result;
+        }
       });
   }
 
-  reportUser() {
-    console.log('User reported.');
-    // Add logic to handle user reporting
+  onReportUserClick() {
+    const dialogRef = this.dialog.open(ReportdialogComponent, {
+      width: '50vw',
+      data: { reportedId: this.userData.studentId },
+    });
   }
 
-  blockUser() {
-    console.log('User blocked.');
-    // Add logic to handle user blocking
+  onImageError(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.src = 'def_profile.jpg';
   }
-
 }
