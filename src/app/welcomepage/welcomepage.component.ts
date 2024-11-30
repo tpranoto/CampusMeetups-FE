@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { CmproxyService } from '../cmproxy.service';
-import { CookiesService } from '../cookie.service';
+import { CmproxyService } from '../services/cmproxy.service';
+import { AttendedTripsData, TripsData } from '../models/models';
+import { UserService } from '../services/user.service';
+import { NotificationdialogService } from '../services/notificationdialog.service';
 
 @Component({
   selector: 'app-welcomepage',
@@ -8,40 +10,50 @@ import { CookiesService } from '../cookie.service';
   styleUrl: './welcomepage.component.css',
 })
 export class WelcomepageComponent {
-  trips: any = [];
+  trips: AttendedTripsData[] = [];
   upcomingDays: string = '7';
-  upcomingTrips: any = [];
-  studentName: string = 'User';
-  studentId: string = '';
+  upcomingTrips: TripsData[] = [];
+  user: any = {};
 
   constructor(
     private proxy$: CmproxyService,
-    private cookieServ: CookiesService
+    private userServ: UserService,
+    private notifServ: NotificationdialogService
   ) {
-    var userDt = this.cookieServ.getCookie('user');
-    this.studentName = userDt.fname;
-    this.studentId = userDt.studentId;
+    this.trackUserSession();
     this.fetchAttendedTrips();
     this.fetchUpcomingActiveTrips();
   }
 
-  ngOnInit(): void {}
-
   // Fetch trips for the specific student
   fetchAttendedTrips(): void {
     this.proxy$
-      .getAttendedTripsForStudent(this.studentId, '4')
+      .getAttendedTripsForStudent(this.user.studentId, '4')
       .subscribe((result: any) => {
-        this.trips = result.map((trip: any) => trip.tripData);
+        if (result.error) {
+          this.notifServ.showNotificationDialog(result.error, 'fail');
+        } else {
+          this.trips = result.map((trip: any) => trip.tripData);
+        }
       });
   }
 
   // Fetch trips for the next 7 days
   fetchUpcomingActiveTrips(): void {
     this.proxy$
-      .getLimitedUpcomingActiveTrips(this.upcomingDays, '4', true)
+      .getLimitedUpcomingActiveTrips(this.upcomingDays, '4', true, 'asc')
       .subscribe((result: any) => {
-        this.upcomingTrips = result.data;
+        if (result.error) {
+          this.notifServ.showNotificationDialog(result.error, 'fail');
+        } else {
+          this.upcomingTrips = result.data;
+        }
       });
+  }
+
+  trackUserSession(): void {
+    this.userServ.user$.subscribe((user) => {
+      this.user = user;
+    });
   }
 }

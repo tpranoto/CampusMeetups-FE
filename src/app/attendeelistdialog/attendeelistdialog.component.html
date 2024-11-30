@@ -1,0 +1,10 @@
+<mat-dialog-content class="dialog-content">
+    <h5 class="dialog-title">Attendees ({{attendees?.length}})</h5>
+    <div class="attendee-info" *ngFor="let attendee of attendees" (click)="onProfileClick(attendee.studentId)">
+        <app-avatar [imgUrl]="attendee.image" [fName]="attendee.fname" [lName]="attendee.lname"></app-avatar>
+        <div class="attendee-info-name">
+            {{attendee.fname}} {{attendee.lname}}
+            <div class="attendee-info-sub" *ngIf="attendee?.host">Host</div>
+        </div>
+    </div>
+</mat-dialog-content>

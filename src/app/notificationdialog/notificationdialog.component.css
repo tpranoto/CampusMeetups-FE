@@ -1,0 +1,38 @@
+.notification-dialog {
+    position: fixed;
+    top: 5vh;
+    width: 20vw;
+    left: 40vw;
+}
+  
+.notification-container {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: Arial, sans-serif;
+    font-size: small;
+}
+  
+.notification-info {
+    background-color: #e7f3ff;
+    border: 2px solid #3178c6;
+    color: #3178c6;
+    border-radius: 5px;
+}
+  
+.notification-success {
+    background-color: #d4edda;
+    border: 2px solid #28a745;
+    color: #155724;
+    border-radius: 5px;
+}
+  
+.notification-fail {
+    background-color: #ffe9e9;
+    border: 2px solid #c72e2e;
+    color: #c72e2e;
+}

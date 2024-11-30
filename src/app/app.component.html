@@ -1,60 +1,72 @@
 <router-outlet>
     <mat-toolbar class="navbar">
-    <div class="navbar-left">
-        <div class="navbar-content logo" [routerLink]="['/']">
-            <img src="Campus Meetups (2).png" alt="Campus Meetups" class="logo-img" />
-            </div>
+        <div class="navbar-left">
+            <div class="navbar-brand" [routerLink]="['/']">Campus Meetups</div>
 
-        <div class="navbar-content">
-            <div class="search-container">
-                <input type="text" 
-                    placeholder="Search Trips" 
-                    class="search-input" 
-                    [value]="searchName" 
-                    (input)="onInputChange($event)"
-                    (keydown)="onInputEnter($event)"
-                >
-                <button class="search-button" (click)="OnSearchClick()">
-                    <mat-icon>search</mat-icon>
-                </button>
-              </div>              
-        </div>
-    </div>
-
-    <div class="navbar-right">
-        <div class="navbar-content">
             <div class="navbar-content">
-                <button mat-fab extended class="navbar-createtrip-button" [routerLink]="['/trip/create']">
+                <div class="search-container" *ngIf="user!=null && user.studentId != ''">
+                    <input type="text" 
+                        placeholder="Search Trips" 
+                        class="search-input" 
+                        [value]="searchTripName" 
+                        (input)="onInputChange($event)"
+                        (keydown)="onInputEnter($event)"
+                    >
+                    <button class="search-button" (click)="onSearchClick()">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </div>              
+            </div>
+        </div>
+
+        <div class="navbar-right">
+            <div class="navbar-content">
+                <button mat-fab extended class="navbar-createtrip-button" [routerLink]="['/trip/create']" *ngIf="user!=null && user.studentId != ''">
                     <div class="navbar-createtrip-button-content">
                         Start a Trip
                     </div>
                 </button>
             </div>
-            
 
-        </div>
-
-        <div class="navbar-content">
-            <div class="navbar-selection navbar-left-border">
-                <div class="navbar-item" [routerLink]="['/trip']">Explore</div>
-                <div class="navbar-item" [matMenuTriggerFor]="notificationMenu">Notifications</div>
-                <mat-menu #notificationMenu="matMenu">
-                    <div>
-                        hi
+            <div class="navbar-content">
+                <div class="navbar-selection navbar-left-border" *ngIf="user!=null && user.studentId != ''">
+                    <div class="navbar-item" [routerLink]="['/']">Home</div>
+                    <div class="navbar-item" [routerLink]="['/trip']">Explore</div>
+                    <div class="navbar-item" [matMenuTriggerFor]="notificationMenu">Notifications</div>
+                    <mat-menu #notificationMenu="matMenu" class="notifcation-menu">
+                        <div class="notification-menu-content">
+                            no new notifications
+                        </div>
+                    </mat-menu>
+                    <div class="navbar-item navbar-profile" [matMenuTriggerFor]="profileMenu">
+                        <div class="navbar-avatar-name">{{ user.fname }}</div>
+                        <app-avatar [imgUrl]="user.image" [fName]="user.fname" [lName]="user.lname"></app-avatar>
                     </div>
-                </mat-menu>
-                <div class="navbar-item navbar-profile" [matMenuTriggerFor]="profileMenu">
-                    <div class="navbar-avatar-name">{{ fName }}</div>
-                    <app-avatar [imgUrl]="pImageUrl" [fName]="fName" [lName]="lName"></app-avatar>
+                    <mat-menu #profileMenu="matMenu" class="profile-menu">
+                        <button mat-menu-item [routerLink]="['/profile',user.studentId]" class="profile-menu-item">View Profile</button>
+                        <button mat-menu-item class="profile-menu-item">Settings</button>
+                        <button mat-menu-item class="profile-menu-item">Help</button>
+                        <button mat-menu-item class="profile-menu-item" (click)="onLogoutClick()">Log out</button>
+                    </mat-menu>
                 </div>
-                <mat-menu #profileMenu="matMenu">
-                    <button mat-menu-item [routerLink]="['/profile',userId]" class="profile-menu-item">View Profile</button>
-                    <button mat-menu-item class="profile-menu-item">Settings</button>
-                    <button mat-menu-item class="profile-menu-item">Help</button>
-                    <button mat-menu-item class="profile-menu-item">Log out</button>
-                </mat-menu>
             </div>
         </div>
-    </div>
-  </mat-toolbar>
+    </mat-toolbar>
 </router-outlet>
+
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <p>&copy; 2024 Campus Meetups | All Rights Reserved</p>
+        </div>
+        <div class="footer-center">
+            <ul class="footer-links">
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </div>
+        <div class="footer-right">
+        </div>
+    </div>
+</footer>

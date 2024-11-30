@@ -18,7 +18,7 @@
             </div>
         </div>
         <div class="triplist-card-footer">
-            <div class="triplist-card-date"><b>Date:</b>&nbsp;{{ trip.timestamp | date:'MMM dd/yy' }}</div>
+            <div class="triplist-card-date"><b>Date:</b>&nbsp;{{ trip.timestamp | date:'MMM dd, yyyy' }}</div>
             <div class="triplist-card-category">{{ trip.categoryData.name }}</div>
         </div>
     </mat-card-content>

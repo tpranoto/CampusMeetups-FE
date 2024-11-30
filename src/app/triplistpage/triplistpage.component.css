@@ -2,23 +2,36 @@
 .triplist-container{
     display: flex;
     flex-direction: column;
-    height: 93vh;
+}
+
+.banner{
+    background-color: antiquewhite;
+    background:url(../../../public/banner-triplist.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .triplist-full-content{
     flex-grow: 1;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.triplist-full-content::-webkit-scrollbar {
+    width: 0px; 
+    height: 0px;
 }
 
 .triplist-content-header{
     display: flex;
-    color: rgb(0, 0, 0); 
-    border-radius: 8px; 
-    display: flex;
-    align-items: center; 
-    padding: 1%;
-    margin: 2vh 0;
+    flex-direction: column;
     justify-content:space-between;
-    border: 2px solid darkred;
+    margin-top: 2vh;
 }
 
 .category-menu-item{
@@ -29,8 +42,8 @@
 
 .categories-container{
     display: flex;
-    text-align: center;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: flex-start;
 }
 
 .name-filter-box{
@@ -38,7 +51,7 @@
 }
 
 .triplist-ads-space{
-    background-color: rgba(224, 224, 219, 0.327);
+    background-color: white;
     padding: 10px;
     display: flex;
     justify-content: center;
@@ -226,14 +239,24 @@
 
 .triplist-header-title {
     display: flex;
-    justify-content: center;
     align-items: center;
-    color: darkred;
+    color: white;
     font-family: 'Times New Roman', Times, serif;
-    font-size: 3vw; 
+    font-size: 2vw; 
     font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     pointer-events: none;
+    margin-bottom: 5px;
+    height: 4vh;
+    overflow: hidden;
+}
+
+.triplist-header-subtitle{
+    display: flex;
+    align-items: center;
+    margin-left: 1px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    color: #f8f9fa;
 }
 
 @keyframes bounce {
@@ -246,14 +269,14 @@
 }
 
 .triplist-content {
-    height: 93vh;
-    overflow: scroll;
-    scrollbar-width: none;
+    margin: 0 auto;
 }
 
-.triplist-content::-webkit-scrollbar {
-    width: 0px; 
-    height: 0px;
+.triplist-list-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
 }
 
 .triplist-list{
@@ -274,11 +297,12 @@
 }
 
 .triplist-nolist-content{
-    height: 80%;
-    width: 80%;
-    border-radius: 20px;
-    background-color: lightgray;
-    border: 5px solid darkred;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    font-family: "Times New Roman", Times, serif;
+    text-align: center;
 }
 
 /* Filter Button */
@@ -293,7 +317,6 @@
     transition: background-color 0.3s ease-in-out; 
     width: 10vw;
     height: 5vh;
-    margin-left: 1vw;
 }
 
 .filter-button:hover {

@@ -1,20 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { TriplistpageComponent } from './triplistpage/triplistpage.component';
-import { TripdetailsComponent } from './tripdetails/tripdetails.component';
+import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.component';
 import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
+import { EdittrippageComponent } from './edittrippage/edittrippage.component';
+import { LoginpageComponent } from './loginpage/loginpage.component';
 
 import { AvatarComponent } from './avatar/avatar.component';
 import { RecttripcardComponent } from './recttripcard/recttripcard.component';
+import { AttendeelistdialogComponent } from './attendeelistdialog/attendeelistdialog.component';
+import { NotificationdialogComponent } from './notificationdialog/notificationdialog.component';
+import { ReportdialogComponent } from './reportdialog/reportdialog.component';
 
-import { CmproxyService } from './cmproxy.service';
-import { CookiesService } from './cookie.service';
+import { CmproxyService } from './services/cmproxy.service';
+import { UserService } from './services/user.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
@@ -27,24 +33,30 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
-
-import { FormsModule } from '@angular/forms';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomepageComponent,
     TriplistpageComponent,
-    TripdetailsComponent,
+    TripdetailspageComponent,
     CreatetrippageComponent,
     ProfilepageComponent,
+    EdittrippageComponent,
+    LoginpageComponent,
     AvatarComponent,
     RecttripcardComponent,
+    AttendeelistdialogComponent,
+    NotificationdialogComponent,
+    ReportdialogComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,
@@ -54,13 +66,15 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatMenuModule,
     MatChipsModule,
-    FormsModule
+    FormsModule,
+    MatBadgeModule,
+    MatDialogModule,
   ],
   providers: [
     provideHttpClient(),
-    CmproxyService,
     provideAnimationsAsync(),
-    CookiesService,
+    CmproxyService,
+    UserService,
   ],
   bootstrap: [AppComponent],
 })

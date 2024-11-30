@@ -1,50 +1,48 @@
 <div class="container-fluid triplist-container">
-    <div class="row triplist-full-content">    
-         <!-- ADS container -->
-        <div class="col-sm-1 triplist-ads-space">
+    <div #scrollTarget class="row triplist-full-content">
+        <div class="container-fluid banner">
+            <div class="triplist-header-title">Find your next adventure from our curated trips below!</div>
+            <div class="triplist-header-subtitle">Browse through amazing destinations and start planning your journey today.</div>
         </div>
         <div class="col-sm-10 triplist-content">
-            <div #scrollTarget></div> <!--target for scrolling up after prev & next page -->
             <div class="container-fluid triplist-content-header">
-                <div class="triplist-header-title">Adventure! Here I Come</div>
-
                 <!-- Categories Menu -->
                 <div class="categories-container">
-                    <div class="name-filter-box">
-                        <mat-chip-grid #templateChipGrid class="name-filter-box-button" *ngIf="searchName != ''">
-                            <mat-chip-row (removed)="removeFilterKeyword()">
-                                {{searchName}}
-                                <button matChipRemove>
-                                    <mat-icon>cancel</mat-icon>
-                                </button>
-                            </mat-chip-row>
-                        </mat-chip-grid> 
-                    </div>  
-                    
                     <button [matMenuTriggerFor]="categoryMenu" class="filter-button">
                         {{categoryName}}
                     </button>
-                    <mat-menu #categoryMenu="matMenu" xPosition="before">
+                    <mat-menu #categoryMenu="matMenu" xPosition="after">
                         <ng-container *ngFor="let category of categories">
                             <button mat-menu-item (click)="onCategorySelect(category)" class="category-menu-item">
                                 {{ category.name }}
                             </button>
                         </ng-container>
                     </mat-menu>
+
+                    <div class="name-filter-box">
+                        <mat-chip-set #templateChipGrid class="name-filter-box-button" *ngIf="searchName != ''">
+                            <mat-chip-row (removed)="removeFilterKeyword()">
+                                {{searchName}}
+                                <button matChipRemove>
+                                    <mat-icon>cancel</mat-icon>
+                                </button>
+                            </mat-chip-row>
+                        </mat-chip-set> 
+                    </div>  
                 </div>                    
             </div>
 
-            <!-- Ttips by the filter -->
-            <div class="row triplist-list" [ngClass]="trips.length <5&& trips.length >0? 'triplist-list-fixed-div':''">
-                <div class="col-md-3" *ngFor="let trip of trips">
-                    <app-recttripcard [trip]="trip"></app-recttripcard>
-                </div>
-                <div class="row triplist-list-no-trips" *ngIf="trips==0">
-                        <div class="triplist-nolist-content">
-                            Couldnt find any trips
-                        </div>
+            <!-- Trips by the filter -->
+            <div *ngIf="trips.length>0; else noTrips" class="triplist-list-container">
+                <div class="row triplist-list" [ngClass]="trips.length <5? 'triplist-list-fixed-div':''">
+                    <div class="col-md-3" *ngFor="let trip of trips">
+                        <app-recttripcard [trip]="trip"></app-recttripcard>
+                    </div>
                 </div>
             </div>
+            <ng-template #noTrips>
+                <div class="triplist-nolist-content">No trips found. Try again!</div>
+            </ng-template>
 
             <!-- Trip page Pagination -->            
             <div class="triplist-pagination-container">
@@ -64,27 +62,6 @@
                     </div>
                 </button>
             </div>
-
-            <!-- Footer -->        
-            <!-- <footer class="footer">
-                <div class="footer-content">
-                    <div class="footer-left">
-                        <p>&copy; 2024. All rights reserved.</p>
-                    </div>
-                    <div class="footer-center">
-                        <ul class="footer-links">
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                            <li><a href="#">Help</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-right">
-                    </div>
-                </div>
-            </footer> -->
-        </div>
-         <!-- ADS container -->
-         <div class="col-sm-1 triplist-ads-space">
         </div>
     </div>
 </div>
