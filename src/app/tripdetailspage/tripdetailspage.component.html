@@ -29,7 +29,7 @@
             </div>
           </div> 
           
-          <div class="report-trip" (click)="onReportTripClick()">
+          <div class="report-trip" (click)="onReportTripClick()" *ngIf="isHostOfTrip">
             <button class="btn btn-danger">Report Organizer</button>
           </div>
         </div>
