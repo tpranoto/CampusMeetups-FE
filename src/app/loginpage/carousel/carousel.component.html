@@ -22,4 +22,13 @@
   <button class="control next" (click)="onNextClick()">
     <span class="arrow right"></span>
   </button>
+
+  <div class="carousel-dots">
+    <span
+      *ngFor="let slide of slides; let i = index"
+      [class.active]="i === currentSlide"
+      (click)="goToSlide(i)"
+      class="dot"
+    ></span>
+  </div>
 </div>

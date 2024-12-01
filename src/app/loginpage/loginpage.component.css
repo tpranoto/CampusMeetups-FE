@@ -1,68 +1,73 @@
+.triplist-container{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 
 .container-fluid.banner {
-    position: relative;
-    height: 100vh;  
-    width: 100vw;   
-    overflow: hidden;
-  }
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 
-  .middle-container{
-    position: relative;
-    height: 70vh;
-    left: 10%;  
-    justify-content: center;
-    overflow: hidden;
-  }
+.middle-container{
+  position: relative;
+  height: 70vh;
+  left: 10%;  
+  justify-content: center;
+  overflow: hidden;
+}
 
 .banner-header-text {
-    font-size: 2 rem;
-    font-weight: bold;
-    margin-bottom: 20px; 
-    color: rgba(0, 0, 0, 0.751);
-    font-family:inherit;
-  }
+  font-size: 2 rem;
+  font-weight: bold;
+  margin-bottom: 20px; 
+  color: rgba(0, 0, 0, 0.751);
+  font-family:inherit;
+}
 
-  .banner-text {
-    font-size: 1.0rem;
-    font-weight: bold;
-    margin-bottom: 20px; 
-    color:rgba(0, 0, 0, 0.745);
-    font-family:inherit;
-  }
+.banner-text {
+  font-size: 1.0rem;
+  font-weight: bold;
+  margin-bottom: 20px; 
+  color:rgba(0, 0, 0, 0.745);
+  font-family:inherit;
+}
 
-  .text-times{
-    color: darkred;
-    font-family:inherit;
-  }
-  
- .banner-login {
-    text-align: center;
-    padding: 20px;
-    height: 150%;
-    margin-top: 150px;
-    border-radius: 10px;
-  }
-  
-  .btn {
-    font-weight: bold;
-    font-size: 1.2rem;
-    padding: 15px 30px;
-    border-radius: 30px; 
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
+.text-times{
+  color: darkred;
+  font-family:inherit;
+}
 
-  .btn:hover {
-    background-color: #da3c3c; 
-    transform: scale(1.1);
-  }
-  
-  .btn-primary {
-    background-color: darkred;
-    color: white;
-    border: none;
-  }
+.banner-login {
+  text-align: center;
+  padding: 20px;
+  height: 150%;
+  margin-top: 150px;
+  border-radius: 10px;
+}
 
+.btn {
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border-radius: 30px; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.btn:hover {
+  background-color: #da3c3c; 
+  transform: scale(1.1);
+}
+
+.btn-primary {
+  background-color: darkred;
+  color: white;
+  border: none;
+}
 
 .row{
   margin-left: 10px;
@@ -223,5 +228,3 @@
 .navbar-avatar-name{
     margin-right: 5px;
 }
-
- 

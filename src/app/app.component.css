@@ -140,6 +140,20 @@
     width: 150px;
     margin: 0 5px;
 }
+
+.navbar-login-button{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 12px 24px;
+    background-color: darkred;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    height: 35px;
+    width: 100px;
+    margin: 0 5px;
+}
   
 .navbar-createtrip-button:hover {
     background-color: #f46363;
@@ -251,4 +265,18 @@
 
 .footer-right {
     text-align: right;
+}
+
+::ng-deep .profile-menu {
+    transform: translateY(2%) translateX(7%) !important;
+    background-color: #f8f9fa !important;
+}
+
+::ng-deep .notifcation-menu{
+    transform: translateY(2%) translateX(-15%) !important;
+    background-color: #f8f9fa !important;
+}
+
+.notification-menu-content{
+    padding: 20%;
 }

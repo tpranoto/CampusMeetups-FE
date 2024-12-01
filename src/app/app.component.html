@@ -4,7 +4,7 @@
             <a [routerLink]="['/']">
                 <img src="Logo.png" alt="Campus Meetups Logo" class="navbar-logo" />
             </a> 
-            <div class="navbar-content">
+            <div class="navbar-content" *ngIf="!currentPath.startsWith('/login')">
                 <div class="search-container" *ngIf="user!=null && user.studentId != ''">
                     <input type="text" 
                         placeholder="Search Trips" 
@@ -21,7 +21,7 @@
         </div>
 
         <div class="navbar-right">
-            <div class="navbar-content">
+            <div class="navbar-content" *ngIf="!currentPath.startsWith('/login')">
                 <button mat-fab extended class="navbar-createtrip-button" [routerLink]="['/trip/create']" *ngIf="user!=null && user.studentId != ''">
                     <div class="navbar-createtrip-button-content">
                         Start a Trip
@@ -29,17 +29,27 @@
                 </button>
             </div>
 
+            <div class="navbar-content" *ngIf="currentPath.startsWith('/login')">
+                <button mat-fab extended class="navbar-login-button" (click)="onLoginButtonClick()">
+                    <div class="navbar-createtrip-button-content">
+                        login
+                    </div>
+                </button>
+            </div>
+
             <div class="navbar-content">
                 <div class="navbar-selection navbar-left-border" *ngIf="user!=null && user.studentId != ''">
-                    <div class="navbar-item" [routerLink]="['/']">Home</div>
-                    <div class="navbar-item" [routerLink]="['/trip']">Explore</div>
-                    <div class="navbar-item" [matMenuTriggerFor]="notificationMenu">Notifications</div>
+                    <div class="navbar-item" [routerLink]="['/']" *ngIf="!currentPath.startsWith('/login')">Home</div>
+                    <div class="navbar-item" [routerLink]="['/trip']" *ngIf="!currentPath.startsWith('/login')">Explore</div>
+                    <div class="navbar-item" [routerLink]="['/login']" *ngIf="currentPath.startsWith('/login')">About</div>
+                    <div class="navbar-item" [routerLink]="['/login']" *ngIf="currentPath.startsWith('/login')">Help</div>
+                    <div class="navbar-item" [matMenuTriggerFor]="notificationMenu" *ngIf="!currentPath.startsWith('/login')">Notifications</div>
                     <mat-menu #notificationMenu="matMenu" class="notifcation-menu">
                         <div class="notification-menu-content">
                             no new notifications
                         </div>
                     </mat-menu>
-                    <div class="navbar-item navbar-profile" [matMenuTriggerFor]="profileMenu">
+                    <div class="navbar-item navbar-profile" [matMenuTriggerFor]="profileMenu" *ngIf="!currentPath.startsWith('/login')">
                         <div class="navbar-avatar-name">{{ user.fname }}</div>
                         <app-avatar [imgUrl]="user.image" [fName]="user.fname" [lName]="user.lname"></app-avatar>
                     </div>
@@ -55,7 +65,7 @@
     </mat-toolbar>
 </router-outlet>
 
-<footer class="footer" *ngIf="!currentPath.startsWith('/trip/')">
+<footer class="footer">
     <div class="footer-content">
         <div class="footer-left">
             <p>&copy; 2024 Campus Meetups | All Rights Reserved</p>

@@ -209,7 +209,10 @@
   border-top: 2px solid #ddd;
   flex-wrap: wrap;
   min-height: 60px;
-  position: relative;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 /* Trip Details Section in Footer */

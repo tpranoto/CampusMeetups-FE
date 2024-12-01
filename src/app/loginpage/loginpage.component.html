@@ -1,32 +1,4 @@
 <div class="container-fluid triplist-container">
-<router-outlet>
-    <mat-toolbar class="navbar" >
-        <div class="navbar-left">
-            <a [routerLink]="['/login']">
-                <img src="Logo.png" alt="Campus Meetups Logo" class="navbar-logo" />
-            </a>        
-        </div>
-
-        <div class="navbar-right">
-            <div class="login-button" (click)="onLoginButtonClick()">
-                <button class="bttn bttn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder">login</button>
-           </div>
-            <div class="navbar-content">
-                <div class="navbar-selection navbar-left-border">
-                    <div class="navbar-item" [routerLink]="['/']">Home</div>
-                    <div class="navbar-item">About</div>
-                    <div class="navbar-item" [matMenuTriggerFor]="notificationMenu">Contact</div>
-                    <mat-menu #notificationMenu="matMenu" class="notifcation-menu">
-                        <div class="notification-menu-content">
-                            no Contact info
-                        </div>
-                    </mat-menu>
-                    </div>
-            </div>
-        </div>
-    </mat-toolbar>
-</router-outlet>
-
 <!--Carousel-->
 <div class="container-fluid banner">
         <carousel [slides]="slides"></carousel>

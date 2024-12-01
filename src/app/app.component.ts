@@ -46,6 +46,10 @@ export class AppComponent {
     }
   }
 
+  onLoginButtonClick(): void {
+    this.proxy$.login().subscribe(() => {});
+  }
+
   onLogoutClick(): void {
     this.proxy$.logout().subscribe(() => {
       this.userServ.clearUser();
