@@ -79,7 +79,6 @@ export class AppComponent {
       position: {
         top: '8vh',
       },
-      // data: { reportedId: this.trip.organizerId },
     });
   }
 }
