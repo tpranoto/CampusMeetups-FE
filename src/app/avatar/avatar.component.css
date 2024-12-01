@@ -5,9 +5,17 @@
     justify-content: center;
     align-items: center;
     border-radius:100%;
-    width:40px;
-    height: 40px;
     font-weight: 600;
+}
+
+.size-small{
+    width: 40px;
+    height: 40px;
+}
+
+.size-medium{
+    width: 60px;
+    height: 60px;
 }
 
 .avatar-img{

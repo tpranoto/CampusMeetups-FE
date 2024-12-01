@@ -44,7 +44,9 @@ export class TripdetailspageComponent {
         image: this.trip.organizerData.image,
         host: true,
       });
-      this.attendeeList.push(...this.trip.attendees);
+      if (this.trip.attendees > 0) {
+        this.attendeeList.push(...this.trip.attendees);
+      }
       this.checkJoinedTrip();
     });
   }
@@ -115,16 +117,7 @@ export class TripdetailspageComponent {
   onReportTripClick(): void {
     const dialogRef = this.dialog.open(ReportdialogComponent, {
       width: '50vw',
-      data: { reporterId: this.userId, reportedId: this.trip.organizerId },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        console.log('Report submitted:', result);
-        // Handle the result (reason and details)
-      } else {
-        console.log('Report dialog was closed without submission');
-      }
+      data: { reportedId: this.trip.organizerId },
     });
   }
 
@@ -133,5 +126,10 @@ export class TripdetailspageComponent {
     this.hasJoinedTrip = this.attendeeList.some(
       (attendee: any) => attendee.studentId === this.userId
     );
+  }
+
+  onImageError(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.src = 'def_trip.jpg';
   }
 }

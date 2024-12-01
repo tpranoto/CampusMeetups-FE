@@ -1,7 +1,7 @@
 <mat-card class="triplist-card" appearance="outlined" (click)="navigateToTripDetails(trip.tripId)">
     <mat-card-header class="triplist-card-header"></mat-card-header>
     <div mat-card-image class="triplist-card-image-container">
-        <img  class="triplist-card-image" [src]="trip.image || 'def_trip.jpg'" alt="Trip Image">
+        <img  class="triplist-card-image" [src]="trip.image" (error)="onImageError($event)" alt="Trip Image">
     </div>
     <mat-card-content class="triplist-card-content">
         <div class="triplist-card-header-name">
