@@ -74,7 +74,11 @@ export class CreatetripdialogComponent {
     return JSON.stringify(category);
   }
 
-  onImageClick(): void {
+  onImageRevertClick(): void {
+    this.tripImage = '';
+  }
+
+  onImageEditClick(): void {
     const dialogRef = this.dialog.open(CreatetripimagedialogComponent, {
       width: '50vw',
       position: {

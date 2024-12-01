@@ -9,8 +9,16 @@
             <div *ngIf="currentStep===1">
                 <div class="row row-form">
                     <div class="col-4">
-                        <div class="trip-pic-wrapper" (click)="onImageClick()">
+                        <div class="trip-pic-wrapper">
                             <img [src]="tripImage" (error)="onImageError($event)"/>
+                            
+                            <div class="edit-icon" (click)="onImageEditClick()">
+                                <mat-icon>edit</mat-icon>
+                            </div>
+
+                            <div class="revert-icon" (click)="onImageRevertClick()">
+                                <mat-icon>cancel</mat-icon>
+                            </div>
                         </div>
                     </div>
                     <div class="col-8">

@@ -61,9 +61,32 @@ form {
     overflow: hidden;
     border: 2px solid #aaa;
     background-color: #4caf50;
+    position: relative;
 }
 
-.trip-pic-wrapper:hover{
+.edit-icon, .revert-icon{
+    position: absolute;
+    background-color: #aaa;
+    border: 1px solid black;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-icon{
+    bottom: 1%;
+    left: 1%;
+}
+
+.revert-icon{
+    top:1%;
+    right:1%;
+}
+
+.edit-icon:hover ,.revert-icon:hover{
     cursor: pointer;
 }
 
