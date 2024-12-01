@@ -4,7 +4,7 @@
     <div class="col-10 trip-details">
       <div class="row">
         <div class="col-8 trip-image-container">
-          <img [src]="trip.image || 'def_trip.jpg'" alt="Trip Image" class="trip-image" />
+          <img [src]="trip.image" (error)="onImageError($event)" alt="Trip Image" class="trip-image" />
         </div>
 
         <!-- Trip Details Section -->
@@ -29,8 +29,8 @@
             </div>
           </div> 
           
-          <div class="report-trip">
-            Report this trip
+          <div class="report-trip" (click)="onReportTripClick()">
+            <button class="btn btn-danger">Report Organizer</button>
           </div>
         </div>
       </div>

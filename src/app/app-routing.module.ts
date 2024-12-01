@@ -8,6 +8,7 @@ import { CreatetrippageComponent } from './createtrippage/createtrippage.compone
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { EdittrippageComponent } from './edittrippage/edittrippage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
+import { EditprofilepageComponent } from './editprofilepage/editprofilepage.component';
 
 const routes: Routes = [
   { path: '', component: WelcomepageComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'trip', component: TriplistpageComponent },
   { path: 'trip/:tripId', component: TripdetailspageComponent },
   { path: 'profile/:studentId', component: ProfilepageComponent },
+  { path: 'profile/edit/:studentId', component: EditprofilepageComponent },
 ];
 
 @NgModule({

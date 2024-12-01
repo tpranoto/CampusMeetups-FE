@@ -1,4 +1,4 @@
-<div class="avatar">
+<div class="avatar"  [ngClass]="'size-' + size">
     <span class="avatar-initials"*ngIf='!shouldShowAvatarImage()'>{{getInitials()}}</span>
     <img class="avatar-img" [src]="imgUrl" *ngIf='shouldShowAvatarImage()'/>
 </div>

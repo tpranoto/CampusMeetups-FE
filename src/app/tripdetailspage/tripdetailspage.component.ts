@@ -5,11 +5,12 @@ import { UserService } from '../services/user.service';
 import { NotificationdialogService } from '../services/notificationdialog.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AttendeelistdialogComponent } from '../attendeelistdialog/attendeelistdialog.component';
+import { ReportdialogComponent } from '../reportdialog/reportdialog.component';
 
 @Component({
   selector: 'app-tripdetailspage',
   templateUrl: './tripdetailspage.component.html',
-  styleUrls: ['./tripdetailspage.component.css'],
+  styleUrl: './tripdetailspage.component.css',
 })
 export class TripdetailspageComponent {
   trip: any = {};
@@ -43,7 +44,9 @@ export class TripdetailspageComponent {
         image: this.trip.organizerData.image,
         host: true,
       });
-      this.attendeeList.push(...this.trip.attendees);
+      if (this.trip.attendees > 0) {
+        this.attendeeList.push(...this.trip.attendees);
+      }
       this.checkJoinedTrip();
     });
   }
@@ -111,10 +114,22 @@ export class TripdetailspageComponent {
     }
   }
 
+  onReportTripClick(): void {
+    const dialogRef = this.dialog.open(ReportdialogComponent, {
+      width: '50vw',
+      data: { reportedId: this.trip.organizerId },
+    });
+  }
+
   checkJoinedTrip(): void {
     this.isHostOfTrip = this.trip.organizerId === this.userId;
     this.hasJoinedTrip = this.attendeeList.some(
       (attendee: any) => attendee.studentId === this.userId
     );
+  }
+
+  onImageError(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.src = 'def_trip.jpg';
   }
 }

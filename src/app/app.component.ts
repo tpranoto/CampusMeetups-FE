@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';  // Import necessary classes
+import { Router, NavigationEnd } from '@angular/router';
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
-import { filter } from 'rxjs/operators';  // Filter to track navigation end
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ export class AppComponent {
   title: string = 'CampusMeetups';
   searchTripName: string = '';
   user: any = {};
-  showNavbar: boolean = true;  // Flag to control navbar visibility
+  currentPath: string = '';
 
   constructor(
     private router: Router,
@@ -21,14 +21,7 @@ export class AppComponent {
     private userServ: UserService
   ) {
     this.trackUserSession();
-
-    // Detect route changes to show or hide navbar
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)  // Only handle NavigationEnd events
-    ).subscribe(event => {
-      // Hide navbar when navigating to '/login'
-      this.showNavbar = event.url !== '/login';
-    });
+    this.trackCurrentPage();
   }
 
   onInputChange(event: any) {
@@ -66,5 +59,13 @@ export class AppComponent {
         this.router.navigate(['/login']);
       }
     });
+  }
+
+  trackCurrentPage(): void {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentPath = event.urlAfterRedirects;
+      });
   }
 }

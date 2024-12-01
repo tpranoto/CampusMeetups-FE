@@ -12,7 +12,7 @@ export class CmproxyService {
 
   getAttendedTripsForStudent(
     studentId: string,
-    limit: string
+    limit: string = ''
   ): Observable<any> {
     var params = new HttpParams();
 
@@ -51,6 +51,12 @@ export class CmproxyService {
     return this.httpClient.get<any>(
       this.hostUrl + 'app/trip/upcoming',
       options
+    );
+  }
+
+  getTripsOrganizedByStudent(studentId: string): Observable<any> {
+    return this.httpClient.get<any>(
+      this.hostUrl + 'app/trip/organized/' + studentId
     );
   }
 
@@ -101,6 +107,12 @@ export class CmproxyService {
     );
   }
 
+  getStudentDetailsById(studentId: string) {
+    return this.httpClient.get<any[]>(
+      this.hostUrl + `app/student/id/${studentId}`
+    );
+  }
+
   createAttendeeForTrip(tripId: string, studentId: string) {
     const body = {
       tripId: tripId,
@@ -114,6 +126,21 @@ export class CmproxyService {
     return this.httpClient.delete<any[]>(
       this.hostUrl + `app/attendee/${studentId}/trip/${tripId}`
     );
+  }
+
+  createNewReport(
+    reason: string,
+    detail: string,
+    reporterId: string,
+    reportedId: string
+  ) {
+    const body = {
+      reason: reason,
+      detail: detail,
+      reportedId: reportedId,
+      reporterId: reporterId,
+    };
+    return this.httpClient.post<any[]>(this.hostUrl + `app/report/`, body);
   }
 
   login() {

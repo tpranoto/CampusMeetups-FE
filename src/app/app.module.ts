@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,11 +12,13 @@ import { CreatetrippageComponent } from './createtrippage/createtrippage.compone
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { EdittrippageComponent } from './edittrippage/edittrippage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
+import { EditprofilepageComponent } from './editprofilepage/editprofilepage.component';
 
 import { AvatarComponent } from './avatar/avatar.component';
 import { RecttripcardComponent } from './recttripcard/recttripcard.component';
 import { AttendeelistdialogComponent } from './attendeelistdialog/attendeelistdialog.component';
 import { NotificationdialogComponent } from './notificationdialog/notificationdialog.component';
+import { ReportdialogComponent } from './reportdialog/reportdialog.component';
 
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
@@ -34,7 +37,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CarouselComponent } from './loginpage/carousel/carousel.component';
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -46,17 +49,20 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     ProfilepageComponent,
     EdittrippageComponent,
     LoginpageComponent,
+    EditprofilepageComponent,
     AvatarComponent,
     RecttripcardComponent,
     AttendeelistdialogComponent,
     NotificationdialogComponent,
     CarouselComponent,
+    ReportdialogComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     MatIconModule,
     MatButtonModule,
     MatCardModule,

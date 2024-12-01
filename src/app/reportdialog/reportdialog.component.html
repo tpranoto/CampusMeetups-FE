@@ -1,0 +1,34 @@
+<div class="report-dialog">
+    <h2 class="dialog-title">Report an Issue</h2>
+    <div class="form">
+        <mat-dialog-content class="dialog-content">
+            <div class="form-group full-width">
+                <label for="reason" class="form-title">Reason</label>
+                <input type="text" id="reason" name="reason" required class="form-control" (input)="onReasonChange($event)" [(ngModel)]="reason" #reasonControl="ngModel">
+              
+                <div class="error-message">
+                    {{ reasonControl.touched && reasonControl.hasError('required') ? "Reason is required" : " " }}
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="details" class="form-title">Details</label>
+                <textarea id="details" name="details" rows="4" required class="form-control" (input)="onDetailsChange($event)" [(ngModel)]="details" #detailsControl="ngModel"></textarea>
+                
+                <div class="error-message">
+                    {{ detailsControl.touched && detailsControl.hasError('required') ? "Details are required" : " " }}
+                </div>
+            </div>
+            
+        </mat-dialog-content>
+
+        <mat-dialog-actions class="dialog-actions">
+            <button mat-button (click)="onCancelClick()" class="cancel-button">Cancel</button>
+            <button mat-raised-button type="submit" 
+                [disabled]="reasonControl.hasError('required') || detailsControl.hasError('required')" 
+                (click)="onSubmitClick()">
+                Submit
+            </button>
+        </mat-dialog-actions>
+    </div>
+</div>

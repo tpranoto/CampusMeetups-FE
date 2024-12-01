@@ -1,5 +1,5 @@
 <router-outlet>
-    <mat-toolbar class="navbar"  *ngIf="showNavbar">
+    <mat-toolbar class="navbar">
         <div class="navbar-left">
             <a [routerLink]="['/']">
                 <img src="Logo.png" alt="Campus Meetups Logo" class="navbar-logo" />
@@ -55,7 +55,7 @@
     </mat-toolbar>
 </router-outlet>
 
-<footer class="footer">
+<footer class="footer" *ngIf="!currentPath.startsWith('/trip/')">
     <div class="footer-content">
         <div class="footer-left">
             <p>&copy; 2024 Campus Meetups | All Rights Reserved</p>

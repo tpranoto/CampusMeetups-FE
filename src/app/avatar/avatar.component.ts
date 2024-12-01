@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './avatar.component.css',
 })
 export class AvatarComponent {
+  @Input() size = 'small';
   @Input() imgUrl = '';
   @Input() fName = '';
   @Input() lName = '';
