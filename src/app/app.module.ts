@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.component';
-import { CreatetrippageComponent } from './createtrippage/createtrippage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { EdittrippageComponent } from './edittrippage/edittrippage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
@@ -19,6 +18,8 @@ import { RecttripcardComponent } from './recttripcard/recttripcard.component';
 import { AttendeelistdialogComponent } from './attendeelistdialog/attendeelistdialog.component';
 import { NotificationdialogComponent } from './notificationdialog/notificationdialog.component';
 import { ReportdialogComponent } from './reportdialog/reportdialog.component';
+import { CreatetripdialogComponent } from './createtripdialog/createtripdialog.component';
+import { CreatetripimagedialogComponent } from './createtripdialog/createtripimagedialog/createtripimagedialog.component';
 
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
@@ -36,6 +37,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     WelcomepageComponent,
     TriplistpageComponent,
     TripdetailspageComponent,
-    CreatetrippageComponent,
     ProfilepageComponent,
     EdittrippageComponent,
     LoginpageComponent,
@@ -53,6 +54,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     AttendeelistdialogComponent,
     NotificationdialogComponent,
     ReportdialogComponent,
+    CreatetripdialogComponent,
+    CreatetripimagedialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     FormsModule,
     MatBadgeModule,
     MatDialogModule,
+    ReactiveFormsModule,
+    MatProgressBarModule,
   ],
   providers: [
     provideHttpClient(),

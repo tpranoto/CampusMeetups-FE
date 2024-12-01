@@ -106,8 +106,9 @@ export class CmproxyService {
       this.hostUrl + `app/student/email/${email}`
     );
   }
-  createTrip(tripData: any): Observable<any> {
-    return this.httpClient.post(this.hostUrl + 'app/trip', tripData);
+
+  createTrip(tripData: any) {
+    return this.httpClient.post<any[]>(this.hostUrl + `app/trip`, tripData);
   }
 
   getStudentDetailsById(studentId: string) {

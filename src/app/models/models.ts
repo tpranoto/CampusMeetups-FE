@@ -53,6 +53,18 @@ export interface TripsData {
   };
 }
 
+export interface CreateTrip {
+  tripId: string;
+  name: string;
+  description: string;
+  status: string;
+  image: string;
+  location: string;
+  timestamp: Date;
+  organizerId: string;
+  categoryId: string;
+}
+
 export interface AttendedTrips {
   studentId: string;
   tripId: string;
