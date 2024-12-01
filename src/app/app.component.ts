@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ export class AppComponent {
   title: string = 'CampusMeetups';
   searchTripName: string = '';
   user: any = {};
+  currentPath: string = '';
 
   constructor(
     private router: Router,
@@ -19,6 +21,7 @@ export class AppComponent {
     private userServ: UserService
   ) {
     this.trackUserSession();
+    this.trackCurrentPage();
   }
 
   onInputChange(event: any) {
@@ -56,5 +59,13 @@ export class AppComponent {
         this.router.navigate(['/login']);
       }
     });
+  }
+
+  trackCurrentPage(): void {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentPath = event.urlAfterRedirects;
+      });
   }
 }

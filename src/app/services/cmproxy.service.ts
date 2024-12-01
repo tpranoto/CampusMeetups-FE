@@ -12,7 +12,7 @@ export class CmproxyService {
 
   getAttendedTripsForStudent(
     studentId: string,
-    limit: string
+    limit: string = ''
   ): Observable<any> {
     var params = new HttpParams();
 
@@ -51,6 +51,12 @@ export class CmproxyService {
     return this.httpClient.get<any>(
       this.hostUrl + 'app/trip/upcoming',
       options
+    );
+  }
+
+  getTripsOrganizedByStudent(studentId: string): Observable<any> {
+    return this.httpClient.get<any>(
+      this.hostUrl + 'app/trip/organized/' + studentId
     );
   }
 
@@ -98,6 +104,12 @@ export class CmproxyService {
   getStudentDetailsByEmail(email: string) {
     return this.httpClient.get<any[]>(
       this.hostUrl + `app/student/email/${email}`
+    );
+  }
+
+  getStudentDetailsById(studentId: string) {
+    return this.httpClient.get<any[]>(
+      this.hostUrl + `app/student/id/${studentId}`
     );
   }
 
