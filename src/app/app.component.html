@@ -21,7 +21,7 @@
 
         <div class="navbar-right">
             <div class="navbar-content">
-                <button mat-fab extended class="navbar-createtrip-button" [routerLink]="['/trip/create']" *ngIf="user!=null && user.studentId != ''">
+                <button mat-fab extended class="navbar-createtrip-button" (click)="onCreateTripClick()" *ngIf="user!=null && user.studentId != ''">
                     <div class="navbar-createtrip-button-content">
                         Start a Trip
                     </div>
