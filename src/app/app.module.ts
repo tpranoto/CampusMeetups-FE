@@ -20,6 +20,9 @@ import { NotificationdialogComponent } from './notificationdialog/notificationdi
 import { ReportdialogComponent } from './reportdialog/reportdialog.component';
 import { CreatetripdialogComponent } from './createtripdialog/createtripdialog.component';
 import { CreatetripimagedialogComponent } from './createtripdialog/createtripimagedialog/createtripimagedialog.component';
+import { EdittripdialogComponent } from './edittripdialog/edittripdialog.component';
+import { EdittripimagedialogComponent } from './edittripdialog/edittripimagedialog/edittripimagedialog.component';
+import { EdittripdeletedialogComponent } from './edittripdialog/edittripdeletedialog/edittripdeletedialog.component';
 
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
@@ -56,6 +59,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     ReportdialogComponent,
     CreatetripdialogComponent,
     CreatetripimagedialogComponent,
+    EdittripdialogComponent,
+    EdittripimagedialogComponent,
+    EdittripdeletedialogComponent,
   ],
   imports: [
     BrowserModule,

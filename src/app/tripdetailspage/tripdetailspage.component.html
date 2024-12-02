@@ -86,7 +86,7 @@
   <div class="footer-buttons">
     <button *ngIf="!hasJoinedTrip && !isHostOfTrip" class="footer-join-button" (click)="onJoinTripClick()">Join Trip</button>
     <button *ngIf="hasJoinedTrip && !isHostOfTrip" class="footer-leave-button" (click)="onLeaveTripClick()">Leave Trip</button>
-    <button *ngIf="isHostOfTrip" class="footer-edit-button" (click)="onEditTripClick(trip.tripId)">Edit your Trip</button>
+    <button *ngIf="isHostOfTrip" class="footer-edit-button" (click)="onEditTripClick()">Edit your Trip</button>
     <button class="footer-share-button" (click)="onShareTripClick()">Share Trip</button>
   </div>
 </div>

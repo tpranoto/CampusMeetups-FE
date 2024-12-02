@@ -1,0 +1,33 @@
+.delete-trip-container{
+    background-color: white;
+    padding: 3vh 4vw;
+}
+.form-group {
+    margin-bottom: 2vh;
+}
+
+.action-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 0.5vw;
+}
+
+button {
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: darkred;
+  }
+
+.cancel-button{
+    background-color: #666;
+}

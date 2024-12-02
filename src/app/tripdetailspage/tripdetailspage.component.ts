@@ -6,6 +6,7 @@ import { NotificationdialogService } from '../services/notificationdialog.servic
 import { MatDialog } from '@angular/material/dialog';
 import { AttendeelistdialogComponent } from '../attendeelistdialog/attendeelistdialog.component';
 import { ReportdialogComponent } from '../reportdialog/reportdialog.component';
+import { EdittripdialogComponent } from '../edittripdialog/edittripdialog.component';
 
 @Component({
   selector: 'app-tripdetailspage',
@@ -44,7 +45,7 @@ export class TripdetailspageComponent {
         image: this.trip.organizerData.image,
         host: true,
       });
-      if (this.trip.attendees > 0) {
+      if (this.trip.attendees.length > 0) {
         this.attendeeList.push(...this.trip.attendees);
       }
       this.checkJoinedTrip();
@@ -61,8 +62,17 @@ export class TripdetailspageComponent {
     });
   }
 
-  onEditTripClick(tripId: string): void {
-    this.router.navigate(['/trip/edit', tripId]);
+  onEditTripClick(): void {
+    const dialogRef = this.dialog.open(EdittripdialogComponent, {
+      width: '50vw',
+      height: '660px',
+      position: {
+        top: '5vh',
+      },
+      data: {
+        trip: this.trip,
+      },
+    });
   }
 
   onLeaveTripClick(): void {

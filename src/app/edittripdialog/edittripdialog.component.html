@@ -1,4 +1,4 @@
- <div class="create-trip-dialog">
+<div class="create-trip-dialog">
     <div class="progress-bar">
         <div class="step" [class.active]="currentStep >= 1">Trip Info</div>
         <div class="step" [class.active]="currentStep >= 2">Review</div>
@@ -16,7 +16,7 @@
                                 <mat-icon>edit</mat-icon>
                             </div>
 
-                            <div class="revert-icon" (click)="onImageRevertClick()" *ngIf="tripImage==='def_trip.jpg'">
+                            <div class="revert-icon" (click)="onImageRevertClick()"  *ngIf="tripImage==='def_trip.jpg'">
                                 <mat-icon>cancel</mat-icon>
                             </div>
                         </div>
@@ -61,6 +61,25 @@
                         formControlName="description"
                         placeholder="Tell people a little more about your trip."
                     ></textarea>
+                </div>
+
+                <div class="row row-form">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="tripStatus">Status</label>
+                            <select id="tripStatus" formControlName="tripStatus">
+                                <option [value]="'Ongoing'">Ongoing</option>
+                                <option [value]="'Cancelled'">Cancelled</option>
+                                <option [value]="'Completed'">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="delete-trip-container">
+                            <button (click)="onDeleteTripClick()">Delete trip</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
