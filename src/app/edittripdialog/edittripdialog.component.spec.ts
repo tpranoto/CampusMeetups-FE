@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CreatetrippageComponent } from './createtrippage.component';
+import { EdittripdialogComponent } from './edittripdialog.component';
 
-describe('CreatetrippageComponent', () => {
-  let component: CreatetrippageComponent;
-  let fixture: ComponentFixture<CreatetrippageComponent>;
+describe('EdittripdialogComponent', () => {
+  let component: EdittripdialogComponent;
+  let fixture: ComponentFixture<EdittripdialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CreatetrippageComponent]
+      declarations: [EdittripdialogComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CreatetrippageComponent);
+    fixture = TestBed.createComponent(EdittripdialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,82 @@
+ <div class="create-trip-dialog">
+    <div class="progress-bar">
+        <div class="step" [class.active]="currentStep >= 1">Trip Info</div>
+        <div class="step" [class.active]="currentStep >= 2">Review</div>
+    </div>
+    
+    <div class="container-fluid form-container">
+        <form [formGroup]="tripForm" class="row">
+            <div *ngIf="currentStep===1">
+                <div class="row row-form">
+                    <div class="col-4">
+                        <div class="trip-pic-wrapper">
+                            <img [src]="tripImage" (error)="onImageError($event)"/>
+                            
+                            <div class="edit-icon" (click)="onImageEditClick()">
+                                <mat-icon>edit</mat-icon>
+                            </div>
+
+                            <div class="revert-icon" (click)="onImageRevertClick()" *ngIf="tripImage==='def_trip.jpg'">
+                                <mat-icon>cancel</mat-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="form-group">
+                            <label for="tripName">Trip Name</label>
+                            <input id="tripName" type="text" formControlName="tripName" placeholder="What's your trip's name?" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row row-form">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="tripCategory">Category</label>
+                            <select id="tripCategory" formControlName="tripCategory" class="category-selection">
+                                <ng-container *ngFor="let category of categories">
+                                    <option [value]="categoryValue(category)">{{category.name}}</option>
+                                </ng-container>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="startDate">Date</label>
+                            <input id="startDate" type="datetime-local" formControlName="startDate" />
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tripLoc">Location</label>
+                    <input id="tripLoc" formControlName="tripLoc" placeholder="What's the location of your trip?"/>
+                </div>
+    
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea
+                        id="description"
+                        rows="5"
+                        formControlName="description"
+                        placeholder="Tell people a little more about your trip."
+                    ></textarea>
+                </div>
+            </div>
+
+            <div *ngIf="currentStep===2" class="review-container">
+                <app-recttripcard [trip]="trip"></app-recttripcard>
+            </div>
+            
+            <div class="form-actions">
+                <div type="button" (click)="prevStep()" *ngIf="currentStep !== 1">Back</div>
+                <div *ngIf="currentStep === 1"></div>
+                <div class="action-buttons">
+                    <button type="button" (click)="onCancelClick()" class="cancel-button">Cancel</button>
+                    <button type="button" (click)="nextStep()" [disabled]="validForm()"  *ngIf="currentStep === 1">Next</button>
+                    <button type="button" (click)="onSubmitClick()" *ngIf="currentStep === 2">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

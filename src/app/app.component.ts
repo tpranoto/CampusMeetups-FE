@@ -3,6 +3,8 @@ import { Router, NavigationEnd } from '@angular/router';
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
 import { filter } from 'rxjs/operators';
+import { MatDialog } from '@angular/material/dialog';
+import { CreatetripdialogComponent } from './createtripdialog/createtripdialog.component';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +20,8 @@ export class AppComponent {
   constructor(
     private router: Router,
     private proxy$: CmproxyService,
-    private userServ: UserService
+    private userServ: UserService,
+    private dialog: MatDialog
   ) {
     this.trackUserSession();
     this.trackCurrentPage();
@@ -71,5 +74,15 @@ export class AppComponent {
       .subscribe((event: NavigationEnd) => {
         this.currentPath = event.urlAfterRedirects;
       });
+  }
+
+  onCreateTripClick(): void {
+    const dialogRef = this.dialog.open(CreatetripdialogComponent, {
+      width: '50vw',
+      height: '600px',
+      position: {
+        top: '8vh',
+      },
+    });
   }
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -105,6 +105,26 @@ export class CmproxyService {
     return this.httpClient.get<any[]>(
       this.hostUrl + `app/student/email/${email}`
     );
+  }
+
+  createTrip(tripData: any) {
+    return this.httpClient.post<any[]>(this.hostUrl + `app/trip`, tripData);
+  }
+
+  updateTripDetails(tripData: any) {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+
+    return this.httpClient.patch<any[]>(
+      this.hostUrl + `app/trip/${tripData.studentId}`,
+      tripData,
+      {
+        headers,
+      }
+    );
+  }
+
+  deleteTrip(tripId: string) {
+    return this.httpClient.delete<any[]>(this.hostUrl + `app/trip/${tripId}`);
   }
 
   getStudentDetailsById(studentId: string) {
