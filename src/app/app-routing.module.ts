@@ -5,14 +5,12 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
-import { EdittrippageComponent } from './edittrippage/edittrippage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { EditprofilepageComponent } from './editprofilepage/editprofilepage.component';
 
 const routes: Routes = [
   { path: '', component: WelcomepageComponent },
   { path: 'login', component: LoginpageComponent },
-  { path: 'trip/edit/:tripId', component: EdittrippageComponent },
   { path: 'trip', component: TriplistpageComponent },
   { path: 'trip/:tripId', component: TripdetailspageComponent },
   { path: 'profile/:studentId', component: ProfilepageComponent },

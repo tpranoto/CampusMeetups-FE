@@ -9,7 +9,6 @@ import { WelcomepageComponent } from './welcomepage/welcomepage.component';
 import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
-import { EdittrippageComponent } from './edittrippage/edittrippage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { EditprofilepageComponent } from './editprofilepage/editprofilepage.component';
 
@@ -49,7 +48,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     TriplistpageComponent,
     TripdetailspageComponent,
     ProfilepageComponent,
-    EdittrippageComponent,
     LoginpageComponent,
     EditprofilepageComponent,
     AvatarComponent,
