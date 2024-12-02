@@ -37,7 +37,7 @@ export class EdittripdialogComponent {
     this.tripForm = this.formBuilder.group({
       tripName: [data.trip.name, Validators.required],
       startDate: [
-        this.formatDateForInput(data.trip.timestamp.slice(0, -1)),
+        this.formatDateForInput(data.trip.timestamp),
         Validators.required,
       ],
       tripLoc: [data.trip.location, Validators.required],
