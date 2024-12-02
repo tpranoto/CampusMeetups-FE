@@ -38,7 +38,7 @@
             </div>
 
             <div class="navbar-content">
-                <div class="navbar-selection navbar-left-border" *ngIf="user!=null && user.studentId != ''">
+                <div class="navbar-selection navbar-left-border">
                     <div class="navbar-item" [routerLink]="['/']" *ngIf="!currentPath.startsWith('/login')">Home</div>
                     <div class="navbar-item" [routerLink]="['/trip']" *ngIf="!currentPath.startsWith('/login')">Explore</div>
                     <div class="navbar-item" [routerLink]="['/login']" *ngIf="currentPath.startsWith('/login')">About</div>
@@ -49,12 +49,12 @@
                             no new notifications
                         </div>
                     </mat-menu>
-                    <div class="navbar-item navbar-profile" [matMenuTriggerFor]="profileMenu" *ngIf="!currentPath.startsWith('/login')">
+                    <div class="navbar-item navbar-profile" [matMenuTriggerFor]="profileMenu" *ngIf="!currentPath.startsWith('/login') && user!=null && user.studentId != ''">
                         <div class="navbar-avatar-name">{{ user.fname }}</div>
                         <app-avatar [imgUrl]="user.image" [fName]="user.fname" [lName]="user.lname"></app-avatar>
                     </div>
                     <mat-menu #profileMenu="matMenu" class="profile-menu">
-                        <button mat-menu-item [routerLink]="['/profile',user.studentId]" class="profile-menu-item">View Profile</button>
+                        <button mat-menu-item [routerLink]="['/profile',user.studentId]" *ngIf="user!=null && user.studentId != ''" class="profile-menu-item">View Profile</button>
                         <button mat-menu-item class="profile-menu-item">Settings</button>
                         <button mat-menu-item class="profile-menu-item">Help</button>
                         <button mat-menu-item class="profile-menu-item" (click)="onLogoutClick()">Log out</button>
