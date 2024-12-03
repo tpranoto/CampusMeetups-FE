@@ -6,7 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class CmproxyService {
-  private hostUrl: string = 'http://localhost:8080/';
+  // private hostUrl: string = 'http://localhost:8080/';
+
+  private hostUrl: string = 'https://campusmeetups.azurewebsites.net/';
 
   constructor(private httpClient: HttpClient) {}
 
