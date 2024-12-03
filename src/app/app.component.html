@@ -41,8 +41,8 @@
                 <div class="navbar-selection navbar-left-border">
                     <div class="navbar-item" [routerLink]="['/']" *ngIf="!currentPath.startsWith('/login')">Home</div>
                     <div class="navbar-item" [routerLink]="['/trip']" *ngIf="!currentPath.startsWith('/login')">Explore</div>
-                    <div class="navbar-item" [routerLink]="['/login']" *ngIf="currentPath.startsWith('/login')">About</div>
-                    <div class="navbar-item" [routerLink]="['/login']" *ngIf="currentPath.startsWith('/login')">Help</div>
+                    <div class="navbar-item" (click)="onAboutClick()" *ngIf="currentPath.startsWith('/login')">About</div>
+                    <div class="navbar-item" (click)="onHelpClick()" *ngIf="currentPath.startsWith('/login')">Help</div>
                     <div class="navbar-item" [matMenuTriggerFor]="notificationMenu" *ngIf="!currentPath.startsWith('/login')">Notifications</div>
                     <mat-menu #notificationMenu="matMenu" class="notifcation-menu">
                         <div class="notification-menu-content">
@@ -56,7 +56,7 @@
                     <mat-menu #profileMenu="matMenu" class="profile-menu">
                         <button mat-menu-item [routerLink]="['/profile',user.studentId]" *ngIf="user!=null && user.studentId != ''" class="profile-menu-item">View Profile</button>
                         <button mat-menu-item class="profile-menu-item">Settings</button>
-                        <button mat-menu-item class="profile-menu-item">Help</button>
+                        <button mat-menu-item class="profile-menu-item" (click)="onHelpClick()">Help</button>
                         <button mat-menu-item class="profile-menu-item" (click)="onLogoutClick()">Log out</button>
                     </mat-menu>
                 </div>
@@ -72,9 +72,9 @@
         </div>
         <div class="footer-center">
             <ul class="footer-links">
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Help</a></li>
+                <li><div (click)="onAboutClick()" class="footer-link">About</div></li>
+                <li><div (click)="onTnSClick()" class="footer-link">Terms of Service</div></li>
+                <li><div (click)="onHelpClick()" class="footer-link">Help</div></li>
             </ul>
         </div>
         <div class="footer-right">

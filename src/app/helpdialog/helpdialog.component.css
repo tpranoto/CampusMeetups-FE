@@ -1,0 +1,94 @@
+.help-page {
+    overflow: scroll;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff !important;
+    color: black;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+    text-align: center;
+}
+
+.help-page::-webkit-scrollbar {
+    display: none;
+}
+  
+.help-page h1 {
+    font-size: 2.5em;
+    color: darkred;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.help-page h2 {
+    font-size: 28px;
+    color: #34495e;
+    margin-top: 30px;
+}
+
+.help-page p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.help-page ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.help-page ul li {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.help-page ul li strong {
+    color: #000000;
+    font-weight: bold;
+}
+
+
+.social-media-icons a {
+    margin-left: 200px; 
+margin-top: 200px;
+}
+
+.social-icon img {
+    width: 40px;
+    height: 40px;
+}
+
+@media (max-width: 768px) {
+    .help-page {
+    padding: 20px;
+    }
+
+    .help-page h1 {
+    font-size: 2em;
+    }
+
+    .help-page h2 {
+    font-size: 1.6em;
+    text-align: center;
+    
+    }
+
+    .help-page p,
+    .help-page ul li {
+    font-size: 1em;
+    }
+    
+    .social-media-icons {
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .social-media-icons a {
+    margin-bottom: 10px;
+    }
+}

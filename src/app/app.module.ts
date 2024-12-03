@@ -22,6 +22,9 @@ import { EdittripdeletedialogComponent } from './edittripdialog/edittripdeletedi
 import { CarouselComponent } from './loginpage/carousel/carousel.component';
 import { EditprofiledialogComponent } from './editprofiledialog/editprofiledialog.component';
 import { AddimageurldialogComponent } from './addimageurldialog/addimageurldialog.component';
+import { AboutdialogComponent } from './aboutdialog/aboutdialog.component';
+import { HelpdialogComponent } from './helpdialog/helpdialog.component';
+import { TnsdialogComponent } from './tnsdialog/tnsdialog.component';
 
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
@@ -61,6 +64,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     EdittripdeletedialogComponent,
     EditprofiledialogComponent,
     AddimageurldialogComponent,
+    AboutdialogComponent,
+    HelpdialogComponent,
+    TnsdialogComponent,
   ],
   imports: [
     BrowserModule,

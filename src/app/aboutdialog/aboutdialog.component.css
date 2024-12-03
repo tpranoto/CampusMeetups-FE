@@ -1,0 +1,72 @@
+.about-page {
+    overflow: scroll;
+    font-family: 'Arial', sans-serif;
+    background-color: #fff !important;
+    color: black;
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    scrollbar-width: none;
+    text-align: center;
+}
+
+.about-page::-webkit-scrollbar {
+    display: none;
+}
+  
+.about-page h1 {
+    font-size: 2.5em;
+    color: darkred;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+  
+.about-page h2 {
+    font-size: 28px;
+    color: #34495e;
+    margin-top: 30px;
+}
+  
+.about-page p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+.about-page ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.about-page ul li {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.about-page ul li strong {
+    color: #000000;
+    font-weight: bold;
+}
+  
+@media (max-width: 768px) {
+    .about-page {
+    padding: 20px;
+    }
+
+    .about-page h1 {
+    font-size: 2em;
+    }
+
+    .about-page h2 {
+    font-size: 1.6em;
+    }
+
+    .about-page p,
+    .about-page ul li {
+    font-size: 1em;
+    }
+}
