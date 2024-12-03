@@ -53,6 +53,7 @@ form {
 
 .row-form{
     padding-right: 0 !important;
+    margin-bottom: 10px;
 }
 
 .trip-pic-wrapper{
@@ -130,10 +131,11 @@ textarea {
     color: white;
     border: none;
     padding: 10px 15px;
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     border-radius: 4px;
     width: 5vw;
+    height:2.5vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
