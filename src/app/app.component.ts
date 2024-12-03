@@ -60,18 +60,13 @@ export class AppComponent {
   }
 
   trackUserSession(): void {
-    this.proxy$.getSessionUserInfo().subscribe((result: any) => {
-      if (result.error) {
-        this.router.navigate(['/login']);
-      } else {
+  
         this.userServ.user$.subscribe((user) => {
           this.user = user;
           if (this.user == null) {
             this.router.navigate(['/login']);
           }
         });
-      }
-    });
   }
 
   trackCurrentPage(): void {
