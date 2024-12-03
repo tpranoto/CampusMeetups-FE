@@ -41,8 +41,8 @@
                 <div class="navbar-selection navbar-left-border">
                     <div class="navbar-item" [routerLink]="['/']" *ngIf="!currentPath.startsWith('/login')">Home</div>
                     <div class="navbar-item" [routerLink]="['/trip']" *ngIf="!currentPath.startsWith('/login')">Explore</div>
-                    <div class="navbar-item" [routerLink]="['/login']" *ngIf="currentPath.startsWith('/login')">About</div>
-                    <div class="navbar-item" [routerLink]="['/login']" *ngIf="currentPath.startsWith('/login')">Help</div>
+                    <div class="navbar-item" [routerLink]="['/about']" *ngIf="currentPath.startsWith('/login')">About</div>
+                    <div class="navbar-item" [routerLink]="['/help']" *ngIf="currentPath.startsWith('/login')">Help</div>
                     <div class="navbar-item" [matMenuTriggerFor]="notificationMenu" *ngIf="!currentPath.startsWith('/login')">Notifications</div>
                     <mat-menu #notificationMenu="matMenu" class="notifcation-menu">
                         <div class="notification-menu-content">

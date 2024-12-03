@@ -42,6 +42,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { AboutComponent } from './about/about.component';
+import { HelpPageComponent } from './help-page/help-page.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     EdittripdialogComponent,
     EdittripimagedialogComponent,
     EdittripdeletedialogComponent,
+    AboutComponent,
+    HelpPageComponent,
   ],
   imports: [
     BrowserModule,

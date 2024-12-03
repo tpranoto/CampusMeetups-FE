@@ -7,6 +7,8 @@ import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.comp
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { EditprofilepageComponent } from './editprofilepage/editprofilepage.component';
+import { AboutComponent } from './about/about.component';
+import { HelpPageComponent } from './help-page/help-page.component';
 
 const routes: Routes = [
   { path: '', component: WelcomepageComponent },
@@ -15,6 +17,8 @@ const routes: Routes = [
   { path: 'trip/:tripId', component: TripdetailspageComponent },
   { path: 'profile/:studentId', component: ProfilepageComponent },
   { path: 'profile/edit/:studentId', component: EditprofilepageComponent },
+  { path: 'about', component: AboutComponent},
+  { path: 'help', component: HelpPageComponent}
 ];
 
 @NgModule({
