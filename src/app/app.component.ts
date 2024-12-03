@@ -5,6 +5,8 @@ import { UserService } from './services/user.service';
 import { filter } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 import { CreatetripdialogComponent } from './createtripdialog/createtripdialog.component';
+import { AboutdialogComponent } from './aboutdialog/aboutdialog.component';
+import { HelpdialogComponent } from './helpdialog/helpdialog.component';
 
 @Component({
   selector: 'app-root',
@@ -86,6 +88,26 @@ export class AppComponent {
     const dialogRef = this.dialog.open(CreatetripdialogComponent, {
       width: '50vw',
       height: '600px',
+      position: {
+        top: '8vh',
+      },
+    });
+  }
+
+  onAboutClick(): void {
+    const dialogRef = this.dialog.open(AboutdialogComponent, {
+      width: '50vw',
+      height: '80vh',
+      position: {
+        top: '8vh',
+      },
+    });
+  }
+
+  onHelpClick(): void {
+    const dialogRef = this.dialog.open(HelpdialogComponent, {
+      width: '50vw',
+      height: '80vh',
       position: {
         top: '8vh',
       },
