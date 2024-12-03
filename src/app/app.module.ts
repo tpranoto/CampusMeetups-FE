@@ -10,7 +10,6 @@ import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
-import { EditprofilepageComponent } from './editprofilepage/editprofilepage.component';
 
 import { AvatarComponent } from './avatar/avatar.component';
 import { RecttripcardComponent } from './recttripcard/recttripcard.component';
@@ -18,11 +17,11 @@ import { AttendeelistdialogComponent } from './attendeelistdialog/attendeelistdi
 import { NotificationdialogComponent } from './notificationdialog/notificationdialog.component';
 import { ReportdialogComponent } from './reportdialog/reportdialog.component';
 import { CreatetripdialogComponent } from './createtripdialog/createtripdialog.component';
-import { CreatetripimagedialogComponent } from './createtripdialog/createtripimagedialog/createtripimagedialog.component';
 import { EdittripdialogComponent } from './edittripdialog/edittripdialog.component';
-import { EdittripimagedialogComponent } from './edittripdialog/edittripimagedialog/edittripimagedialog.component';
 import { EdittripdeletedialogComponent } from './edittripdialog/edittripdeletedialog/edittripdeletedialog.component';
 import { CarouselComponent } from './loginpage/carousel/carousel.component';
+import { EditprofiledialogComponent } from './editprofiledialog/editprofiledialog.component';
+import { AddimageurldialogComponent } from './addimageurldialog/addimageurldialog.component';
 import { AboutdialogComponent } from './aboutdialog/aboutdialog.component';
 import { HelpdialogComponent } from './helpdialog/helpdialog.component';
 
@@ -53,7 +52,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     TripdetailspageComponent,
     ProfilepageComponent,
     LoginpageComponent,
-    EditprofilepageComponent,
     AvatarComponent,
     RecttripcardComponent,
     AttendeelistdialogComponent,
@@ -61,10 +59,10 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     CarouselComponent,
     ReportdialogComponent,
     CreatetripdialogComponent,
-    CreatetripimagedialogComponent,
     EdittripdialogComponent,
-    EdittripimagedialogComponent,
     EdittripdeletedialogComponent,
+    EditprofiledialogComponent,
+    AddimageurldialogComponent,
     AboutdialogComponent,
     HelpdialogComponent,
   ],

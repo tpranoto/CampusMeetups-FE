@@ -1,0 +1,174 @@
+.create-trip-dialog{
+    background-color: white;
+    height: 100%;
+}
+
+.form-container {
+    width: 90%;
+    margin: 5% auto;
+    border-radius: 8px;
+}
+
+.review-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 5% 0;
+}
+  
+.progress-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1% auto;
+    width: 50%;
+    border-radius: 8px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 2vh 0;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    font-size: small;
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+    margin: 0 1vw;
+    color: #aaa;
+    border-top: 4px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.step.active {
+    color: darkred;
+    border-color: darkred;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-form{
+    padding-right: 0 !important;
+}
+
+.trip-pic-wrapper{
+    width: 10vw;
+    height: 15vh;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 2px solid #aaa;
+    background-color: #aaa;
+    position: relative;
+}
+
+.edit-icon, .revert-icon{
+    position: absolute;
+    background-color: #aaa;
+    border: 1px solid black;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-icon{
+    bottom: 1%;
+    left: 1%;
+}
+
+.revert-icon{
+    top:1%;
+    right:1%;
+}
+
+.edit-icon:hover ,.revert-icon:hover{
+    cursor: pointer;
+}
+
+.trip-pic-wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+  
+.form-group {
+    margin-bottom: 1%;
+}
+
+.phone-number-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+label {
+    font-weight: bold;
+    font-size: small;
+}
+
+.category-selection{
+    padding: 12.5px 5px !important;
+}
+  
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+  
+textarea {
+    resize: none;
+}
+
+button {
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: darkred;
+}
+  
+button:disabled {
+    background: #ccc;
+}
+
+small {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #666;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.action-buttons{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5vw;
+}
+
+.cancel-button{
+    background-color: #666;
+}

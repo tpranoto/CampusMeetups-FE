@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AttendeelistdialogComponent } from '../attendeelistdialog/attendeelistdialog.component';
 import { ReportdialogComponent } from '../reportdialog/reportdialog.component';
 import { EdittripdialogComponent } from '../edittripdialog/edittripdialog.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tripdetailspage',
@@ -19,6 +20,7 @@ export class TripdetailspageComponent {
   attendeeList: any = [];
   isHostOfTrip: boolean = false;
   hasJoinedTrip: boolean = false;
+  private routeParamSubscription: Subscription;
 
   constructor(
     private router: Router,
@@ -30,8 +32,15 @@ export class TripdetailspageComponent {
   ) {
     const userDt = this.userServ.user;
     this.userId = userDt.studentId;
-    const tripId = actRouter.snapshot.params['tripId'];
+    const tripId = this.actRouter.snapshot.params['tripId'];
     this.fetchTripDetails(tripId);
+
+    this.routeParamSubscription = this.actRouter.params.subscribe((params) => {
+      const newTripId = params['tripId'];
+      if (newTripId !== this.trip.tripId) {
+        this.fetchTripDetails(newTripId);
+      }
+    });
   }
 
   fetchTripDetails(tripId: string): void {
