@@ -1,5 +1,3 @@
-
-
 .about-page {
     overflow: scroll;
     font-family: 'Arial', sans-serif;
@@ -53,4 +51,21 @@
     font-weight: bold;
 }
   
-  
+@media (max-width: 768px) {
+    .about-page {
+    padding: 20px;
+    }
+
+    .about-page h1 {
+    font-size: 2em;
+    }
+
+    .about-page h2 {
+    font-size: 1.6em;
+    }
+
+    .about-page p,
+    .about-page ul li {
+    font-size: 1em;
+    }
+}

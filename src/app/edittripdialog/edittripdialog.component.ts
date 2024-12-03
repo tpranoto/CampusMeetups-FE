@@ -23,6 +23,7 @@ export class EdittripdialogComponent {
   trip: any = {};
   categories: CategoryDetails[] = [];
   currentStep: number = 1;
+  today: string;
 
   constructor(
     public dialogRef: MatDialogRef<EdittripdialogComponent>,
@@ -54,6 +55,9 @@ export class EdittripdialogComponent {
       description: [data.trip.description, Validators.required],
       tripStatus: [data.trip.status, Validators.required],
     });
+
+    const date = new Date();
+    this.today = this.formatDateForInput(date.toString());
   }
 
   nextStep(): void {

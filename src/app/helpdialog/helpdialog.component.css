@@ -1,5 +1,4 @@
-  
-  .help-page {
+.help-page {
     overflow: scroll;
     font-family: 'Arial', sans-serif;
     background-color: #fff !important;
@@ -9,87 +8,86 @@
     flex-direction: column;
     scrollbar-width: none;
     text-align: center;
-  }
+}
 
-  .help-page::-webkit-scrollbar {
+.help-page::-webkit-scrollbar {
     display: none;
 }
   
-  .help-page h1 {
+.help-page h1 {
     font-size: 2.5em;
     color: darkred;
     margin-bottom: 20px;
     text-align: center;
     font-weight: bold;
-  }
-  
-  .help-page h2 {
+}
+
+.help-page h2 {
     font-size: 2em;
     color: #333;
     margin-top: 30px;
     margin-bottom: 15px;
     text-align: center;
-  }
-  
-  .help-page p {
+}
+
+.help-page p {
     font-size: 1.2em;
     line-height: 1.8;
     margin-bottom: 20px;
-  }
-  
-  .help-page ul {
+}
+
+.help-page ul {
     list-style-type: disc;
     margin-left: 20px;
-  }
-  
-  .help-page ul li {
+}
+
+.help-page ul li {
     font-size: 1.2em;
     margin-bottom: 10px;
-  }
-  
-  .help-page ul li strong {
+}
+
+.help-page ul li strong {
     color: #000000;
     font-weight: bold;
-  }
-  
-  
-  .social-media-icons a {
+}
+
+
+.social-media-icons a {
     margin-left: 200px; 
-   margin-top: 200px;
-  }
-  
-  .social-icon img {
+margin-top: 200px;
+}
+
+.social-icon img {
     width: 40px;
     height: 40px;
-  }
-  
-  @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     .help-page {
-      padding: 20px;
+    padding: 20px;
     }
-  
+
     .help-page h1 {
-      font-size: 2em;
+    font-size: 2em;
     }
-  
+
     .help-page h2 {
-      font-size: 1.6em;
-      text-align: center;
-     
+    font-size: 1.6em;
+    text-align: center;
+    
     }
-  
+
     .help-page p,
     .help-page ul li {
-      font-size: 1em;
+    font-size: 1em;
     }
     
     .social-media-icons {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
     }
-  
+
     .social-media-icons a {
-      margin-bottom: 10px;
+    margin-bottom: 10px;
     }
-  }
-  
+}

@@ -43,7 +43,7 @@
                     <div class="col-6">
                         <div class="form-group">
                             <label for="startDate">Date</label>
-                            <input id="startDate" type="datetime-local" formControlName="startDate" />
+                            <input id="startDate" type="datetime-local" formControlName="startDate" [min]="today"/>
                         </div>
                     </div>
                 </div>
