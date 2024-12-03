@@ -10,13 +10,13 @@
                 <div class="row row-form">
                     <div class="col-4">
                         <div class="trip-pic-wrapper">
-                            <img [src]="tripImage" (error)="onImageError($event)"/>
+                            <img [src]="tripImage || 'def_trip.jpg'"/>
                             
                             <div class="edit-icon" (click)="onImageEditClick()">
                                 <mat-icon>edit</mat-icon>
                             </div>
 
-                            <div class="revert-icon" (click)="onImageRevertClick()"  *ngIf="tripImage==='def_trip.jpg'">
+                            <div class="revert-icon" (click)="onImageRevertClick()"  *ngIf="tripImage!=='' && tripImage!=='def_trip.jpg'">
                                 <mat-icon>cancel</mat-icon>
                             </div>
                         </div>

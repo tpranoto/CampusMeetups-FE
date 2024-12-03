@@ -122,11 +122,6 @@ export class EdittripdialogComponent {
     });
   }
 
-  onImageError(event: Event) {
-    const img = event.target as HTMLImageElement;
-    img.src = 'def_trip.jpg';
-  }
-
   onCancelClick(): void {
     this.dialogRef.close();
   }
