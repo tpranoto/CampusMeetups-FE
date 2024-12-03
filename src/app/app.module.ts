@@ -24,6 +24,7 @@ import { EditprofiledialogComponent } from './editprofiledialog/editprofiledialo
 import { AddimageurldialogComponent } from './addimageurldialog/addimageurldialog.component';
 import { AboutdialogComponent } from './aboutdialog/aboutdialog.component';
 import { HelpdialogComponent } from './helpdialog/helpdialog.component';
+import { TnsdialogComponent } from './tnsdialog/tnsdialog.component';
 
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
@@ -65,6 +66,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     AddimageurldialogComponent,
     AboutdialogComponent,
     HelpdialogComponent,
+    TnsdialogComponent,
   ],
   imports: [
     BrowserModule,

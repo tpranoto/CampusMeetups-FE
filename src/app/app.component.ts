@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreatetripdialogComponent } from './createtripdialog/createtripdialog.component';
 import { AboutdialogComponent } from './aboutdialog/aboutdialog.component';
 import { HelpdialogComponent } from './helpdialog/helpdialog.component';
+import { TnsdialogComponent } from './tnsdialog/tnsdialog.component';
 
 @Component({
   selector: 'app-root',
@@ -106,6 +107,16 @@ export class AppComponent {
 
   onHelpClick(): void {
     const dialogRef = this.dialog.open(HelpdialogComponent, {
+      width: '50vw',
+      height: '80vh',
+      position: {
+        top: '8vh',
+      },
+    });
+  }
+
+  onTnSClick(): void {
+    const dialogRef = this.dialog.open(TnsdialogComponent, {
       width: '50vw',
       height: '80vh',
       position: {

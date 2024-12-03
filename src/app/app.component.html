@@ -56,7 +56,7 @@
                     <mat-menu #profileMenu="matMenu" class="profile-menu">
                         <button mat-menu-item [routerLink]="['/profile',user.studentId]" *ngIf="user!=null && user.studentId != ''" class="profile-menu-item">View Profile</button>
                         <button mat-menu-item class="profile-menu-item">Settings</button>
-                        <button mat-menu-item class="profile-menu-item">Help</button>
+                        <button mat-menu-item class="profile-menu-item" (click)="onHelpClick()">Help</button>
                         <button mat-menu-item class="profile-menu-item" (click)="onLogoutClick()">Log out</button>
                     </mat-menu>
                 </div>
@@ -73,7 +73,7 @@
         <div class="footer-center">
             <ul class="footer-links">
                 <li><div (click)="onAboutClick()" class="footer-link">About</div></li>
-                <li><div class="footer-link">Terms of Service</div></li>
+                <li><div (click)="onTnSClick()" class="footer-link">Terms of Service</div></li>
                 <li><div (click)="onHelpClick()" class="footer-link">Help</div></li>
             </ul>
         </div>

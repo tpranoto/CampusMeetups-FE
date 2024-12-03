@@ -14,7 +14,7 @@
     display: none;
 }
   
-.about-page h2 {
+.about-page h1 {
     font-size: 2.5em;
     color: darkred;
     margin-bottom: 20px;
@@ -22,17 +22,16 @@
     font-weight: bold;
 }
   
-.about-page h3 {
-    text-align: center;
-    font-size: 2em;
-    color: darkred;
+.about-page h2 {
+    font-size: 28px;
+    color: #34495e;
     margin-top: 30px;
-    margin-bottom: 15px;
 }
   
 .about-page p {
-    font-size: 1.2em;
-    line-height: 1.8;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #7f8c8d;
     margin-bottom: 20px;
 }
 
@@ -42,7 +41,9 @@
 }
 
 .about-page ul li {
-    font-size: 1.2em;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #7f8c8d;
     margin-bottom: 10px;
 }
 
