@@ -18,6 +18,7 @@ export class CreatetripdialogComponent {
   trip: any = {};
   categories: CategoryDetails[] = [];
   currentStep: number = 1;
+  today: string;
 
   constructor(
     public dialogRef: MatDialogRef<CreatetripdialogComponent>,
@@ -36,6 +37,9 @@ export class CreatetripdialogComponent {
       tripCategory: [`{\"name\":\"Select Category\"}`, Validators.required],
       description: ['', Validators.required],
     });
+
+    const date = new Date();
+    this.today = this.formatDateForInput(date.toString());
   }
 
   nextStep(): void {
@@ -120,5 +124,17 @@ export class CreatetripdialogComponent {
         this.categories = [{ name: 'Select Category' }, ...result];
       }
     });
+  }
+
+  formatDateForInput(dateString: string): string {
+    const date = new Date(dateString);
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
   }
 }

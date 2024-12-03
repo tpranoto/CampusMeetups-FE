@@ -23,6 +23,8 @@ import { EdittripdialogComponent } from './edittripdialog/edittripdialog.compone
 import { EdittripimagedialogComponent } from './edittripdialog/edittripimagedialog/edittripimagedialog.component';
 import { EdittripdeletedialogComponent } from './edittripdialog/edittripdeletedialog/edittripdeletedialog.component';
 import { CarouselComponent } from './loginpage/carousel/carousel.component';
+import { AboutdialogComponent } from './aboutdialog/aboutdialog.component';
+import { HelpdialogComponent } from './helpdialog/helpdialog.component';
 
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
@@ -42,8 +44,6 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { AboutComponent } from './about/about.component';
-import { HelpPageComponent } from './help-page/help-page.component';
 
 @NgModule({
   declarations: [
@@ -65,8 +65,8 @@ import { HelpPageComponent } from './help-page/help-page.component';
     EdittripdialogComponent,
     EdittripimagedialogComponent,
     EdittripdeletedialogComponent,
-    AboutComponent,
-    HelpPageComponent,
+    AboutdialogComponent,
+    HelpdialogComponent,
   ],
   imports: [
     BrowserModule,
