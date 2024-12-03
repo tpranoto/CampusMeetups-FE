@@ -74,7 +74,7 @@ export class TripdetailspageComponent {
   onEditTripClick(): void {
     const dialogRef = this.dialog.open(EdittripdialogComponent, {
       width: '50vw',
-      height: '660px',
+      height: '680px',
       position: {
         top: '5vh',
       },
