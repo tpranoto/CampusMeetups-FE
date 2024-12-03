@@ -8,6 +8,8 @@
             <img [src]="userData.image" (error)="onImageError($event)" alt="Profile Image"/>
             <div class="profile-basic-info">
               <div class="profile-name">{{userData.fname}} {{userData.lname}}<mat-icon *ngIf="userData.verified">verified</mat-icon></div>
+              <div class="profile-email" *ngIf="isMyAccount"><mat-icon>alternate_email</mat-icon>{{userData.email}}</div>
+              <div class="profile-phonenumber" *ngIf="isMyAccount"><mat-icon>call</mat-icon>{{userData.phoneNumber}}</div>
               <div class="profile-joined"><mat-icon>calendar_today</mat-icon> Joined on {{userData.joined | date:'MMM, yyyy' }}</div>
             </div>
           </div>
@@ -37,7 +39,7 @@
           <div class="profile-edit-info">
             <app-avatar [size]="'medium'"[imgUrl]="userData.image" [fName]="userData.fname" [lName]="userData.lname"></app-avatar>
             <div class="profile-edit-name">
-              <div class="profile-edit-title">{{userData.fname || "Heyo"}} {{userData.lname}}</div>
+              <div class="profile-edit-title">{{userData.fname}} {{userData.lname}}</div>
               <div class="profile-edit-link" (click)="onEditProfileClick()"><mat-icon>edit</mat-icon>Edit profile</div>
             </div>
           </div>
