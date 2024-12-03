@@ -1,31 +1,230 @@
-.banner{
-    background:url(../../../public/Header-image.jpg);
-    background-size:cover;
-    height: 70vh;
-    padding: 10%;
+.triplist-container{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
-.banner-container{
+.container-fluid.banner {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.middle-container{
+  position: relative;
+  height: 70vh;
+  left: 10%;  
+  justify-content: center;
+  overflow: hidden;
+}
+
+.banner-header-text {
+  font-size: 2 rem;
+  font-weight: bold;
+  margin-bottom: 20px; 
+  color: rgba(0, 0, 0, 0.751);
+  font-family:inherit;
+}
+
+.banner-text {
+  font-size: 1.0rem;
+  font-weight: bold;
+  margin-bottom: 20px; 
+  color:rgba(0, 0, 0, 0.745);
+  font-family:inherit;
+}
+
+.text-times{
+  color: darkred;
+  font-family:inherit;
+}
+
+.banner-login {
+  text-align: center;
+  padding: 20px;
+  height: 150%;
+  margin-top: 150px;
+  border-radius: 10px;
+}
+
+.btn {
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  border-radius: 30px; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.btn:hover {
+  background-color: #da3c3c; 
+  transform: scale(1.1);
+}
+
+.btn-primary {
+  background-color: darkred;
+  color: white;
+  border: none;
+}
+
+.row{
+  margin-left: 10px;
+  justify-content: space-between;
+  font-family: inherit;
+
+}
+
+.avatar {
+  width: 70px; 
+  height: 70px;
+  border-radius: 50%; 
+  margin-bottom: 15px; 
+}
+
+.h4{
+  font-family:inherit;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.page-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: inherit;
+  background-color: rgba(217, 217, 194, 0.37);
+  height: 600px;
+}
+
+.navbar{
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 7vh;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-button{
+  text-align: center;
+  padding: 1px;
+  border-radius: 10px;
+}
+
+.bttn{
+  display: flex;
+  margin-top: 8px;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 24px;
+  border-radius: 15px; 
+  width: 15px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.bttn:hover {
+  background-color: #a41616; 
+  transform: scale(1.1);
+}
+
+.bttn-primary {
+  background-color: darkred;
+  color: white;
+}
+
+.navbar-logo {
+    height: 70px; 
+    margin-left: 15px; 
+}
+
+.navbar-brand{
+    color: darkred;
+    font-weight: bolder;
+}
+
+.navbar-brand:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.navbar-left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.navbar-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.navbar-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.navbar-left-border{
+    border-left: 2px solid darkred;
+    margin-left: 30px;
+    padding-left: 10px;
+}
+
+.navbar-selection {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 70%;
+}
+  
+.navbar-item {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: normal;
+    font-size: 14px;
+    display: flex;  
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    direction: ltr;
+    color: darkred;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 10%;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-.banner-header-text{
-    color: rgb(244, 238, 238);
-    font-weight: bold;
+.navbar-item:hover{
+    background-color: #efcfcf;
+    cursor: pointer;
 }
 
-.banner-text{
-    color: rgb(244, 238, 238);
+
+.profile-menu-item{
+  width: 15vw;
+  text-align: right;
+  padding: 0 10px;
+}
+  
+
+.navbar-profile{
     display: flex;
-    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
-.banner-login{
-    margin-top: 5%;
+.navbar-avatar-name{
+    margin-right: 5px;
 }

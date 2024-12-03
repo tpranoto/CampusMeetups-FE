@@ -9,7 +9,7 @@ import { CreatetripdialogComponent } from './createtripdialog/createtripdialog.c
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title: string = 'CampusMeetups';
@@ -32,7 +32,7 @@ export class AppComponent {
   }
 
   onInputEnter(event: KeyboardEvent): void {
-    if (event.key === 'Enter' && this.searchTripName != '') {
+    if (event.key === 'Enter' && this.searchTripName !== '') {
       this.router.navigate(['/trip'], {
         queryParams: { name: this.searchTripName },
       });
@@ -41,12 +41,16 @@ export class AppComponent {
   }
 
   onSearchClick(): void {
-    if (this.searchTripName != '') {
+    if (this.searchTripName !== '') {
       this.router.navigate(['/trip'], {
         queryParams: { name: this.searchTripName },
       });
       this.searchTripName = '';
     }
+  }
+
+  onLoginButtonClick(): void {
+    this.proxy$.login().subscribe(() => {});
   }
 
   onLogoutClick(): void {

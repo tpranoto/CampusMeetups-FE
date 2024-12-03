@@ -22,6 +22,7 @@ import { CreatetripimagedialogComponent } from './createtripdialog/createtripima
 import { EdittripdialogComponent } from './edittripdialog/edittripdialog.component';
 import { EdittripimagedialogComponent } from './edittripdialog/edittripimagedialog/edittripimagedialog.component';
 import { EdittripdeletedialogComponent } from './edittripdialog/edittripdeletedialog/edittripdeletedialog.component';
+import { CarouselComponent } from './loginpage/carousel/carousel.component';
 
 import { CmproxyService } from './services/cmproxy.service';
 import { UserService } from './services/user.service';
@@ -39,6 +40,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
@@ -54,6 +56,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     RecttripcardComponent,
     AttendeelistdialogComponent,
     NotificationdialogComponent,
+    CarouselComponent,
     ReportdialogComponent,
     CreatetripdialogComponent,
     CreatetripimagedialogComponent,
@@ -63,6 +66,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,

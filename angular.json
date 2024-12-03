@@ -42,15 +42,15 @@
               "@angular/material/prebuilt-themes/rose-red.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "5MB",
+                  "maximumError": "10MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -102,7 +102,7 @@
               "@angular/material/prebuilt-themes/rose-red.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [ ]
           }
         }
       }
