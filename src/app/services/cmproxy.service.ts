@@ -171,4 +171,8 @@ export class CmproxyService {
   logout() {
     return this.httpClient.get<any[]>(this.hostUrl + `app/logout`);
   }
+
+  getSessionUserInfo() {
+    return this.httpClient.get<any[]>(this.hostUrl + `app/session/user`);
+  }
 }
