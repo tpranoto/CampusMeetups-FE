@@ -159,9 +159,11 @@ export class EdittripdialogComponent {
       },
     });
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.router.navigate(['/']);
-      this.dialogRef.close();
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        this.router.navigate(['/']);
+        this.dialogRef.close();
+      }
     });
   }
 

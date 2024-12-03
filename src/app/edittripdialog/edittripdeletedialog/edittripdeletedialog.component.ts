@@ -27,7 +27,7 @@ export class EdittripdeletedialogComponent {
       if (result.error) {
         this.notifServ.showNotificationDialog(result.error, 'fail');
       } else {
-        this.dialogRef.close();
+        this.dialogRef.close('ok');
       }
     });
   }
