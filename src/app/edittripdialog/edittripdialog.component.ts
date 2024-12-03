@@ -3,10 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CmproxyService } from '../services/cmproxy.service';
 import { NotificationdialogService } from '../services/notificationdialog.service';
 import { CategoryDetails } from '../models/models';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { EdittripimagedialogComponent } from './edittripimagedialog/edittripimagedialog.component';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+} from '@angular/material/dialog';
+import { AddimageurldialogComponent } from '../addimageurldialog/addimageurldialog.component';
 import { Router } from '@angular/router';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EdittripdeletedialogComponent } from './edittripdeletedialog/edittripdeletedialog.component';
 
 @Component({
@@ -107,7 +110,7 @@ export class EdittripdialogComponent {
   }
 
   onImageEditClick(): void {
-    const dialogRef = this.dialog.open(EdittripimagedialogComponent, {
+    const dialogRef = this.dialog.open(AddimageurldialogComponent, {
       width: '50vw',
       position: {
         top: '15vh',

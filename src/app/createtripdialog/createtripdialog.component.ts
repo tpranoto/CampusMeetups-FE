@@ -4,7 +4,7 @@ import { CmproxyService } from '../services/cmproxy.service';
 import { NotificationdialogService } from '../services/notificationdialog.service';
 import { CategoryDetails } from '../models/models';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { CreatetripimagedialogComponent } from './createtripimagedialog/createtripimagedialog.component';
+import { AddimageurldialogComponent } from '../addimageurldialog/addimageurldialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -79,7 +79,7 @@ export class CreatetripdialogComponent {
   }
 
   onImageEditClick(): void {
-    const dialogRef = this.dialog.open(CreatetripimagedialogComponent, {
+    const dialogRef = this.dialog.open(AddimageurldialogComponent, {
       width: '50vw',
       position: {
         top: '15vh',

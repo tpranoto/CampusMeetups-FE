@@ -163,6 +163,13 @@ export class CmproxyService {
     return this.httpClient.post<any[]>(this.hostUrl + `app/report/`, body);
   }
 
+  updateProfile(profileData: any) {
+    return this.httpClient.put<any[]>(
+      this.hostUrl + `app/student/${profileData.studentId}`,
+      profileData
+    );
+  }
+
   login() {
     window.location.href = `${this.hostUrl}app/login`;
     return new Observable();

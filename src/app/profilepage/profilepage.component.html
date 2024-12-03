@@ -38,7 +38,7 @@
             <app-avatar [size]="'medium'"[imgUrl]="userData.image" [fName]="userData.fname" [lName]="userData.lname"></app-avatar>
             <div class="profile-edit-name">
               <div class="profile-edit-title">{{userData.fname || "Heyo"}} {{userData.lname}}</div>
-              <div class="profile-edit-link" [routerLink]="['/profile/edit',userData.studentId]"><mat-icon>edit</mat-icon>Edit profile</div>
+              <div class="profile-edit-link" (click)="onEditProfileClick()"><mat-icon>edit</mat-icon>Edit profile</div>
             </div>
           </div>
         </div>

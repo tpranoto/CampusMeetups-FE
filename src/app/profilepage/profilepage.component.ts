@@ -6,6 +6,7 @@ import { NotificationdialogService } from '../services/notificationdialog.servic
 import { MatDialog } from '@angular/material/dialog';
 import { ReportdialogComponent } from '../reportdialog/reportdialog.component';
 import { UserService } from '../services/user.service';
+import { EditprofiledialogComponent } from '../editprofiledialog/editprofiledialog.component';
 
 @Component({
   selector: 'app-profilepage',
@@ -77,5 +78,16 @@ export class ProfilepageComponent {
   onImageError(event: Event) {
     const img = event.target as HTMLImageElement;
     img.src = 'def_profile.jpg';
+  }
+
+  onEditProfileClick() {
+    const dialogRef = this.dialog.open(EditprofiledialogComponent, {
+      width: '50vw',
+      data: { profile: this.userData },
+    });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.userData = result;
+    });
   }
 }
