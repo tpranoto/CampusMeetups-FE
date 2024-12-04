@@ -79,7 +79,7 @@ export class EditprofiledialogComponent {
       bio: profileFormData.bio,
     };
 
-    if (!this.validForm()) {
+    if (this.validForm()) {
       this.proxy$.updateProfile(this.profile).subscribe((result: any) => {
         if (result.error) {
           this.notifServ.showNotificationDialog(result.error, 'fail');
