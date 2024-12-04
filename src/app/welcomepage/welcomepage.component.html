@@ -28,7 +28,7 @@
   </div>
 
   <div class="row" *ngIf="trips.length > 0">
-    <div class="col-md-3 mb-3" *ngFor="let trip of trips">
+    <div class="col-md-3 mb-3" *ngFor="let trip of trips.slice(0, 4)">
       <app-recttripcard [trip]="trip"></app-recttripcard>
     </div>
   </div>

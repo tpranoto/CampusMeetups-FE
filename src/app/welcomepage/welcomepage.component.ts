@@ -21,19 +21,18 @@ export class WelcomepageComponent {
     private notifServ: NotificationdialogService
   ) {
     this.trackUserSession();
-    this.fetchAttendedTrips();
     this.fetchUpcomingActiveTrips();
   }
 
-  // Fetch trips for the specific student
-  fetchAttendedTrips(): void {
+  // Fetch organized trips for the specific student
+  fetchOrganizedTrips(): void {
     this.proxy$
-      .getAttendedTripsForStudent(this.user.studentId, '4')
+      .getTripsOrganizedByStudent(this.user.studentId)
       .subscribe((result: any) => {
         if (result.error) {
           this.notifServ.showNotificationDialog(result.error, 'fail');
         } else {
-          this.trips = result.map((trip: any) => trip.tripData);
+          this.trips = result;
         }
       });
   }
@@ -54,6 +53,7 @@ export class WelcomepageComponent {
   trackUserSession(): void {
     this.userServ.trackUser((user: any) => {
       this.user = user;
+      this.fetchOrganizedTrips();
     });
   }
 }
