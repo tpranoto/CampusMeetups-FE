@@ -54,7 +54,7 @@
                         <app-avatar [imgUrl]="user.image" [fName]="user.fname" [lName]="user.lname"></app-avatar>
                     </div>
                     <mat-menu #profileMenu="matMenu" class="profile-menu">
-                        <button mat-menu-item [routerLink]="['/profile',user.studentId]" *ngIf="user!=null && user.studentId!=null && user.studentId != ''" class="profile-menu-item">View Profile</button>
+                        <button mat-menu-item [routerLink]="['/myaccount']" *ngIf="user!=null && user.studentId!=null && user.studentId != ''" class="profile-menu-item">View Profile</button>
                         <button mat-menu-item class="profile-menu-item">Settings</button>
                         <button mat-menu-item class="profile-menu-item" (click)="onHelpClick()">Help</button>
                         <button mat-menu-item class="profile-menu-item" (click)="onLogoutClick()">Log out</button>

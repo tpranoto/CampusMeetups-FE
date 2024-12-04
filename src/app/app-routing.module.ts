@@ -6,12 +6,14 @@ import { TriplistpageComponent } from './triplistpage/triplistpage.component';
 import { TripdetailspageComponent } from './tripdetailspage/tripdetailspage.component';
 import { ProfilepageComponent } from './profilepage/profilepage.component';
 import { LoginpageComponent } from './loginpage/loginpage.component';
+import { MyaccountpageComponent } from './myaccountpage/myaccountpage.component';
 
 const routes: Routes = [
   { path: '', component: WelcomepageComponent },
   { path: 'login', component: LoginpageComponent },
   { path: 'trip', component: TriplistpageComponent },
   { path: 'trip/:tripId', component: TripdetailspageComponent },
+  { path: 'myaccount', component: MyaccountpageComponent },
   { path: 'profile/:studentId', component: ProfilepageComponent },
 ];
 
