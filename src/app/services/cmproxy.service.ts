@@ -117,7 +117,7 @@ export class CmproxyService {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     return this.httpClient.patch<any[]>(
-      this.hostUrl + `app/trip/${tripData.studentId}`,
+      this.hostUrl + `app/trip/${tripData.tripId}`,
       tripData,
       {
         headers,
