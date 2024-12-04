@@ -21,7 +21,7 @@
 <section class="your-trips">
   <h2 class="your-trips-title">Your Trips</h2>
   <div class="your-trips-link" *ngIf="trips.length !== 0">
-    <button [routerLink]="['/trip']">View more</button>
+    <button [routerLink]="['/myaccount']">View more</button>
   </div>
   <div *ngIf="trips.length === 0" class="no-trips-message">
     <p class="lead text-muted text-times">No trips planned</p>
@@ -46,7 +46,7 @@
       </p>
 
       <div class="upcoming-trips-link" >
-        <button [routerLink]="['/myaccount']">View more</button>
+        <button [routerLink]="['/trip']">View more</button>
       </div>
     </div>
 
