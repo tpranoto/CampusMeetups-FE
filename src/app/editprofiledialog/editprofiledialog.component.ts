@@ -9,6 +9,7 @@ import {
 } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AddimageurldialogComponent } from '../addimageurldialog/addimageurldialog.component';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-editprofiledialog',
@@ -27,6 +28,7 @@ export class EditprofiledialogComponent {
     private notifServ: NotificationdialogService,
     private dialog: MatDialog,
     private router: Router,
+    private userServ: UserService,
     @Inject(MAT_DIALOG_DATA) public data: { profile: any }
   ) {
     this.profile = data.profile;
@@ -84,6 +86,7 @@ export class EditprofiledialogComponent {
         if (result.error) {
           this.notifServ.showNotificationDialog(result.error, 'fail');
         } else {
+          this.userServ.setUser(result);
           this.dialogRef.close(result);
         }
       });

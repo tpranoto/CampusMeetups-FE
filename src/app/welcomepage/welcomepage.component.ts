@@ -52,7 +52,7 @@ export class WelcomepageComponent {
   }
 
   trackUserSession(): void {
-    this.userServ.user$.subscribe((user) => {
+    this.userServ.trackUser((user: any) => {
       this.user = user;
     });
   }

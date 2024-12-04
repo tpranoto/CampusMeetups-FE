@@ -26,9 +26,13 @@ export class ProfilepageComponent {
     private notifServ: NotificationdialogService,
     private userServ: UserService
   ) {
-    const studentId = actRouter.snapshot.params['studentId'];
+    this.trackUserSession();
+  }
+
+  ngOnInit(): void {
+    const studentId = this.actRouter.snapshot.params['studentId'];
     const userSessionData = this.userServ.user;
-    this.isMyAccount = userSessionData.studentId === studentId;
+    this.isMyAccount = userSessionData?.studentId === studentId;
     this.fetchStudentData(studentId);
   }
 
@@ -89,5 +93,9 @@ export class ProfilepageComponent {
     dialogRef.afterClosed().subscribe((result: any) => {
       this.userData = result;
     });
+  }
+
+  trackUserSession(): void {
+    this.userServ.trackUser((user: any) => {});
   }
 }

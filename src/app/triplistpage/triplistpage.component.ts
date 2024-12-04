@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CmproxyService } from '../services/cmproxy.service';
 import { NotificationdialogService } from '../services/notificationdialog.service';
 import { TripsData, CategoryDetails } from '../models/models';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-triplistpage',
@@ -26,8 +27,10 @@ export class TriplistpageComponent {
     private router: Router,
     private actRouter: ActivatedRoute,
     private proxy$: CmproxyService,
-    private notifServ: NotificationdialogService
+    private notifServ: NotificationdialogService,
+    private userServ: UserService
   ) {
+    this.trackUserSession();
     this.page = 0;
     this.actRouter.queryParams.subscribe((params) => {
       this.searchName = params['name'] || '';
@@ -145,5 +148,9 @@ export class TriplistpageComponent {
       behavior: 'smooth',
       block: 'start',
     });
+  }
+
+  trackUserSession(): void {
+    this.userServ.trackUser((user: any) => {});
   }
 }

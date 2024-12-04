@@ -30,8 +30,7 @@ export class TripdetailspageComponent {
     private dialog: MatDialog,
     private notifServ: NotificationdialogService
   ) {
-    const userDt = this.userServ.user;
-    this.userId = userDt.studentId;
+    this.trackUserSession();
     const tripId = this.actRouter.snapshot.params['tripId'];
     this.fetchTripDetails(tripId);
 
@@ -150,5 +149,11 @@ export class TripdetailspageComponent {
   onImageError(event: Event) {
     const img = event.target as HTMLImageElement;
     img.src = 'def_trip.jpg';
+  }
+
+  trackUserSession(): void {
+    this.userServ.trackUser((user: any) => {
+      this.userId = user.studentId;
+    });
   }
 }
