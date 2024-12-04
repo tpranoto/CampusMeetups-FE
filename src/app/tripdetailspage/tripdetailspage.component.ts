@@ -8,6 +8,7 @@ import { AttendeelistdialogComponent } from '../attendeelistdialog/attendeelistd
 import { ReportdialogComponent } from '../reportdialog/reportdialog.component';
 import { EdittripdialogComponent } from '../edittripdialog/edittripdialog.component';
 import { Subscription } from 'rxjs';
+import { ProfilecheckService } from '../services/profilecheck.service';
 
 @Component({
   selector: 'app-tripdetailspage',
@@ -28,7 +29,8 @@ export class TripdetailspageComponent {
     private proxy$: CmproxyService,
     private userServ: UserService,
     private dialog: MatDialog,
-    private notifServ: NotificationdialogService
+    private notifServ: NotificationdialogService,
+    private profileServ: ProfilecheckService
   ) {
     this.trackUserSession();
     const tripId = this.actRouter.snapshot.params['tripId'];
@@ -155,5 +157,10 @@ export class TripdetailspageComponent {
     this.userServ.trackUser((user: any) => {
       this.userId = user.studentId;
     });
+  }
+
+  onProfileClick(studentId: string): void {
+    this.profileServ.setProfile(studentId);
+    this.router.navigate(['/profile']);
   }
 }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { CmproxyService } from '../services/cmproxy.service';
 import { TripsData, AttendedTrips, StudentDetails } from '../models/models';
 import { NotificationdialogService } from '../services/notificationdialog.service';
@@ -7,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ReportdialogComponent } from '../reportdialog/reportdialog.component';
 import { UserService } from '../services/user.service';
 import { EditprofiledialogComponent } from '../editprofiledialog/editprofiledialog.component';
+import { ProfilecheckService } from '../services/profilecheck.service';
 
 @Component({
   selector: 'app-profilepage',
@@ -14,23 +14,26 @@ import { EditprofiledialogComponent } from '../editprofiledialog/editprofiledial
   styleUrl: './profilepage.component.css',
 })
 export class ProfilepageComponent {
+  studentId: string = '';
   userData: StudentDetails | any = {};
   organizedTrips: TripsData[] = [];
   joinedTrips: AttendedTrips[] = [];
 
   constructor(
     private proxy$: CmproxyService,
-    private actRouter: ActivatedRoute,
     private dialog: MatDialog,
     private notifServ: NotificationdialogService,
-    private userServ: UserService
+    private userServ: UserService,
+    private profileServ: ProfilecheckService
   ) {
     this.trackUserSession();
   }
 
   ngOnInit(): void {
-    const studentId = this.actRouter.snapshot.params['studentId'];
-    this.fetchStudentData(studentId);
+    this.profileServ.profileId$.subscribe((id) => {
+      this.studentId = id;
+      this.fetchStudentData(this.studentId);
+    });
   }
 
   fetchStudentData(studentId: string): void {

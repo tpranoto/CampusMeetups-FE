@@ -48,8 +48,8 @@
             <div *ngIf="attendeeList && attendeeList.length > 0; else noAttendees" class="row attendees-list">
               <div class="col-md-2 attendee-card" 
                 [matBadge]="attendee.host ? 'Host' : null"
-                *ngFor="let attendee of attendeeList.slice(0, 5)" 
-                [routerLink]="['/profile',attendee.studentId]"
+                *ngFor="let attendee of attendeeList.slice(0, 5)"
+                (click)="onProfileClick(attendee.studentId)"
               >
                 <app-avatar [imgUrl]="attendee.image" [fName]="attendee.fname" [lName]="attendee.lname"></app-avatar>
                 <div class="attendee-name">{{ attendee.fname }}</div>

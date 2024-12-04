@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'trip', component: TriplistpageComponent },
   { path: 'trip/:tripId', component: TripdetailspageComponent },
   { path: 'myaccount', component: MyaccountpageComponent },
-  { path: 'profile/:studentId', component: ProfilepageComponent },
+  { path: 'profile', component: ProfilepageComponent },
 ];
 
 @NgModule({
