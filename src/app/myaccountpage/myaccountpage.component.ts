@@ -83,7 +83,9 @@ export class MyaccountpageComponent {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      this.userData = result;
+      if (result) {
+        this.userData = result;
+      }
     });
   }
 
