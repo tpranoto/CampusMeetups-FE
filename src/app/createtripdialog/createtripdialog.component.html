@@ -73,7 +73,7 @@
                 <div *ngIf="currentStep === 1"></div>
                 <div class="action-buttons">
                     <button type="button" (click)="onCancelClick()" class="cancel-button">Cancel</button>
-                    <button type="button" (click)="nextStep()" [disabled]="validForm()"  *ngIf="currentStep === 1">Next</button>
+                    <button type="button" (click)="nextStep()" [disabled]="!validForm()"  *ngIf="currentStep === 1">Next</button>
                     <button type="button" (click)="onSubmitClick()" *ngIf="currentStep === 2">Submit</button>
                 </div>
             </div>

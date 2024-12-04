@@ -69,8 +69,8 @@ export class CreatetripdialogComponent {
 
   validForm(): boolean {
     return (
-      this.tripForm.invalid ||
-      this.tripForm.value.tripCategory === `{\"name\":\"Select Category\"}`
+      !this.tripForm.invalid &&
+      this.tripForm.value.tripCategory !== `{\"name\":\"Select Category\"}`
     );
   }
 
@@ -103,7 +103,7 @@ export class CreatetripdialogComponent {
   }
 
   onSubmitClick(): void {
-    if (!this.validForm()) {
+    if (this.validForm()) {
       this.proxy$.createTrip(this.trip).subscribe((result: any) => {
         if (result.error) {
           this.notifServ.showNotificationDialog(result.error, 'fail');

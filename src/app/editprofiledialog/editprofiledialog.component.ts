@@ -43,7 +43,7 @@ export class EditprofiledialogComponent {
   }
 
   validForm(): boolean {
-    return this.profileForm.invalid;
+    return !this.profileForm.invalid;
   }
 
   onImageRevertClick(): void {

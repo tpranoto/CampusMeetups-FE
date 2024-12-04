@@ -89,8 +89,8 @@ export class EdittripdialogComponent {
 
   validForm(): boolean {
     return (
-      this.tripForm.invalid ||
-      this.tripForm.value.tripCategory === `{\"name\":\"Select Category\"}`
+      !this.tripForm.invalid &&
+      this.tripForm.value.tripCategory !== `{\"name\":\"Select Category\"}`
     );
   }
 
@@ -135,7 +135,7 @@ export class EdittripdialogComponent {
   }
 
   onSubmitClick(): void {
-    if (!this.validForm()) {
+    if (this.validForm()) {
       this.proxy$.updateTripDetails(this.trip).subscribe((result: any) => {
         if (result.error) {
           this.notifServ.showNotificationDialog(result.error, 'fail');
