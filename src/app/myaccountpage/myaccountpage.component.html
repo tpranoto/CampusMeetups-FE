@@ -8,7 +8,7 @@
               <img [src]="userData.image" (error)="onImageError($event)" alt="Profile Image"/>
               <div class="profile-basic-info">
                 <div class="profile-name">{{userData.fname}} {{userData.lname}}<mat-icon *ngIf="userData.verified">verified</mat-icon></div>
-                <div class="profile-id"><mat-icon>tag</mat-icon>{{userData.studentId}}</div>
+                <div class="profile-id"><mat-icon>tag</mat-icon>{{userData.ssoId}}</div>
                 <div class="profile-email"><mat-icon>alternate_email</mat-icon>{{userData.email}}</div>
                 <div class="profile-phonenumber" *ngIf="userData.phoneNumber && userData.phoneNumber!=''"><mat-icon>call</mat-icon>{{userData.phoneNumber}}</div>
                 <div class="profile-joined"><mat-icon>calendar_today</mat-icon> Joined on {{userData.joined | date:'MMM, yyyy' }}</div>
