@@ -28,8 +28,15 @@ export class UserService {
   }
 
   setUser(userData: any) {
-    this.cookieService.set('user', JSON.stringify(userData));
-    this.userSubject.next(userData);
+    var limitedUserData = {
+      studentId: userData.studentId,
+      fname: userData.fname,
+      lname: userData.lname,
+      image: userData.image,
+    };
+
+    this.cookieService.set('user', JSON.stringify(limitedUserData));
+    this.userSubject.next(limitedUserData);
   }
 
   clearUser() {

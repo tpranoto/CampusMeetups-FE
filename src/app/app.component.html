@@ -5,7 +5,7 @@
                 <img src="Logo.png" alt="Campus Meetups Logo" class="navbar-logo" />
             </a> 
             <div class="navbar-content" *ngIf="!currentPath.startsWith('/login')">
-                <div class="search-container" *ngIf="user!=null && user.studentId != ''">
+                <div class="search-container">
                     <input type="text" 
                         placeholder="Search Trips" 
                         class="search-input" 

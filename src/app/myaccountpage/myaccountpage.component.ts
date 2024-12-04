@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { CmproxyService } from '../services/cmproxy.service';
 import { TripsData, AttendedTrips, StudentDetails } from '../models/models';
 import { NotificationdialogService } from '../services/notificationdialog.service';
@@ -20,7 +19,6 @@ export class MyaccountpageComponent {
 
   constructor(
     private proxy$: CmproxyService,
-    private actRouter: ActivatedRoute,
     private dialog: MatDialog,
     private notifServ: NotificationdialogService,
     private userServ: UserService

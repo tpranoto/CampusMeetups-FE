@@ -17,7 +17,6 @@ export class ProfilepageComponent {
   userData: StudentDetails | any = {};
   organizedTrips: TripsData[] = [];
   joinedTrips: AttendedTrips[] = [];
-  isMyAccount: Boolean = false;
 
   constructor(
     private proxy$: CmproxyService,
@@ -31,8 +30,6 @@ export class ProfilepageComponent {
 
   ngOnInit(): void {
     const studentId = this.actRouter.snapshot.params['studentId'];
-    const userSessionData = this.userServ.user;
-    this.isMyAccount = userSessionData?.studentId === studentId;
     this.fetchStudentData(studentId);
   }
 
