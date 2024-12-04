@@ -46,7 +46,7 @@
 
             <!-- Trip page Pagination -->            
             <div class="triplist-pagination-container">
-                <button mat-fab extended class="triplist-pagination-button" (click)="clickPrevPage()" *ngIf="prevPage != null">
+                <button mat-fab extended class="triplist-pagination-button" (click)="clickPrevPage()"[disabled]="prevPage == null">
                     <div class="triplist-pagination-button-content">
                         <mat-icon>arrow_back_ios</mat-icon>
                         Back
@@ -55,7 +55,7 @@
             
                 <div class="triplist-pagination-page-num">{{ this.page + 1 }}</div>
             
-                <button mat-fab extended class="triplist-pagination-button" (click)="clickNextPage()" *ngIf="nextPage != null">
+                <button mat-fab extended class="triplist-pagination-button" (click)="clickNextPage()" [disabled]="nextPage == null">
                     <div class="triplist-pagination-button-content">
                         Next
                         <mat-icon>arrow_forward_ios</mat-icon>

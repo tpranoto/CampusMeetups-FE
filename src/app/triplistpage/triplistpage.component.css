@@ -208,12 +208,20 @@
 }
 
 .triplist-pagination-button{
-    width: 6vw;
+    background-color: darkred;          
+    color: white;                    
+    border-radius: 11px;
+    font-size: 12px;                   
+    font-weight: bold;                
+    border: none;                      
+    cursor: pointer;                   
+    transition: background-color 0.3s ease-in-out; 
+    width: 5vw;
     height: 5vh;
-    padding: 10px 20px;
-    font-size: 14px;
-    background-color: rgb(238, 206, 206);
-    cursor: pointer;
+}
+
+.triplist-pagination-button:disabled{
+    background-color: darkgray;
 }
 
 .triplist-pagination-button-content{
