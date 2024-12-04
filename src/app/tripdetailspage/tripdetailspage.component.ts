@@ -83,6 +83,10 @@ export class TripdetailspageComponent {
         trip: this.trip,
       },
     });
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      this.fetchTripDetails(result.tripId);
+    });
   }
 
   onLeaveTripClick(): void {

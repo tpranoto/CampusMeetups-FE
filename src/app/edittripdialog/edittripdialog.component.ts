@@ -66,6 +66,7 @@ export class EdittripdialogComponent {
 
       const tripData = this.tripForm.value;
       this.trip = {
+        tripId: this.trip.tripId,
         name: tripData.tripName,
         description: tripData.description,
         image: this.tripImage,
@@ -141,7 +142,7 @@ export class EdittripdialogComponent {
         } else {
           this.router.navigate(['/trip', result.tripId]);
 
-          this.dialogRef.close();
+          this.dialogRef.close(result);
         }
       });
     }
