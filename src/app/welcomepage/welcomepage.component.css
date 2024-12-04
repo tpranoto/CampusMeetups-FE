@@ -59,6 +59,17 @@
   font-weight: bold;
 }
 
+.empty-div{
+  margin-right: 13vw;
+}
+
+.upcoming-trip-sub{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  align-items: center;
+}
+
 .upcoming-trips-subtitle{
   display: flex;
   justify-content: center;

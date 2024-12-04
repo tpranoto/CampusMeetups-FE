@@ -20,7 +20,7 @@
 <!-- Your Trips Section -->
 <section class="your-trips">
   <h2 class="your-trips-title">Your Trips</h2>
-  <div class="your-trips-link" *ngIf="upcomingTrips.length !== 0">
+  <div class="your-trips-link" *ngIf="trips.length !== 0">
     <button [routerLink]="['/trip']">View more</button>
   </div>
   <div *ngIf="trips.length === 0" class="no-trips-message">
@@ -39,10 +39,15 @@
 <section class="upcoming-trips">
   <div class="upcoming-trips-content">
     <h2 class="upcoming-trips-title">Upcoming Trips</h2>
-    <p class="lead upcoming-trips-subtitle">Explore upcoming trips within the next week!</p>
+    <div class="upcoming-trip-sub">
+      <div class="empty-div"></div>
+      <p class="lead upcoming-trips-subtitle">
+        Explore upcoming trips within the next week!
+      </p>
 
-    <div class="upcoming-trips-link" *ngIf="upcomingTrips.length !== 0">
-      <button [routerLink]="['/profile',user.studentId]">View more</button>
+      <div class="upcoming-trips-link" >
+        <button [routerLink]="['/profile',user.studentId]">View more</button>
+      </div>
     </div>
 
     <div *ngIf="upcomingTrips.length === 0" class="no-trips-message">
